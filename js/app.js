@@ -151,7 +151,6 @@
     if (key === 'nav_shop_click') { e.preventDefault(); goPlans(); track('nav_shop_click'); return; }
     if (key === 'plan_selected') { selectPlan(t.dataset.plan); return; }
     if (key === 'nutrition_open') { openDrawer(/nutrition/i.test(t.textContent) ? 'nutrition' : 'ingredients'); return; }
-    if (key === 'express_checkout_click') { track(key, { method: t.dataset.method }); openCheckout('express_' + t.dataset.method); return; }
     if (key && CTA[key]) { track(key); openCheckout(CTA[key] + (key === 'sticky_cta_click' ? (t.closest('#sticky-mob') ? '_mobile' : '_desktop') : '')); return; }
     if (/^See plans/.test(t.textContent.trim())) { scrollToNearestPlans(); track('sticky_cta_click'); }
   });
@@ -163,7 +162,7 @@
     state.done = false; closeDrawer(); renderCheckout();
     pdpView.hidden = true; coView.hidden = false; stickyD.hidden = stickyM.hidden = true; state.scrolled = false;
     history.pushState({ view: 'checkout' }, '', '#checkout');
-    window.scrollTo(0, 0); document.title = 'Checkout · Fora';
+    window.scrollTo(0, 0); document.title = 'Waitlist · Fora';
     track('checkout_view', { source: source });
   }
   function showPdp(scroll) {
@@ -240,11 +239,11 @@
     }
     // Spam traps: a filled honeypot or a submit faster than a human could manage get a fake success.
     if (form.elements.company.value || Date.now() - openedAt < 2000) { finish(); return; }
-    btn.disabled = true; btn.style.opacity = .7; label.textContent = 'Continuing…';
+    btn.disabled = true; btn.style.opacity = .7; label.textContent = 'Joining…';
     window.ForaKlaviyo.subscribe(lead)
       .then(function () { window.ForaKlaviyo.track('Joined Waitlist', { plan: p.id, plan_name: p.name, quantity: state.qty, plan_total: lead.total }, lead.email); finish(); })
       .catch(function (err) { console.warn('Lead submit failed', err); $('#co-error').hidden = false; })
-      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = 'Continue to delivery'; });
+      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = 'Join the waitlist'; });
   });
 
   // ---------- Init ----------

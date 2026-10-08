@@ -57,7 +57,7 @@
 a[data-track="nav_shop_click"]:hover{background:#FF5A1F!important;color:#0B3B23!important}
 
 /* Headings: New Kansas Bold (Adobe Fonts kit sdf4idw), same as the Shopify theme */
-h1,h2,h3,h4,.display,[data-proof-h],[data-habit-h]{font-family:var(--font-heading)!important;font-weight:700!important;font-stretch:normal!important}
+h1,h2,h3,h4,.display,[data-proof-h],[data-habit-h]{font-family:var(--font-heading)!important;font-weight:700!important;font-stretch:normal!important;text-transform:none!important}
 
 /* Placeholder photo slots (no image supplied yet) */
 .slot-empty{display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:rgba(11,59,35,.06);border:1.5px dashed rgba(11,59,35,.3);color:#3E6B50;font-size:12px;line-height:1.3}
