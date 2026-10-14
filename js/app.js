@@ -46,8 +46,9 @@
   var thumbs = $$('#top button.scp2:not([data-plan])');
   function renderThumbs() {
     thumbs.forEach(function (b, i) {
-      b.style.border = i === state.gallery ? '1.5px solid ' + GREEN : '1.5px solid rgba(11,59,35,.14)';
-      b.style.background = i === state.gallery ? LIME : 'transparent';
+      b.style.borderColor = i === state.gallery ? GREEN : 'rgba(11,59,35,.14)';
+      b.style.opacity = i === state.gallery ? 1 : .7;
+      b.setAttribute('aria-current', i === state.gallery ? 'true' : 'false');
     });
   }
   if (gal) {
@@ -96,29 +97,49 @@
 
   // ---------- Nutrition / ingredients drawer ----------
   var drawer = $('#drawer');
-  function openDrawer(kind) {
-    var nut = kind === 'nutrition';
-    $('#drawer-title').textContent = nut ? 'Nutrition information' : 'Full ingredient list';
+  var drawerTab = 'nutrition';
+  function nutritionHtml() {
     var N = C.nutrition;
-    $('#drawer-body').innerHTML =
-      (nut ? '<div style="border:1.5px solid #0B3B23;border-radius:6px;padding:16px;background:#fff">' +
-        '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding-bottom:8px">Nutrition information</div>' +
-        '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Typical values</span><span style="flex:0 0 100px;text-align:right">Per 100 g</span><span style="flex:0 0 120px;text-align:right">' + esc(N.servingLabel) + '</span></div>' +
-        N.rows.map(function (n) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1;font-weight:' + n.w + '">' + esc(n.label) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(n.per100) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50">' + esc(n.perServing) + '</span></div>'; }).join('') +
-        '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding:20px 0 8px">Active ingredients</div>' +
-        '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Per gummy · per serving</span><span style="flex:0 0 100px;text-align:right">1 gummy</span><span style="flex:0 0 120px;text-align:right">5 gummies</span></div>' +
-        N.actives.map(function (a) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1">' + esc(a[0]) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(a[1]) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50;font-weight:700">' + esc(a[2]) + '</span></div>'; }).join('') +
-        '<div style="font-size:12px;color:#3E6B50;padding-top:10px">Servings per container: 30 · Units per container: 150 · Net weight 420 g · Finished weight per gummy 2.8 g (± 5%)</div></div>' : '') +
-      '<div style="display:flex;flex-direction:column">' + C.ingredientGroups.map(function (g) { return '<div style="padding:14px 0;border-bottom:1px solid rgba(11,59,35,.14)"><div style="font-size:12px;letter-spacing:.14em;font-weight:800;text-transform:uppercase;margin-bottom:6px">' + esc(g.name) + ' · ' + esc(g.count) + '</div><div style="font-size:14px;color:#3E6B50;line-height:1.55">' + esc(g.items.join(' · ')) + '</div></div>'; }).join('') + '</div>' +
+    return '<div style="border:1.5px solid #0B3B23;border-radius:6px;padding:16px;background:#fff">' +
+      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding-bottom:8px">Nutrition information</div>' +
+      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Typical values</span><span style="flex:0 0 100px;text-align:right">Per 100 g</span><span style="flex:0 0 120px;text-align:right">' + esc(N.servingLabel) + '</span></div>' +
+      N.rows.map(function (n) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1;font-weight:' + n.w + '">' + esc(n.label) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(n.per100) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50">' + esc(n.perServing) + '</span></div>'; }).join('') +
+      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding:20px 0 8px">Active ingredients</div>' +
+      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Per gummy · per serving</span><span style="flex:0 0 100px;text-align:right">1 gummy</span><span style="flex:0 0 120px;text-align:right">5 gummies</span></div>' +
+      N.actives.map(function (a) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1">' + esc(a[0]) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(a[1]) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50;font-weight:700">' + esc(a[2]) + '</span></div>'; }).join('') +
+      '<div style="font-size:12px;color:#3E6B50;padding-top:10px">Servings per container: 30 · Units per container: 150 · Net weight 420 g · Finished weight per gummy 2.8 g (± 5%)</div></div>';
+  }
+  function ingredientsHtml() {
+    return '<div style="display:flex;flex-direction:column">' + C.ingredientGroups.map(function (g) { return '<div style="padding:14px 0;border-bottom:1px solid rgba(11,59,35,.14)"><div style="font-size:12px;letter-spacing:.14em;font-weight:800;text-transform:uppercase;margin-bottom:6px">' + esc(g.name) + ' · ' + esc(g.count) + '</div><div style="font-size:14px;color:#3E6B50;line-height:1.55">' + esc(g.items.join(' · ')) + '</div></div>'; }).join('') + '</div>' +
       '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Free from:</strong> ' + esc(C.freeFrom.join(', ')) + '</div>' +
       '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Ingredients:</strong> ' + esc(C.fullIngredientList) + '</div>' +
       '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Sweeteners:</strong> ' + esc(C.sweeteners) + ' Base: pectin (no gelatin).</div>' +
       '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Storage:</strong> Store in tightly closed original packaging in a dry environment. Best before 24 months from manufacture when kept in a cool, dry place below 25°C, away from direct sunlight.</div>' +
       '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Warnings:</strong> ' + esc(C.warnings.join(' ')) + '</div>';
+  }
+  function renderDrawer() {
+    var nut = drawerTab === 'nutrition';
+    $$('[data-drawer-tab]').forEach(function (b) {
+      var on = b.dataset.drawerTab === drawerTab;
+      b.setAttribute('aria-selected', on);
+      b.style.background = on ? GREEN : 'transparent'; b.style.color = on ? LIME : GREEN;
+    });
+    $('#drawer-body').innerHTML = nut ? nutritionHtml() : ingredientsHtml();
+    $('#drawer-scroll').scrollTop = 0;
+  }
+  function openDrawer(kind) {
+    drawerTab = kind; renderDrawer();
     drawer.hidden = false; document.body.style.overflow = 'hidden';
     $('#drawer-close').focus();
     track('nutrition_open', { panel: kind });
   }
+  // Delegated on the drawer itself so the switch works whatever is clicked inside the tab button.
+  drawer.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-drawer-tab]');
+    if (!b) return;
+    e.stopPropagation();
+    drawerTab = b.dataset.drawerTab; renderDrawer(); track('nutrition_open', { panel: drawerTab });
+  });
   function closeDrawer() { drawer.hidden = true; document.body.style.overflow = ''; }
   $$('[data-close-drawer]').forEach(function (el) { el.addEventListener('click', closeDrawer); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) closeDrawer(); });
@@ -162,7 +183,7 @@
     state.done = false; closeDrawer(); renderCheckout();
     pdpView.hidden = true; coView.hidden = false; stickyD.hidden = stickyM.hidden = true; state.scrolled = false;
     history.pushState({ view: 'checkout' }, '', '#checkout');
-    window.scrollTo(0, 0); document.title = 'Waitlist · Fora';
+    window.scrollTo(0, 0); document.title = 'Checkout · Fora';
     track('checkout_view', { source: source });
   }
   function showPdp(scroll) {
@@ -220,6 +241,8 @@
     input.setAttribute('aria-invalid', !!msg); input.style.borderColor = msg ? '#D03A00' : 'rgba(11,59,35,.25)';
   }
   var validators = { firstName: validFirst, email: validEmail };
+  function showConsent(on) { var e = $('#err-consent'); e.textContent = on ? '' : 'Please tick the box to continue.'; e.hidden = on; }
+  form.elements.consent.addEventListener('change', function () { showConsent(this.checked); });
   ['firstName', 'email'].forEach(function (n) {
     form.elements[n].addEventListener('blur', function () { state.touched[n] = true; showErr(n, validators[n](form.elements[n].value)); });
     form.elements[n].addEventListener('input', function () { if (state.touched[n]) showErr(n, validators[n](form.elements[n].value)); });
@@ -228,9 +251,10 @@
     e.preventDefault();
     var fe = validFirst(form.elements.firstName.value), ee = validEmail(form.elements.email.value);
     state.touched = { firstName: true, email: true }; showErr('firstName', fe); showErr('email', ee);
-    if (fe || ee) { form.elements[fe ? 'firstName' : 'email'].focus(); return; }
+    var okConsent = form.elements.consent.checked; showConsent(okConsent);
+    if (fe || ee || !okConsent) { form.elements[fe ? 'firstName' : ee ? 'email' : 'consent'].focus(); return; }
     var p = selPlan(), btn = $('#co-submit'), label = $('#co-submit-label');
-    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(num(p.total) * state.qty), source: 'prelaunch_checkout' };
+    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(num(p.total) * state.qty), source: 'prelaunch_checkout', consent: true };
     function finish() {
       state.firstName = lead.firstName; state.email = lead.email; state.done = true;
       $$('[data-co="email"]').forEach(function (el) { el.textContent = lead.email; });
@@ -239,11 +263,11 @@
     }
     // Spam traps: a filled honeypot or a submit faster than a human could manage get a fake success.
     if (form.elements.company.value || Date.now() - openedAt < 2000) { finish(); return; }
-    btn.disabled = true; btn.style.opacity = .7; label.textContent = 'Joining…';
+    btn.disabled = true; btn.style.opacity = .7; label.textContent = 'Continuing…';
     window.ForaKlaviyo.subscribe(lead)
       .then(function () { window.ForaKlaviyo.track('Joined Waitlist', { plan: p.id, plan_name: p.name, quantity: state.qty, plan_total: lead.total }, lead.email); finish(); })
       .catch(function (err) { console.warn('Lead submit failed', err); $('#co-error').hidden = false; })
-      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = 'Join the waitlist'; });
+      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = 'Continue to delivery'; });
   });
 
   // ---------- Init ----------

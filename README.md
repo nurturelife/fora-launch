@@ -15,10 +15,10 @@ assets/           logo, images, Archivo font files
 ## Run locally
 
 ```bash
-python3 -m http.server 8090
+python3 -m http.server 8095
 ```
 
-Then open http://localhost:8090.
+Then open http://localhost:8095.
 
 ## Fonts
 

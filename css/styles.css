@@ -66,3 +66,9 @@ h1,h2,h3,h4,.display,[data-proof-h],[data-habit-h]{font-family:var(--font-headin
 #co-summary-panel.open{display:flex!important}
 @media (min-width:901px){#co-summary-panel{display:flex!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* Headings: more open leading and tracking so New Kansas glyphs don't collide */
+h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
+[data-proof-h],[data-habit-h]{line-height:1.02!important;letter-spacing:-.02em!important}
+
+#drawer-body > *{flex-shrink:0}

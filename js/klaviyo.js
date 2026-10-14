@@ -30,7 +30,8 @@
       plan: lead.plan,
       plan_name: lead.planName,
       quantity: lead.qty,
-      plan_total: lead.total
+      plan_total: lead.total,
+      marketing_consent: !!lead.consent
     };
     return post('subscriptions', {
       data: {
