@@ -70,11 +70,10 @@
     var list = C.reviews.map(function (r, i) { return Object.assign({ key: i + 1 }, r); })
       .filter(function (r) { return state.reviewFilter === 'Overall' || r.tag === state.reviewFilter; });
     revGrid.innerHTML = list.length ? list.map(function (r) {
-      return '<div style="display:flex;flex-direction:column;gap:12px">' +
-        '<div style="position:relative;overflow:hidden;border-radius:6px;aspect-ratio:4/5;min-width:0"><div class="slot-empty" role="img" aria-label="Customer photo" style="position:absolute;inset:0;border-radius:6px"><span>UGC · customer photo with pack · ' + esc(r.tag) + '</span></div></div>' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="color:#FF5A1F;letter-spacing:2px">' + '★★★★★'.slice(0, r.stars || 5) + '</span><span style="font-size:11px;letter-spacing:.1em;font-weight:800;text-transform:uppercase;border:1px solid rgba(11,59,35,.3);padding:3px 7px;border-radius:3px">' + esc(r.tag) + '</span></div>' +
-        '<p style="margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em;text-wrap:pretty">' + esc(r.text) + '</p>' +
-        '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(r.name) + '</strong>' + (r.verified ? ' · Verified purchase' : '') + '</div></div>';
+      return '<div style="display:flex;flex-direction:column;gap:14px;background:#FAFAF4;border:1px solid rgba(11,59,35,.14);border-radius:10px;padding:clamp(18px,2vw,26px)">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="color:#FF5A1F;letter-spacing:2px;font-size:18px">' + '★★★★★'.slice(0, r.stars || 5) + '</span><span style="font-size:11px;letter-spacing:.1em;font-weight:800;text-transform:uppercase;border:1px solid rgba(11,59,35,.3);padding:3px 7px;border-radius:3px">' + esc(r.tag) + '</span></div>' +
+        '<p style="margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.45;text-wrap:pretty">' + esc(r.text) + '</p>' +
+        '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:auto;font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(r.name) + '</strong>' + (r.verified ? '<span style="display:inline-flex;align-items:center;gap:5px;background:#C9F542;color:#0B3B23;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px"><span aria-hidden="true">✓</span>Verified purchase</span>' : '') + '</div></div>';
     }).join('') : '<p style="grid-column:1/-1;margin:0;color:#3E6B50">No reviews for this filter yet.</p>';
   }
   revBtns.forEach(function (b) { b.addEventListener('click', function () { state.reviewFilter = b.textContent.trim(); renderReviews(); track('review_filter', { filter: state.reviewFilter }); }); });
@@ -241,8 +240,6 @@
     input.setAttribute('aria-invalid', !!msg); input.style.borderColor = msg ? '#D03A00' : 'rgba(11,59,35,.25)';
   }
   var validators = { firstName: validFirst, email: validEmail };
-  function showConsent(on) { var e = $('#err-consent'); e.textContent = on ? '' : 'Please tick the box to continue.'; e.hidden = on; }
-  form.elements.consent.addEventListener('change', function () { showConsent(this.checked); });
   ['firstName', 'email'].forEach(function (n) {
     form.elements[n].addEventListener('blur', function () { state.touched[n] = true; showErr(n, validators[n](form.elements[n].value)); });
     form.elements[n].addEventListener('input', function () { if (state.touched[n]) showErr(n, validators[n](form.elements[n].value)); });
@@ -251,10 +248,9 @@
     e.preventDefault();
     var fe = validFirst(form.elements.firstName.value), ee = validEmail(form.elements.email.value);
     state.touched = { firstName: true, email: true }; showErr('firstName', fe); showErr('email', ee);
-    var okConsent = form.elements.consent.checked; showConsent(okConsent);
-    if (fe || ee || !okConsent) { form.elements[fe ? 'firstName' : ee ? 'email' : 'consent'].focus(); return; }
+    if (fe || ee) { form.elements[fe ? 'firstName' : 'email'].focus(); return; }
     var p = selPlan(), btn = $('#co-submit'), label = $('#co-submit-label');
-    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(num(p.total) * state.qty), source: 'prelaunch_checkout', consent: true };
+    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(num(p.total) * state.qty), source: 'prelaunch_checkout' };
     function finish() {
       state.firstName = lead.firstName; state.email = lead.email; state.done = true;
       $$('[data-co="email"]').forEach(function (el) { el.textContent = lead.email; });
