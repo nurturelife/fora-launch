@@ -74,7 +74,8 @@ h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
 #drawer-body > *{flex-shrink:0}
 
 /* Footer tools: legal links, cookie settings and the EN | DE switch */
-.foot-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.foot-right{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
+.foot-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 18px}
 .foot-tools a,.foot-tools button{color:#3E6B50;font:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .foot-tools a:hover,.foot-tools button:hover{color:#FF5A1F}
 .lang-switch{display:inline-flex;align-items:center;gap:6px;font-weight:600}
