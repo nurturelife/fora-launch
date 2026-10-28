@@ -1,0 +1,55 @@
+<script>
+/* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
+   Paste Fora's IDs below. An empty ID means that tool is never loaded.
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
+window.FORA_TRACKING = { GA_ID: '', META_PIXEL_ID: '', POSTHOG_KEY: '' };
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.foraLoadAnalytics = function () {
+  if (window.foraAnalyticsLoaded) return;
+  window.foraAnalyticsLoaded = true;
+  var T = window.FORA_TRACKING;
+  if (T.GA_ID) {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(T.GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', T.GA_ID);
+  }
+  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.META_PIXEL_ID) window.foraLoadMeta();
+};
+window.foraLoadMeta = function () {
+  if (window.foraMetaLoaded) return;
+  window.foraMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
+  fbq('track', 'PageView');
+};
+window.foraLoadPosthog = function () {
+  if (window.foraPosthogLoaded) return;
+  window.foraPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init(window.FORA_TRACKING.POSTHOG_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
+};
+try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
+</script>

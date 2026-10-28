@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,51 +7,108 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/styles.css?v=20261028102842">
 <style>
   .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
-  .legal-nav a.back{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
+  .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
+  .legal-nav a.back{font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
   .doc{max-width:760px;margin:0 auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(56px,8vw,112px);font-size:17px;line-height:1.6}
-  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 16px}
+  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 8px}
   .doc h2{font-size:clamp(22px,2.4vw,28px)!important;margin:40px 0 8px}
+  .doc h3{font-size:clamp(18px,2vw,22px)!important;margin:24px 0 6px}
   .doc p,.doc li{color:#1d4a32}
   .doc ul{padding-left:22px}
-  .draft-note{background:#C9F542;border-radius:6px;padding:12px 16px;font-size:14px;font-weight:600;color:#0B3B23!important}
-  .tbc{background:#FFE9B8;border-radius:3px;padding:0 4px}
-  .legal-foot{border-top:1px solid rgba(11,59,35,.14);padding:20px clamp(16px,4vw,48px);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:12px;color:#3E6B50}
-  .legal-foot a{text-decoration:underline;text-underline-offset:3px}
+  .doc a{text-decoration:underline;text-underline-offset:3px}
+  .doc-updated{font-size:14px;color:#3E6B50!important;margin:0 0 8px}
 </style>
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
+   Paste Fora's IDs below. An empty ID means that tool is never loaded.
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
+window.FORA_TRACKING = { GA_ID: '', META_PIXEL_ID: '', POSTHOG_KEY: '' };
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.foraLoadAnalytics = function () {
+  if (window.foraAnalyticsLoaded) return;
+  window.foraAnalyticsLoaded = true;
+  var T = window.FORA_TRACKING;
+  if (T.GA_ID) {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(T.GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', T.GA_ID);
+  }
+  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.META_PIXEL_ID) window.foraLoadMeta();
+};
+window.foraLoadMeta = function () {
+  if (window.foraMetaLoaded) return;
+  window.foraMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
+  fbq('track', 'PageView');
+};
+window.foraLoadPosthog = function () {
+  if (window.foraPosthogLoaded) return;
+  window.foraPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init(window.FORA_TRACKING.POSTHOG_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
+};
+try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
-<nav class="legal-nav" aria-label="Main"><a href="../index.html" aria-label="Fora home" style="display:block;line-height:0"><img src="../assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a><a class="back" href="../index.html">← Back to site</a></nav>
+<nav class="legal-nav" aria-label="Main navigation"><a href="../index.html" aria-label="Fora home" style="display:block;line-height:0"><img src="../assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Language"><a href="terms.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="../de/legal/terms.html" hreflang="de" lang="de" data-lang="de">DE</a></span><a class="back" href="../index.html">← Back to site</a></div></nav>
 <main class="doc">
-<h1>Terms</h1>
-<p class="draft-note">DRAFT placeholder, pending review by the client and their legal adviser. Items highlighted <span class="tbc">[like this]</span> still need to be confirmed. Last updated: <span class="tbc">[date]</span>.</p>
-<h2>Who we are</h2>
-<p>This website is run by <span class="tbc">[company legal name]</span>, <span class="tbc">[registered address]</span>, company number <span class="tbc">[number]</span> ("Fora", "we", "us"). Contact: <span class="tbc">[contact email]</span>.</p>
+  <h1>Terms</h1>
+  <p class="doc-updated">Last updated: 28 October 2026.</p>
+    <h2>About this website</h2>
+    <p>This website is operated by Core and Coat Limited, a company registered in England and Wales (company number 17287859), whose registered office is at Office 2 Bridgeview House, Ray Mead Road, Maidenhead, Berkshire SL6 8NJ, United Kingdom. Contact: <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>. By using the site you accept these terms.</p>
 
-<h2>About this website</h2>
-<p>Fora is launching soon. This website presents our Daily Health Boost Super Greens+ Gummies and lets you register your interest. <b>We are not yet taking orders or payments</b>, and nothing on this site is a contract of sale. When ordering opens, separate terms of sale will apply.</p>
+    <h2>Availability and orders</h2>
+    <p>The products and plans displayed on this website are provided for information. Where purchasing is not yet available, selecting a plan or submitting your contact details at checkout registers your interest only. It does not constitute an order or create a contract of sale, and no payment is taken. Product information and pricing may be updated before purchases become available. Our Terms of Sale will apply once purchases are enabled.</p>
 
-<h2>Registering your interest</h2>
-<p>When you complete the checkout form you give us your name and email address so we can tell you when Fora is available. Doing so does not oblige you to buy anything, and no payment is taken. Prices, plans and product details shown are indicative and may change before launch.</p>
+    <h2>Your details</h2>
+    <p>If you give us your name and email address, we use them only to manage your registration and to tell you when Fora becomes available so that you can complete your purchase. We do not send marketing or promotional emails. For more information about how we use and retain personal information, please see our <a href="privacy.html"><u>Privacy Policy</u></a>.</p>
 
-<h2>Food supplement information</h2>
-<p>Fora is a food supplement and should not be used as a substitute for a varied and balanced diet and a healthy lifestyle. Do not exceed the stated recommended daily dose. Keep out of reach of young children. Speak to a health professional before use if you are pregnant, breastfeeding, taking medication or have a medical condition. <span class="tbc">[Final label warnings to be confirmed.]</span></p>
+    <h2>Product information</h2>
+    <p>Fora Daily Health Boost Super Greens+ Gummies is a food supplement. Do not exceed the stated recommended daily dose and keep it out of reach of young children. Food supplements should not be used as a substitute for a varied, balanced diet and a healthy lifestyle. Nothing on this site is medical advice or intended to diagnose, treat or prevent any condition. Speak to a healthcare professional before use if you are pregnant, breastfeeding, taking medication or have a health condition.</p>
 
-<h2>Intellectual property</h2>
-<p>The Fora name, logo, images and text on this site belong to us or our licensors. You may not copy or reuse them without our written permission.</p>
+    <h2>Intellectual property</h2>
+    <p>The text, images, logo and design on this site belong to Core and Coat Limited or its licensors. Copying, distributing or commercially reusing them without permission is not allowed, except where permitted by law.</p>
 
-<h2>Our responsibility</h2>
-<p>We take care to keep this site accurate, but it is provided "as is" and details may change. Nothing in these terms limits liability that cannot be limited by law. <span class="tbc">[Limitation of liability wording to be confirmed by legal adviser.]</span></p>
+    <h2>Liability</h2>
+    <p>We take reasonable care to ensure the information on this website is accurate and up to date. However, we cannot guarantee that the website will always be available, uninterrupted or free from errors.</p>
+    <p>Nothing in these terms excludes or limits our liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot lawfully be excluded or limited. Your statutory consumer rights remain unaffected.</p>
 
-<h2>Privacy</h2>
-<p>How we use your personal data is explained in our <a href="privacy.html" style="text-decoration:underline">Privacy Policy</a>.</p>
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of England and Wales. If you are a consumer residing outside the United Kingdom, this does not affect any mandatory consumer protection rights that apply to you under the laws of your country of habitual residence, where applicable.</p>
 
-<h2>Changes and governing law</h2>
-<p>We may update these terms from time to time; the date above shows the latest version. These terms are governed by the laws of <span class="tbc">[England and Wales]</span>, and the courts of <span class="tbc">[England and Wales]</span> have jurisdiction, without affecting any rights you have as a consumer where you live.</p>
-
+    <h2>Changes</h2>
+    <p>We may update these terms from time to time. Any updates will be published on this page with a revised "Last updated" date. Changes will not affect statutory rights or existing contractual rights.</p>
 </main>
-<footer class="legal-foot"><span>© 2026 Fora · Food supplement</span><span><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span></footer>
+<script src="../js/lang/en.js?v=20261028102842"></script>
+<script src="../js/common.js?v=20261028102842"></script>
 </body>
 </html>

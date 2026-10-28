@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datenschutzerklärung · Fora</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../../assets/favicon.png">
+<link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
+<link rel="stylesheet" href="../../css/styles.css?v=20261028102842">
+<style>
+  .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
+  .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
+  .legal-nav a.back{font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
+  .doc{max-width:760px;margin:0 auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(56px,8vw,112px);font-size:17px;line-height:1.6}
+  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 8px}
+  .doc h2{font-size:clamp(22px,2.4vw,28px)!important;margin:40px 0 8px}
+  .doc h3{font-size:clamp(18px,2vw,22px)!important;margin:24px 0 6px}
+  .doc p,.doc li{color:#1d4a32}
+  .doc ul{padding-left:22px}
+  .doc a{text-decoration:underline;text-underline-offset:3px}
+  .doc-updated{font-size:14px;color:#3E6B50!important;margin:0 0 8px}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
+   Paste Fora's IDs below. An empty ID means that tool is never loaded.
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
+window.FORA_TRACKING = { GA_ID: '', META_PIXEL_ID: '', POSTHOG_KEY: '' };
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.foraLoadAnalytics = function () {
+  if (window.foraAnalyticsLoaded) return;
+  window.foraAnalyticsLoaded = true;
+  var T = window.FORA_TRACKING;
+  if (T.GA_ID) {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(T.GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', T.GA_ID);
+  }
+  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.META_PIXEL_ID) window.foraLoadMeta();
+};
+window.foraLoadMeta = function () {
+  if (window.foraMetaLoaded) return;
+  window.foraMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
+  fbq('track', 'PageView');
+};
+window.foraLoadPosthog = function () {
+  if (window.foraPosthogLoaded) return;
+  window.foraPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init(window.FORA_TRACKING.POSTHOG_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
+};
+try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
+</script>
+</head>
+<body>
+<nav class="legal-nav" aria-label="Hauptnavigation"><a href="../index.html" aria-label="Fora Startseite" style="display:block;line-height:0"><img src="../../assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Sprache"><a href="../../legal/privacy.html" hreflang="en" lang="en" data-lang="en">EN</a><span aria-hidden="true">|</span><a href="privacy.html" hreflang="de" lang="de" data-lang="de" class="is-current" aria-current="true">DE</a></span><a class="back" href="../index.html">← Zurück zur Website</a></div></nav>
+<main class="doc">
+  <h1>Datenschutzerklärung</h1>
+  <p class="doc-updated">Zuletzt aktualisiert: 28. Oktober 2026.</p>
+    <h2>Wer wir sind</h2>
+    <p>Diese Website wird betrieben von Core and Coat Limited, einer in England und Wales eingetragenen Gesellschaft (Companies-House-Nummer 17287859) mit Sitz in Office 2 Bridgeview House, Ray Mead Road, Maidenhead, Berkshire SL6 8NJ, Vereinigtes Königreich („Fora“, „wir“, „uns“). Wir sind Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) für die hier beschriebenen personenbezogenen Daten. Sie erreichen uns unter <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>. Weitere Angaben finden Sie im <a href="impressum.html"><u>Impressum</u></a>.</p>
+
+    <h2>Was diese Website tut</h2>
+    <p>Diese Website stellt Fora vor und ermöglicht es Ihnen, Ihr Interesse zu registrieren. Wenn Sie einen Plan wählen und die Kassenseite durchlaufen, wird nichts abgebucht und keine Bestellung ausgelöst. Wir fragen nach Ihrem Namen und Ihrer E-Mail-Adresse, damit wir Sie informieren können, sobald das Produkt verfügbar ist.</p>
+
+    <h2>Welche Daten wir erheben</h2>
+    <ul>
+      <li><b>An der Kasse:</b> Ihre E-Mail-Adresse, Ihr Vorname, der gewählte Plan (Name, Menge und Preis) und die Sprache der Seite, die Sie genutzt haben.</li>
+      <li><b>Bei der Anmeldung:</b> ein Nachweis der Anmeldung, etwa Zeitpunkt und technische Angaben, die unser E-Mail-Dienstleister protokolliert (zum Beispiel Ihre IP-Adresse).</li>
+      <li><b>Wenn Sie dem Cookie-Banner zustimmen:</b> Informationen darüber, wie Sie die Website nutzen, etwa besuchte Seiten, wo Sie klicken und wie weit Sie scrollen, ungefährer Standort, Gerät und Browser (siehe „Cookies und Analyse“ unten).</li>
+    </ul>
+    <p>Wir fragen nicht nach Kartendaten, Lieferadressen oder anderen Zahlungsinformationen und erheben sie nicht.</p>
+
+    <h2>Wofür wir die Daten nutzen und auf welcher Rechtsgrundlage</h2>
+    <h3>Benachrichtigung zum Verkaufsstart</h3>
+    <p>Wenn Sie Ihr Interesse an Fora registrieren, nutzen wir Ihre Angaben ausschließlich, um Sie zu informieren, sobald das Produkt verfügbar ist, damit Sie Ihren Kauf abschließen können. Wir versenden keine Marketing- oder Werbe-E-Mails. Die Registrierung stellt keine Bestellung dar, und es wird keine Zahlung vorgenommen. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie jederzeit widerrufen können, indem Sie uns unter <a href="mailto:hi@foragummy.com">hi@foragummy.com</a> kontaktieren.</p>
+    <h3>Analyse</h3>
+    <p>Mit Ihrer Einwilligung nutzen wir Google Analytics und PostHog, um zu verstehen, wie Besucher unsere Website nutzen, und um ihre Erfahrung zu verbessern, auch mithilfe von Heatmaps zu Klicks und Scrollverhalten. Mit Ihrer Einwilligung nutzen wir außerdem das Meta-Pixel, um die Wirksamkeit unserer Werbung zu messen und Personen, die sich für Fora interessiert haben, mit passender Werbung auf Facebook und Instagram zu erreichen. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Sie können Ihre Einstellungen jederzeit über die Cookie-Einstellungen ändern.</p>
+    <h3>Betrieb und Sicherheit der Website</h3>
+    <p>Wir verarbeiten begrenzte technische Informationen, etwa IP-Adressen und Browserangaben, um unsere Website zu betreiben, die Sicherheit zu gewährleisten und Missbrauch zu verhindern. Rechtsgrundlage sind unsere berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO) an einer sicheren und funktionsfähigen Website.</p>
+
+    <h2>Wer Ihre Daten verarbeitet</h2>
+    <p>Wir arbeiten mit vertrauenswürdigen Dienstleistern zusammen, um unsere Website zu betreiben und mit Besuchern zu kommunizieren:</p>
+    <ul>
+      <li><b>Klaviyo, Inc.:</b> Speichert Registrierungen zum Verkaufsstart und verwaltet unsere Verfügbarkeitsbenachrichtigungen per E-Mail. Die Daten werden in den USA verarbeitet; die Übermittlung ist durch die Teilnahme von Klaviyo am EU-US Data Privacy Framework und dessen UK-Erweiterung abgesichert.</li>
+      <li><b>Google Ireland Limited / Google LLC:</b> Stellt Google Analytics bereit, wenn Sie Analyse-Cookies zustimmen. Übermittlungen an Google LLC in den USA sind durch dessen Teilnahme am EU-US Data Privacy Framework und dessen UK-Erweiterung abgesichert.</li>
+      <li><b>PostHog:</b> Stellt Heatmaps zu Klicks und Scrollverhalten sowie Nutzungsstatistiken bereit, wenn Sie Analyse-Cookies zustimmen. Wir nutzen die EU-Cloud, die Daten werden also in der EU gespeichert. Wir verwenden keine Sitzungsaufzeichnungen und weisen den Dienst an, die Formulare dieser Website zu ignorieren.</li>
+      <li><b>Meta Platforms Ireland Limited / Meta Platforms, Inc.:</b> Stellt das Meta-Pixel bereit, wenn Sie Analyse- und Werbe-Cookies zustimmen. Meta erhält Informationen wie die besuchten Seiten, Browser- und Geräteangaben und den Zeitpunkt, zu dem Sie Ihr Interesse registrieren. Meta kann Daten in die USA übermitteln; diese Übermittlungen stützen sich auf die Teilnahme von Meta am EU-US Data Privacy Framework und dessen UK-Erweiterung.</li>
+      <li><b>Adobe Inc. (Adobe Fonts):</b> Liefert die Überschriftenschrift dieser Website. Beim Laden einer Seite verbindet sich Ihr Browser mit den Servern von Adobe, die technische Informationen wie Ihre IP-Adresse erhalten. Rechtsgrundlage sind unsere berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO) an einer einheitlichen Darstellung der Website.</li>
+      <li><b>GitHub, Inc.:</b> Hostet unsere Website und kann technische Informationen, einschließlich IP-Adressen, verarbeiten, die für die Auslieferung der Website erforderlich sind.</li>
+    </ul>
+    <p>Wir verkaufen Ihre personenbezogenen Daten nicht. Weitere Informationen zu den geltenden Garantien für internationale Datenübermittlungen erhalten Sie unter <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
+
+    <h2>Cookies und Analyse</h2>
+    <p>Wir verwenden optionale Analyse-Cookies, um zu verstehen, wie Besucher mit unserer Website interagieren. Google Analytics, PostHog und das Meta-Pixel werden nur aktiviert, wenn Sie dem Cookie-Banner zustimmen. Bis dahin werden sie nicht geladen und es werden keine Analyse- oder Werbe-Cookies gesetzt. Wenn Sie zustimmen, setzt Google Analytics Cookies (mit den Namen <code>_ga</code> und <code>_ga_…</code>), PostHog speichert ein Cookie sowie Einträge im lokalen Speicher (Namen beginnen mit <code>ph_</code>), und das Meta-Pixel setzt Cookies (mit dem Namen <code>_fbp</code> und, wenn Sie über eine Meta-Anzeige kommen, <code>_fbc</code>). Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen in der Fußzeile widerrufen; dadurch wird die weitere Analyse beendet und die Analyse-Cookies werden aus Ihrem Browser entfernt.</p>
+    <p>Ihr Browser kann außerdem Ihre Spracheinstellung und Ihre Cookie-Entscheidung speichern, damit die Website ordnungsgemäß funktioniert.</p>
+
+    <h2>Ist die Angabe Ihrer Daten erforderlich?</h2>
+    <p>Die Angabe Ihrer Daten ist freiwillig. Ihre E-Mail-Adresse und Ihr Vorname sind erforderlich, wenn Sie eine Benachrichtigung zum Verkaufsstart erhalten möchten. Ohne diese Angaben können wir Sie nicht benachrichtigen. Sie können unsere Website besuchen, ohne sich zu registrieren oder Analyse-Cookies zuzustimmen.</p>
+
+    <h2>Automatisierte Entscheidungsfindung</h2>
+    <p>Wir verwenden die über diese Website erhobenen personenbezogenen Daten nicht für ausschließlich automatisierte Entscheidungen, die gegenüber Personen rechtliche Wirkung entfalten oder sie in ähnlicher Weise erheblich beeinträchtigen.</p>
+
+    <h2>Wie lange wir die Daten speichern</h2>
+    <p>Wir speichern Ihre Kontaktdaten so lange, wie es erforderlich ist, um die von Ihnen gewünschte Kommunikation bereitzustellen.</p>
+    <p>Wir speichern Ihre Angaben, um Sie über die Produktverfügbarkeit zu informieren, und löschen sie, sobald sie nicht mehr benötigt werden, es sei denn, eine andere Rechtsgrundlage besteht. Sie können die Löschung jederzeit verlangen.</p>
+    <p>Wir können einen minimalen Nachweis Ihrer Abmeldung aufbewahren, damit Sie nicht erneut kontaktiert werden.</p>
+    <p>Daten von Google Analytics werden 2 Monate gespeichert. Daten von PostHog werden höchstens 12 Monate gespeichert. Die Cookies des Meta-Pixels laufen nach 90 Tagen ab; die bei Meta eingehenden Daten werden gemäß den Datenschutzrichtlinien von Meta gespeichert.</p>
+    <p>Technische und Sicherheitsprotokolle werden nur so lange gespeichert, wie es für den Betrieb der Website, die Sicherheit und die Fehlerbehebung erforderlich ist, gemäß den geltenden Aufbewahrungsregelungen unseres Hosting-Anbieters.</p>
+
+    <h2>Ihre Rechte</h2>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten, auf Einschränkung der Verarbeitung, auf Widerspruch und auf Datenübertragbarkeit, und Sie können erteilte Einwilligungen jederzeit widerrufen. Schreiben Sie uns dazu an <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>. Außerdem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts.</p>
+
+    <h2>Änderungen</h2>
+    <p>Wir können diese Erklärung aktualisieren und ändern dann das Datum oben.</p>
+</main>
+<script src="../../js/lang/de.js?v=20261028102842"></script>
+<script src="../../js/common.js?v=20261028102842"></script>
+</body>
+</html>

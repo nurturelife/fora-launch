@@ -1,23 +1,22 @@
 // Page behaviour: plan selector, gallery, reviews, FAQ, drawer, sticky bars and the pre-launch checkout.
 (function () {
-  var C = window.FORA_CONTENT;
+  var L = window.FORA_L, C = L.content, UI = L.ui, MSG = L.msg;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var GREEN = '#0B3B23', LIME = '#C9F542';
 
-  var state = { plan: 'three_month', qty: 1, gallery: 0, reviewFilter: 'Overall', openFaq: 0, scrolled: false, done: false, touched: {} };
+  var state = { plan: 'three_month', qty: 1, gallery: 0, reviewFilter: C.reviewFilters[0], openFaq: 0, scrolled: false, done: false, touched: {} };
 
   // Analytics hook: Meta CAPI / TikTok / GA connect here later.
   function track(event, data) {
-    var p = Object.assign({ event: event, plan: state.plan, ts: Date.now() }, data || {});
+    var p = Object.assign({ event: event, plan: state.plan, lang: L.lang, ts: Date.now() }, data || {});
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(p);
     window.dispatchEvent(new CustomEvent('fora:track', { detail: p }));
   }
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  function num(s) { return parseFloat(String(s).replace(/[^\d.]/g, '')) || 0; }
-  function gbp(n) { return '£' + n.toFixed(2); }
+  function gbp(n) { return L.money(n); }
   function selPlan() { return C.plans.filter(function (p) { return p.id === state.plan; })[0] || C.plans[0]; }
   function scrollToEl(el, offset) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' }); }
 
@@ -62,36 +61,35 @@
   // ---------- Reviews ----------
   var revGrid = $('[style*="repeat(auto-fill"]');
   var revBtns = $$('button[data-track="review_filter"]');
+  function filterLabel(b) { return C.reviewFilters[+b.dataset.filter]; }
   function renderReviews() {
     revBtns.forEach(function (b) {
-      var on = b.textContent.trim() === state.reviewFilter;
+      var on = filterLabel(b) === state.reviewFilter;
       b.style.background = on ? GREEN : 'transparent'; b.style.color = on ? LIME : GREEN;
     });
     var list = C.reviews.map(function (r, i) { return Object.assign({ key: i + 1 }, r); })
-      .filter(function (r) { return state.reviewFilter === 'Overall' || r.tag === state.reviewFilter; });
+      .filter(function (r) { return state.reviewFilter === C.reviewFilters[0] || r.tag === state.reviewFilter; });
     revGrid.innerHTML = list.length ? list.map(function (r) {
       return '<div style="display:flex;flex-direction:column;gap:14px;background:#FAFAF4;border:1px solid rgba(11,59,35,.14);border-radius:10px;padding:clamp(18px,2vw,26px)">' +
         '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="color:#FF5A1F;letter-spacing:2px;font-size:18px">' + '★★★★★'.slice(0, r.stars || 5) + '</span><span style="font-size:11px;letter-spacing:.1em;font-weight:800;text-transform:uppercase;border:1px solid rgba(11,59,35,.3);padding:3px 7px;border-radius:3px">' + esc(r.tag) + '</span></div>' +
         '<p style="margin:0;font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.45;text-wrap:pretty">' + esc(r.text) + '</p>' +
-        '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:auto;font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(r.name) + '</strong>' + (r.verified ? '<span style="display:inline-flex;align-items:center;gap:5px;background:#C9F542;color:#0B3B23;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px"><span aria-hidden="true">✓</span>Verified purchase</span>' : '') + '</div></div>';
-    }).join('') : '<p style="grid-column:1/-1;margin:0;color:#3E6B50">No reviews for this filter yet.</p>';
+        '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:auto;font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(r.name) + '</strong>' + (r.verified ? '<span style="display:inline-flex;align-items:center;gap:5px;background:#C9F542;color:#0B3B23;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px"><span aria-hidden="true">✓</span>' + esc(UI.verified) + '</span>' : '') + '</div></div>';
+    }).join('') : '<p style="grid-column:1/-1;margin:0;color:#3E6B50">' + esc(UI.noReviews) + '</p>';
   }
-  revBtns.forEach(function (b) { b.addEventListener('click', function () { state.reviewFilter = b.textContent.trim(); renderReviews(); track('review_filter', { filter: state.reviewFilter }); }); });
+  revBtns.forEach(function (b) { b.addEventListener('click', function () { state.reviewFilter = filterLabel(b); renderReviews(); track('review_filter', { filter: state.reviewFilter }); }); });
 
-  // ---------- FAQ ----------
-  var faqList = $('#faq [style*="border-top: 1.5px solid"]') || $('#faq [style*="border-top:1.5px solid"]');
+  // ---------- FAQ (markup is pre-rendered per language; this only toggles it) ----------
+  var faqList = $('[data-faq-list]');
   function renderFaq() {
-    faqList.innerHTML = C.faqs.map(function (f, i) {
-      var open = state.openFaq === i;
-      return '<div style="border-bottom:1px solid rgba(11,59,35,.14)">' +
-        '<button type="button" data-faq="' + i + '" aria-expanded="' + open + '" class="scp4" style="display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;background:transparent;border:0;color:#0B3B23;text-align:left;padding:20px 0;font-weight:800;font-size:clamp(17px,1.4vw,20px);letter-spacing:-.01em;min-height:56px"><span>' + esc(f.q) + '</span><span style="flex:0 0 auto;width:28px;height:28px;border:1.5px solid;border-radius:50%;display:grid;place-items:center;font-size:18px;line-height:1;transform:' + (open ? 'rotate(45deg)' : 'none') + ';transition:transform .2s">+</span></button>' +
-        (open ? '<p style="margin:0;padding:0 40px 22px 0;color:#3E6B50;max-width:60ch;text-wrap:pretty;animation:foraRise .25s ease">' + esc(f.a) + '</p>' : '') + '</div>';
-    }).join('');
+    $$('[data-faq-item]', faqList).forEach(function (item, i) {
+      var open = state.openFaq === i, btn = $('[data-faq]', item), ans = $('p', item), icon = $('[data-faq-icon]', item);
+      btn.setAttribute('aria-expanded', open); ans.hidden = !open; icon.style.transform = open ? 'rotate(45deg)' : 'none';
+    });
   }
   faqList.addEventListener('click', function (e) {
     var b = e.target.closest('[data-faq]'); if (!b) return;
     var i = +b.dataset.faq; state.openFaq = state.openFaq === i ? -1 : i; renderFaq();
-    if (state.openFaq >= 0) track('faq_open', { question: C.faqs[i].q });
+    if (state.openFaq >= 0) track('faq_open', { question: b.textContent.replace('+', '').trim() });
   });
 
   // ---------- Nutrition / ingredients drawer ----------
@@ -100,21 +98,21 @@
   function nutritionHtml() {
     var N = C.nutrition;
     return '<div style="border:1.5px solid #0B3B23;border-radius:6px;padding:16px;background:#fff">' +
-      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding-bottom:8px">Nutrition information</div>' +
-      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Typical values</span><span style="flex:0 0 100px;text-align:right">Per 100 g</span><span style="flex:0 0 120px;text-align:right">' + esc(N.servingLabel) + '</span></div>' +
+      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding-bottom:8px">' + esc(UI.nutTitle) + '</div>' +
+      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">' + esc(UI.typical) + '</span><span style="flex:0 0 100px;text-align:right">' + esc(UI.per100) + '</span><span style="flex:0 0 120px;text-align:right">' + esc(N.servingLabel) + '</span></div>' +
       N.rows.map(function (n) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1;font-weight:' + n.w + '">' + esc(n.label) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(n.per100) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50">' + esc(n.perServing) + '</span></div>'; }).join('') +
-      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding:20px 0 8px">Active ingredients</div>' +
-      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">Per gummy · per serving</span><span style="flex:0 0 100px;text-align:right">1 gummy</span><span style="flex:0 0 120px;text-align:right">5 gummies</span></div>' +
+      '<div style="font-weight:900;font-size:20px;letter-spacing:-.02em;border-bottom:1.5px solid #0B3B23;padding:20px 0 8px">' + esc(UI.actives) + '</div>' +
+      '<div data-drawer-cols style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.14);font-weight:700"><span style="flex:1">' + esc(UI.perGummy) + '</span><span style="flex:0 0 100px;text-align:right">' + esc(UI.oneGummy) + '</span><span style="flex:0 0 120px;text-align:right">' + esc(UI.fiveGummies) + '</span></div>' +
       N.actives.map(function (a) { return '<div data-drawer-cols style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid rgba(11,59,35,.1)"><span style="flex:1">' + esc(a[0]) + '</span><span style="flex:0 0 100px;text-align:right;color:#3E6B50">' + esc(a[1]) + '</span><span style="flex:0 0 120px;text-align:right;color:#3E6B50;font-weight:700">' + esc(a[2]) + '</span></div>'; }).join('') +
-      '<div style="font-size:12px;color:#3E6B50;padding-top:10px">Servings per container: 30 · Units per container: 150 · Net weight 420 g · Finished weight per gummy 2.8 g (± 5%)</div></div>';
+      '<div style="font-size:12px;color:#3E6B50;padding-top:10px">' + esc(UI.containerNote) + '</div></div>';
   }
   function ingredientsHtml() {
     return '<div style="display:flex;flex-direction:column">' + C.ingredientGroups.map(function (g) { return '<div style="padding:14px 0;border-bottom:1px solid rgba(11,59,35,.14)"><div style="font-size:12px;letter-spacing:.14em;font-weight:800;text-transform:uppercase;margin-bottom:6px">' + esc(g.name) + ' · ' + esc(g.count) + '</div><div style="font-size:14px;color:#3E6B50;line-height:1.55">' + esc(g.items.join(' · ')) + '</div></div>'; }).join('') + '</div>' +
-      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Free from:</strong> ' + esc(C.freeFrom.join(', ')) + '</div>' +
-      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Ingredients:</strong> ' + esc(C.fullIngredientList) + '</div>' +
-      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Sweeteners:</strong> ' + esc(C.sweeteners) + ' Base: pectin (no gelatin).</div>' +
-      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Storage:</strong> Store in tightly closed original packaging in a dry environment. Best before 24 months from manufacture when kept in a cool, dry place below 25°C, away from direct sunlight.</div>' +
-      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">Warnings:</strong> ' + esc(C.warnings.join(' ')) + '</div>';
+      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(UI.freeFrom) + '</strong> ' + esc(C.freeFrom.join(', ')) + '</div>' +
+      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(UI.ingredients) + '</strong> ' + esc(C.fullIngredientList) + '</div>' +
+      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(UI.sweeteners) + '</strong> ' + esc(C.sweeteners) + ' ' + esc(UI.pectinBase) + '</div>' +
+      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(UI.storage) + '</strong> ' + esc(UI.storageText) + '</div>' +
+      '<div style="font-size:13px;color:#3E6B50"><strong style="color:#0B3B23">' + esc(UI.warnings) + '</strong> ' + esc(C.warnings.join(' ')) + '</div>';
   }
   function renderDrawer() {
     var nut = drawerTab === 'nutrition';
@@ -170,9 +168,9 @@
     var key = t.dataset && t.dataset.track;
     if (key === 'nav_shop_click') { e.preventDefault(); goPlans(); track('nav_shop_click'); return; }
     if (key === 'plan_selected') { selectPlan(t.dataset.plan); return; }
-    if (key === 'nutrition_open') { openDrawer(/nutrition/i.test(t.textContent) ? 'nutrition' : 'ingredients'); return; }
+    if (key === 'nutrition_open') { openDrawer(t.dataset.panel === 'nutrition' ? 'nutrition' : 'ingredients'); return; }
     if (key && CTA[key]) { track(key); openCheckout(CTA[key] + (key === 'sticky_cta_click' ? (t.closest('#sticky-mob') ? '_mobile' : '_desktop') : '')); return; }
-    if (/^See plans/.test(t.textContent.trim())) { scrollToNearestPlans(); track('sticky_cta_click'); }
+    if (t.hasAttribute('data-see-plans')) { scrollToNearestPlans(); track('sticky_cta_click'); }
   });
 
   // ---------- Checkout (in-page, pre-launch lead capture) ----------
@@ -182,7 +180,7 @@
     state.done = false; closeDrawer(); renderCheckout();
     pdpView.hidden = true; coView.hidden = false; stickyD.hidden = stickyM.hidden = true; state.scrolled = false;
     history.pushState({ view: 'checkout' }, '', '#checkout');
-    window.scrollTo(0, 0); document.title = 'Checkout · Fora';
+    window.scrollTo(0, 0); document.title = UI.checkoutTitle;
     track('checkout_view', { source: source });
   }
   function showPdp(scroll) {
@@ -200,23 +198,23 @@
   function renderCheckout() {
     var p = selPlan(), q = state.qty, months = p.id === 'three_month' ? 3 : 1;
     var one = C.plans.filter(function (x) { return x.id === 'one_time'; })[0];
-    var total = num(p.total) * q, isSub = p.id !== 'one_time';
-    var compare = one && isSub ? num(one.total) * months * q : 0, saving = compare ? compare - total : 0;
+    var total = p.totalNum * q, isSub = p.id !== 'one_time';
+    var compare = one && isSub ? one.totalNum * months * q : 0, saving = compare ? compare - total : 0;
     var pouches = q * months;
     var set = function (k, v) { $$('[data-co="' + k + '"]').forEach(function (el) { el.textContent = v; }); };
     set('total', gbp(total)); set('totalLabel', p.totalLabel); set('name', p.name); set('perDay', p.perDay);
     set('qty', q); set('first', state.firstName || '');
-    set('packs', (pouches === 1 ? 'One pouch' : pouches + ' pouches') + ' · ' + (28 * pouches) + ' daily packs' + (isSub ? ' per delivery' : ''));
-    set('qtyHint', isSub ? (q === 1 ? '1 subscription' : q + ' subscriptions') : (q === 1 ? '1 pack' : q + ' packs'));
-    set('purchaseType', isSub ? 'Subscription · pause, skip or cancel' : 'One-time · no subscription');
-    set('billed', p.id === 'three_month' ? gbp(total) + ' every 3 months' : p.id === 'one_month' ? gbp(total) + ' monthly' : gbp(total) + ' once');
+    set('packs', (pouches === 1 ? UI.onePouch : UI.pouches.replace('{n}', pouches)) + ' · ' + UI.dailyPacks.replace('{n}', 28 * pouches) + (isSub ? UI.perDelivery : ''));
+    set('qtyHint', isSub ? (q === 1 ? UI.sub1 : UI.subN.replace('{n}', q)) : (q === 1 ? UI.pack1 : UI.packN.replace('{n}', q)));
+    set('purchaseType', isSub ? UI.typeSub : UI.typeOnce);
+    set('billed', UI.billed[p.id].replace('{total}', gbp(total)));
     set('compare', compare ? gbp(compare) : ''); set('saving', '−' + gbp(saving));
-    set('delivery', isSub || C.product.freeShippingConfirmed ? 'Free UK delivery' : 'Calculated at next step');
+    set('delivery', isSub || C.product.freeShippingConfirmed ? UI.deliveryFree : UI.deliveryCalc);
     $$('[data-co="compareWrap"]').forEach(function (el) { el.style.display = compare ? 'inline' : 'none'; });
     $$('[data-co="savingRow"]').forEach(function (el) { el.hidden = !(saving > 0); });
     $$('[data-co="tag"]').forEach(function (el) {
       el.style.display = p.tag ? 'inline-block' : 'none'; el.textContent = p.tag || '';
-      el.style.background = p.tag === 'BEST VALUE' ? LIME : GREEN; el.style.color = p.tag === 'BEST VALUE' ? GREEN : LIME;
+      el.style.background = p.id === 'three_month' ? LIME : GREEN; el.style.color = p.id === 'three_month' ? GREEN : LIME;
     });
     var dec = $('#co-dec'); dec.disabled = q <= 1; dec.style.opacity = q <= 1 ? .35 : 1; dec.style.cursor = q <= 1 ? 'not-allowed' : 'pointer';
     $('#co-edit').hidden = state.done; $('#co-done').hidden = !state.done;
@@ -225,14 +223,14 @@
   $('#co-inc').addEventListener('click', function () { state.qty++; track('quantity_changed', { qty: state.qty }); renderCheckout(); });
   $('#co-summary-toggle').addEventListener('click', function () {
     var panel = $('#co-summary-panel'), open = panel.classList.toggle('open');
-    this.setAttribute('aria-expanded', open); $('[data-co="toggleLabel"]').textContent = open ? 'Hide order summary' : 'Show order summary';
+    this.setAttribute('aria-expanded', open); $('[data-co="toggleLabel"]').textContent = open ? UI.hideSummary : UI.showSummary;
   });
 
   var form = $('#co-form'), openedAt = Date.now();
-  function validFirst(v) { return v.trim() ? '' : 'Please enter your first name.'; }
+  function validFirst(v) { return v.trim() ? '' : MSG.first; }
   function validEmail(v) {
-    var t = v.trim(); if (!t) return 'Please enter your email address.';
-    return window.ForaKlaviyo.validEmail(t) ? '' : 'That email doesn’t look right — check for typos.';
+    var t = v.trim(); if (!t) return MSG.emailEmpty;
+    return window.ForaKlaviyo.validEmail(t) ? '' : MSG.emailBad;
   }
   function showErr(name, msg) {
     var input = form.elements[name], err = $('#err-' + name);
@@ -250,7 +248,7 @@
     state.touched = { firstName: true, email: true }; showErr('firstName', fe); showErr('email', ee);
     if (fe || ee) { form.elements[fe ? 'firstName' : 'email'].focus(); return; }
     var p = selPlan(), btn = $('#co-submit'), label = $('#co-submit-label');
-    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(num(p.total) * state.qty), source: 'prelaunch_checkout' };
+    var lead = { firstName: form.elements.firstName.value.trim(), email: form.elements.email.value.trim().toLowerCase(), plan: p.id, planName: p.name, qty: state.qty, total: gbp(p.totalNum * state.qty), source: 'prelaunch_checkout', language: L.lang };
     function finish() {
       state.firstName = lead.firstName; state.email = lead.email; state.done = true;
       $$('[data-co="email"]').forEach(function (el) { el.textContent = lead.email; });
@@ -259,11 +257,11 @@
     }
     // Spam traps: a filled honeypot or a submit faster than a human could manage get a fake success.
     if (form.elements.company.value || Date.now() - openedAt < 2000) { finish(); return; }
-    btn.disabled = true; btn.style.opacity = .7; label.textContent = 'Continuing…';
+    btn.disabled = true; btn.style.opacity = .7; label.textContent = UI.continuing;
     window.ForaKlaviyo.subscribe(lead)
       .then(function () { window.ForaKlaviyo.track('Joined Waitlist', { plan: p.id, plan_name: p.name, quantity: state.qty, plan_total: lead.total }, lead.email); finish(); })
       .catch(function (err) { console.warn('Lead submit failed', err); $('#co-error').hidden = false; })
-      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = 'Continue to delivery'; });
+      .then(function () { btn.disabled = false; btn.style.opacity = 1; label.textContent = UI.continueLabel; });
   });
 
   // ---------- Init ----------

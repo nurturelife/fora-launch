@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,14 +7,89 @@
 <meta name="description" content="Serious nutrition. Ridiculously easy. Fora Daily Health Boost Super Greens+ Gummies: 39 actives, zero sugar, one 30-second daily habit.">
 <meta name="theme-color" content="#0B3B23">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="canonical" href="https://foragummy.com/">
+<link rel="alternate" hreflang="en" href="https://foragummy.com/">
+<link rel="alternate" hreflang="de" href="https://foragummy.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://foragummy.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fora · Daily Health Boost Super Greens+ Gummies">
 <meta property="og:description" content="Serious nutrition. Ridiculously easy.">
-<meta property="og:image" content="assets/og-image.png">
+<meta property="og:url" content="https://foragummy.com/">
+<meta property="og:image" content="https://foragummy.com/assets/og-image.png">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<script>
+/* First visit to the English home page: German-language browsers go to /de/.
+   A choice made with the EN | DE switch is remembered and always wins. */
+(function () {
+  try {
+    var saved = localStorage.getItem('fora.lang');
+    var lang = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    var want = saved || (lang.indexOf('de') === 0 ? 'de' : 'en');
+    if (want === 'de') location.replace('de/' + location.search + location.hash);
+  } catch (e) {}
+})();
+</script>
+
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=20261022">
+<link rel="stylesheet" href="css/styles.css?v=20261028102842">
+<script>
+/* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
+   Paste Fora's IDs below. An empty ID means that tool is never loaded.
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
+window.FORA_TRACKING = { GA_ID: '', META_PIXEL_ID: '', POSTHOG_KEY: '' };
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.foraLoadAnalytics = function () {
+  if (window.foraAnalyticsLoaded) return;
+  window.foraAnalyticsLoaded = true;
+  var T = window.FORA_TRACKING;
+  if (T.GA_ID) {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(T.GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', T.GA_ID);
+  }
+  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.META_PIXEL_ID) window.foraLoadMeta();
+};
+window.foraLoadMeta = function () {
+  if (window.foraMetaLoaded) return;
+  window.foraMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
+  fbq('track', 'PageView');
+};
+window.foraLoadPosthog = function () {
+  if (window.foraPosthogLoaded) return;
+  window.foraPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init(window.FORA_TRACKING.POSTHOG_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
+};
+try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <div id="view-pdp">
@@ -217,7 +292,7 @@ You'll actually keep.</h1>
           <div style="font-weight: 900; font-size: 14px; letter-spacing: 0.1em; color: rgb(255, 90, 31);">04</div>
           <div><h3 style="margin: 0px 0px 8px; font-weight: 900; font-stretch: 108%;  font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -0.02em;">Actually enjoyable</h3><p style="margin: 0px; max-width: 44ch; text-wrap: pretty;">Designed to be the health habit you look forward to rather than tolerate.</p></div>
         </div>
-        <div style="padding-top: 28px;"><button class="scp1" style="background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">See plans · from £29.99</button></div>
+        <div style="padding-top: 28px;"><button data-see-plans class="scp1" style="background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">See plans · from £29.99</button></div>
       </div>
     </div>
   </section>
@@ -277,7 +352,7 @@ You'll actually keep.</h1>
           <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Gut boost</h3>
           <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">Daily prebiotic support and greens for a happier gut.</p>
           <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism </div>
+            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
             <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">Prebiotic inulin helps nourish the bacteria in your gut, paired with 5 billion CFU of Bacillus coagulans in every daily serving.</p>
           </div>
           <div>
@@ -293,7 +368,7 @@ You'll actually keep.</h1>
           <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Immune boost</h3>
           <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">Immune support, every single day. Immunity is a habit, not an emergency.</p>
           <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism </div>
+            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
             <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">Vitamin C, vitamin D and zinc contribute to the normal function of the immune system. One pack, every day, so you don't have to remember.</p>
           </div>
           <div>
@@ -309,7 +384,7 @@ You'll actually keep.</h1>
           <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Energy boost</h3>
           <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">The B vitamins your 3pm is missing. No caffeine. No crash.</p>
           <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism </div>
+            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
             <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">B vitamins, vitamin C and iron contribute to normal energy-yielding metabolism and the reduction of tiredness and fatigue.</p>
           </div>
           <div>
@@ -482,8 +557,8 @@ You'll actually keep.</h1>
           </div>
           
           <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <button data-track="nutrition_open" class="scp0" style="background: rgb(11, 59, 35); color: rgb(201, 245, 66); border: 0px; border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">View full nutrition information</button>
-            <button data-track="nutrition_open" class="scp1" style="background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">View full ingredient list</button>
+            <button data-track="nutrition_open" data-panel="nutrition" class="scp0" style="background: rgb(11, 59, 35); color: rgb(201, 245, 66); border: 0px; border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">View full nutrition information</button>
+            <button data-track="nutrition_open" data-panel="ingredients" class="scp1" style="background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 4px; padding: 14px 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;">View full ingredient list</button>
           </div>
         </div>
       </div>
@@ -502,17 +577,17 @@ You'll actually keep.</h1>
       
       <div style="display: flex; gap: 8px; overflow-x: auto; margin-top: clamp(24px, 3vw, 40px); padding-bottom: 4px;">
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: rgb(11, 59, 35); color: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Overall</button>
+          <button data-track="review_filter" data-filter="0" class="scp3" style="flex: 0 0 auto; background: rgb(11, 59, 35); color: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Overall</button>
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Gut</button>
+          <button data-track="review_filter" data-filter="1" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Gut</button>
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Energy</button>
+          <button data-track="review_filter" data-filter="2" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Energy</button>
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Immunity</button>
+          <button data-track="review_filter" data-filter="3" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Immunity</button>
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Taste</button>
+          <button data-track="review_filter" data-filter="4" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Taste</button>
         
-          <button data-track="review_filter" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Easy to Stick To</button>
+          <button data-track="review_filter" data-filter="5" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Easy to Stick To</button>
         
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: clamp(16px, 2vw, 28px); margin-top: 24px; border-top: 1.5px solid rgb(11, 59, 35); padding-top: 24px;"></div>
@@ -731,113 +806,67 @@ or let us know.</h2>
         
         <h2 data-faq-h="1" style="margin: 0px 0px 16px; font-weight: 900; font-stretch: 90%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px); width: 400px; max-width: 100%; height: 250px; overflow: visible;"><span style="font-size: clamp(40px, 5.5vw, 80px); letter-spacing: -0.03em;">Good questions.</span><br><span style="font-size: clamp(40px, 5.5vw, 80px); letter-spacing: -0.03em;">Straight answers.</span></h2>
       </div>
-      <div style="border-top: 1.5px solid rgb(11, 59, 35);">
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>What does Fora taste like?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: rotate(45deg); transition: transform 0.2s;">+</span>
-            </button>
+      <div style="border-top: 1.5px solid rgb(11, 59, 35);" data-faq-list>
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="0" aria-expanded="true" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What does Fora taste like?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: rotate(45deg); transition: transform 0.2s;">+</span></button>
             <p style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Raspberry and lemon. Natural flavours, no earthy greens aftertaste. Zero sugar.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Is Fora really zero sugar?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="1" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora really zero sugar?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. 0.0 g sugars per serving and per 100 g. Sweetness comes from polyols with stevia and thaumatin.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>What sweetener does Fora use?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="2" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What sweetener does Fora use?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Sugar-free polyols, plus stevia and thaumatin. No sugar, no artificial colours. The green comes from black carrot extract.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>How many gummies are in one daily pack?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="3" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>How many gummies are in one daily pack?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">One pack is one serving: 5 gummies (14 g).</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>When should I take Fora?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="4" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>When should I take Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Whenever you'll remember. Morning, desk, train, 3pm. It needs no water, so it fits wherever your day is.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Do I need water?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="5" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Do I need water?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">No. Tear, chew, done.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>What exactly is inside Fora?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="6" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What exactly is inside Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">39 active ingredients: 8 greens, 8 fruits and vegetables, 21 vitamins and minerals, prebiotic inulin, and Bacillus coagulans live cultures (5 billion CFU per serving). The full ingredient list and nutrition information are under 'What's inside' above.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Is Fora vegan?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="7" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora vegan?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora uses a pectin base, not gelatin.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Does it contain gluten, dairy or nuts?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="8" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Does it contain gluten, dairy or nuts?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">No. Fora is free from all 14 declarable allergens, including gluten-containing cereals, milk, peanuts, tree nuts, soya, eggs, fish, crustaceans, molluscs, celery, mustard, sesame, sulphites and lupin.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Can I pause or cancel my subscription?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="9" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Can I pause or cancel my subscription?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. Pause, skip or cancel any time from your account. No phone call required. You'll get a reminder before every charge.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>When will my order arrive?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="10" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>When will my order arrive?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Your order will arrive within 3 working days. If you subscribe, you'll also get free UK delivery on every order.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>What does the guarantee cover?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="11" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What does the guarantee cover?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Try your first pack properly. If Fora isn't for you, contact us within 28 days.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Is Fora suitable for everyone?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="12" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora suitable for everyone?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora is a food supplement for adults. Do not exceed the stated recommended daily dose. Food supplements should not be used as a substitute for a varied and balanced diet and a healthy lifestyle. Keep out of reach of young children. Excessive consumption may produce laxative effects. If you are pregnant, breastfeeding, on medication or have a medical condition, speak to your GP first.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>How should I store Fora?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="13" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>How should I store Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">In its tightly closed original packaging, in a cool, dry place below 25°C and away from direct sunlight. Shelf life is 24 months from the date of manufacture.</p>
           </div>
-        
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-            <button data-track="faq_open" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;">
-              <span>Do I need to take anything else alongside Fora?</span><span style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span>
-            </button>
-            
+          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
+            <button type="button" data-track="faq_open" data-faq="14" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Do I need to take anything else alongside Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora is designed as a daily nutrition backup, not a replacement for food.</p>
           </div>
-        
       </div>
     </div>
   </section>
@@ -878,7 +907,7 @@ or let us know.</h2>
     </div>
     <div style="max-width: 1320px; margin: 40px auto 0px; padding-top: 20px; border-top: 1px solid rgba(11, 59, 35, 0.14); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: rgb(62, 107, 80);">
       <span style="max-width: 80ch;">© 2026 Fora. Food supplement. Do not exceed the stated recommended daily dose. Food supplements should not be used as a substitute for a varied and balanced diet and a healthy lifestyle. Keep out of reach of young children. Excessive consumption may produce laxative effects.</span>
-      <span><a href="legal/privacy.html" style="margin-right:16px">Privacy Policy</a><a href="legal/terms.html" style="margin-right:16px">Terms</a>Made in the UK · Prices in GBP</span>
+      <span class="foot-tools"><a href="legal/privacy.html">Privacy Policy</a><a href="legal/terms.html">Terms</a><button type="button" data-cookie-settings>Cookie settings</button><span class="lang-switch" role="group" aria-label="Language"><a href="./" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="de/" hreflang="de" lang="de" data-lang="de">DE</a></span><span>Made in the UK · Prices in GBP</span></span>
     </div>
   </footer>
 
@@ -1020,14 +1049,15 @@ or let us know.</h2>
     </div>
   </main>
   <footer style="padding:20px clamp(16px,4vw,48px);border-top:1px solid rgba(11,59,35,.14);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:#3E6B50">
-    <span>© 2026 Fora · Food supplement</span><span><a href="legal/privacy.html" style="margin-right:16px">Privacy Policy</a><a href="legal/terms.html" style="margin-right:16px">Terms</a>Made in the EU · Prices in GBP</span>
+    <span>© 2026 Fora · Food supplement</span><span class="foot-tools"><a href="legal/privacy.html">Privacy Policy</a><a href="legal/terms.html">Terms</a><button type="button" data-cookie-settings>Cookie settings</button><span class="lang-switch" role="group" aria-label="Language"><a href="./" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="de/" hreflang="de" lang="de" data-lang="de">DE</a></span><span>Made in the EU · Prices in GBP</span></span>
   </footer>
 </div>
 
 <noscript><p style="padding:16px">Please enable JavaScript to see this page.</p></noscript>
-<script src="js/config.js?v=20261022"></script>
-<script src="js/content.js?v=20261022"></script>
-<script src="js/klaviyo.js?v=20261022"></script>
-<script src="js/app.js?v=20261022"></script>
+<script src="js/config.js?v=20261028102842"></script>
+<script src="js/lang/en.js?v=20261028102842"></script>
+<script src="js/klaviyo.js?v=20261028102842"></script>
+<script src="js/common.js?v=20261028102842"></script>
+<script src="js/app.js?v=20261028102842"></script>
 </body>
 </html>

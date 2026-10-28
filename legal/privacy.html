@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,63 +7,140 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
-<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/styles.css?v=20261028102842">
 <style>
   .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
-  .legal-nav a.back{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
+  .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
+  .legal-nav a.back{font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
   .doc{max-width:760px;margin:0 auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(56px,8vw,112px);font-size:17px;line-height:1.6}
-  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 16px}
+  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 8px}
   .doc h2{font-size:clamp(22px,2.4vw,28px)!important;margin:40px 0 8px}
+  .doc h3{font-size:clamp(18px,2vw,22px)!important;margin:24px 0 6px}
   .doc p,.doc li{color:#1d4a32}
   .doc ul{padding-left:22px}
-  .draft-note{background:#C9F542;border-radius:6px;padding:12px 16px;font-size:14px;font-weight:600;color:#0B3B23!important}
-  .tbc{background:#FFE9B8;border-radius:3px;padding:0 4px}
-  .legal-foot{border-top:1px solid rgba(11,59,35,.14);padding:20px clamp(16px,4vw,48px);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:12px;color:#3E6B50}
-  .legal-foot a{text-decoration:underline;text-underline-offset:3px}
+  .doc a{text-decoration:underline;text-underline-offset:3px}
+  .doc-updated{font-size:14px;color:#3E6B50!important;margin:0 0 8px}
 </style>
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
+   Paste Fora's IDs below. An empty ID means that tool is never loaded.
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
+window.FORA_TRACKING = { GA_ID: '', META_PIXEL_ID: '', POSTHOG_KEY: '' };
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.foraLoadAnalytics = function () {
+  if (window.foraAnalyticsLoaded) return;
+  window.foraAnalyticsLoaded = true;
+  var T = window.FORA_TRACKING;
+  if (T.GA_ID) {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(T.GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', T.GA_ID);
+  }
+  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.META_PIXEL_ID) window.foraLoadMeta();
+};
+window.foraLoadMeta = function () {
+  if (window.foraMetaLoaded) return;
+  window.foraMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
+  fbq('track', 'PageView');
+};
+window.foraLoadPosthog = function () {
+  if (window.foraPosthogLoaded) return;
+  window.foraPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init(window.FORA_TRACKING.POSTHOG_KEY, {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
+};
+try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
-<nav class="legal-nav" aria-label="Main"><a href="../index.html" aria-label="Fora home" style="display:block;line-height:0"><img src="../assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a><a class="back" href="../index.html">← Back to site</a></nav>
+<nav class="legal-nav" aria-label="Main navigation"><a href="../index.html" aria-label="Fora home" style="display:block;line-height:0"><img src="../assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Language"><a href="privacy.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="../de/legal/privacy.html" hreflang="de" lang="de" data-lang="de">DE</a></span><a class="back" href="../index.html">← Back to site</a></div></nav>
 <main class="doc">
-<h1>Privacy Policy</h1>
-<p class="draft-note">DRAFT placeholder, pending review by the client and their legal adviser. Items highlighted <span class="tbc">[like this]</span> still need to be confirmed. Last updated: <span class="tbc">[date]</span>.</p>
-<h2>Who we are</h2>
-<p>This website is run by <span class="tbc">[company legal name]</span>, <span class="tbc">[registered address]</span>, company number <span class="tbc">[number]</span> ("Fora", "we", "us"). We are the data controller for the personal data described here. Contact: <span class="tbc">[contact email]</span>.</p>
+  <h1>Privacy Policy</h1>
+  <p class="doc-updated">Last updated: 28 October 2026.</p>
+    <h2>Who we are</h2>
+    <p>This website is run by Core and Coat Limited, a company registered in England and Wales (company number 17287859), whose registered office is at Office 2 Bridgeview House, Ray Mead Road, Maidenhead, Berkshire SL6 8NJ ("Fora", "we", "us"). We are the data controller for the personal data described here. You can contact us at <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
 
-<h2>What this website does</h2>
-<p>Fora is not on sale yet. This site presents the product and lets you leave your details so we can email you about the launch. No orders are taken and no payments are collected.</p>
+    <h2>What this website does</h2>
+    <p>This site presents Fora and lets you register your interest. If you choose a plan and go through the checkout page, nothing is charged and no order is placed. We ask for your name and email so we can notify you when the product becomes available.</p>
 
-<h2>What we collect</h2>
-<ul>
-  <li><b>Your first name and email address</b>, when you complete the checkout form.</li>
-  <li><b>The plan and quantity you selected</b> (for example "3-month subscription", 1) and the page you used.</li>
-  </ul>
-<p>We do not collect card details, delivery addresses or any payment information.</p>
+    <h2>What we collect</h2>
+    <ul>
+      <li><b>At the checkout page:</b> your email address, first name, the plan you selected (its name, quantity and price) and the language of the page you used.</li>
+      <li><b>When you sign up:</b> a record of the sign-up, such as the time and technical details our email provider logs (for example your IP address).</li>
+      <li><b>If you accept the cookie banner:</b> information about how you use the site, such as the pages you visit, where you click and how far you scroll, your approximate location, device and browser (see "Cookies and analytics" below).</li>
+    </ul>
+    <p>We do not ask for card details, delivery addresses or any payment information, and we do not collect them.</p>
 
-<h2>Why we use it, and our legal basis</h2>
-<p>We use your name, email address and plan choice only to tell you when Fora becomes available so you can complete your purchase. We do not send marketing or promotional emails. Our legal basis is <span class="tbc">[legal basis to be confirmed with legal adviser, e.g. taking steps at your request before a purchase / legitimate interests]</span>.</p>
+    <h2>Why we use it, and our legal basis</h2>
+    <h3>Launch notifications</h3>
+    <p>If you register your interest in Fora, we use your details only to notify you when the product becomes available so that you can complete your purchase. We do not send marketing or promotional emails. Registration does not constitute an order, and no payment is taken. Our legal basis is your consent (Article 6(1)(a) GDPR), which you can withdraw at any time by contacting <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
+    <h3>Analytics</h3>
+    <p>With your consent, we use Google Analytics and PostHog to understand how visitors use our website and improve their experience, including through heatmaps of clicks and scrolling. With your consent, we also use the Meta Pixel to measure the effectiveness of our advertising and to reach people who have shown interest in Fora with relevant ads on Facebook and Instagram. Our legal basis is your consent (Article 6(1)(a) GDPR). You can change your preferences at any time through Cookie settings.</p>
+    <h3>Website operation and security</h3>
+    <p>We process limited technical information, such as IP addresses and browser information, to operate our website, maintain security and prevent misuse. Our legal basis is our legitimate interests (Article 6(1)(f) GDPR) in providing a secure and functional website.</p>
 
-<h2>Who processes your data</h2>
-<ul>
-  <li><b>Klaviyo, Inc.</b>, our email service provider, stores sign-ups and sends our emails. Your data may be transferred to the United States, protected by <span class="tbc">[transfer safeguard, e.g. UK/EU Data Privacy Framework or standard contractual clauses]</span>.</li>
-  <li><b>GitHub, Inc.</b> hosts this website and may process technical data such as your IP address when you visit.</li>
-  <li><b>Adobe Inc.</b> (Adobe Fonts) delivers the website's headline font and may process your IP address when the font is loaded.</li>
-</ul>
-<p>We do not sell your data.</p>
+    <h2>Who processes your data</h2>
+    <p>We work with trusted service providers to operate our website and communicate with visitors:</p>
+    <ul>
+      <li><b>Klaviyo, Inc.:</b> Stores launch registrations and manages our availability notifications by email. Data is processed in the United States, with transfers protected by Klaviyo's participation in the EU–US Data Privacy Framework and its UK Extension.</li>
+      <li><b>Google Ireland Limited / Google LLC:</b> Provides Google Analytics when you consent to analytics cookies. Applicable transfers to Google LLC in the United States are protected by its participation in the EU–US Data Privacy Framework and its UK Extension.</li>
+      <li><b>PostHog:</b> Provides click and scroll heatmaps and usage statistics when you consent to analytics cookies. We use its EU cloud, so the data is stored in the EU. We do not use session recordings, and we ask it to ignore the forms on this site.</li>
+      <li><b>Meta Platforms Ireland Limited / Meta Platforms, Inc.:</b> Provides the Meta Pixel when you consent to analytics and advertising cookies. It receives information such as the pages you visit, your browser and device details, and when you register your interest. Meta may transfer data to the United States, where its transfers rely on Meta's participation in the EU–US Data Privacy Framework and its UK Extension.</li>
+      <li><b>Adobe Inc. (Adobe Fonts):</b> Delivers the headline font used on this website. When a page loads, your browser connects to Adobe's servers, which receive technical information such as your IP address. Our legal basis is our legitimate interests (Article 6(1)(f) GDPR) in displaying the website consistently.</li>
+      <li><b>GitHub, Inc.:</b> Hosts our website and may process technical information, including IP addresses, necessary to deliver the website.</li>
+    </ul>
+    <p>We do not sell your personal data. For more information about applicable international data transfer safeguards, contact <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
 
-<h2>Cookies and browser storage</h2>
-<p>We do not use advertising cookies. <span class="tbc">[Confirm whether any analytics or marketing pixels will be added and update this section and add a cookie banner if so.]</span></p>
+    <h2>Cookies and analytics</h2>
+    <p>We use optional analytics cookies to understand how visitors interact with our website. Google Analytics, PostHog and the Meta Pixel are activated only when you accept the cookie banner. Until then they are not loaded and no analytics or advertising cookies are set. If you accept, Google Analytics sets cookies (named <code>_ga</code> and <code>_ga_…</code>), PostHog stores a cookie and local-storage entries (names starting with <code>ph_</code>) and the Meta Pixel sets cookies (named <code>_fbp</code> and, if you arrive from a Meta ad, <code>_fbc</code>). You can withdraw your consent at any time through Cookie settings in the page footer, which will stop further analytics tracking and remove the analytics cookies from your browser.</p>
+    <p>Your browser may also store your language preference and cookie preferences to ensure the website functions correctly.</p>
 
-<h2>How long we keep it</h2>
-<p>We keep your details until you unsubscribe, or for <span class="tbc">[retention period, e.g. 12 months after launch]</span>, whichever comes first. Every email includes an unsubscribe link.</p>
+    <h2>Is providing your information required?</h2>
+    <p>Providing your information is optional. Your email address and first name are required if you wish to receive a launch notification. Without these details, we cannot notify you. You can browse our website without registering or accepting analytics cookies.</p>
 
-<h2>Your rights</h2>
-<p>You can ask us to access, correct or delete your data, restrict or object to its use, or receive a copy of it, and you can withdraw consent at any time, by contacting <span class="tbc">[contact email]</span>. You also have the right to complain to the Information Commissioner's Office (ico.org.uk) or your local data protection authority.</p>
+    <h2>Automated decision-making</h2>
+    <p>We do not use personal data collected through this website to make solely automated decisions that produce legal or similarly significant effects on individuals.</p>
 
-<h2>Changes</h2>
-<p>We may update this policy; the date above shows the latest version.</p>
+    <h2>How long we keep it</h2>
+    <p>We retain your contact details for as long as necessary to provide the communications you have requested.</p>
+    <p>We retain your details for the purpose of notifying you about product availability and delete them when they are no longer needed, unless another lawful basis applies. You can ask us to delete them at any time.</p>
+    <p>We may retain a minimal record of your opt-out to ensure you are not contacted again.</p>
+    <p>Google Analytics data is retained for 2 months. PostHog data is retained for no longer than 12 months. The Meta Pixel cookies expire after 90 days, and data received by Meta is kept in line with Meta's own privacy policy.</p>
+    <p>Technical and security logs are retained only for as long as necessary for website operation, security and troubleshooting, in accordance with our hosting provider's applicable retention arrangements.</p>
 
+    <h2>Your rights</h2>
+    <p>You can ask us to access, correct or delete your data, restrict or object to its use, or receive a copy of it, and you can withdraw consent at any time. Contact us at <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>. You also have the right to complain to the UK Information Commissioner's Office (ico.org.uk) or your local data protection authority.</p>
+
+    <h2>Changes</h2>
+    <p>We may update this notice and will change the date above when we do.</p>
 </main>
-<footer class="legal-foot"><span>© 2026 Fora · Food supplement</span><span><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span></footer>
+<script src="../js/lang/en.js?v=20261028102842"></script>
+<script src="../js/common.js?v=20261028102842"></script>
 </body>
 </html>

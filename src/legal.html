@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{page_title}} · Fora</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="{{root}}assets/favicon.png">
+<link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
+<link rel="stylesheet" href="{{root}}css/styles.css?v={{v}}">
+<style>
+  .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
+  .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
+  .legal-nav a.back{font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid #0B3B23;border-radius:4px;padding:10px 14px}
+  .doc{max-width:760px;margin:0 auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(56px,8vw,112px);font-size:17px;line-height:1.6}
+  .doc h1{font-size:clamp(36px,5vw,56px);margin:0 0 8px}
+  .doc h2{font-size:clamp(22px,2.4vw,28px)!important;margin:40px 0 8px}
+  .doc h3{font-size:clamp(18px,2vw,22px)!important;margin:24px 0 6px}
+  .doc p,.doc li{color:#1d4a32}
+  .doc ul{padding-left:22px}
+  .doc a{text-decoration:underline;text-underline-offset:3px}
+  .doc-updated{font-size:14px;color:#3E6B50!important;margin:0 0 8px}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+{{analytics}}
+</head>
+<body>
+<nav class="legal-nav" aria-label="{{nav.1}}"><a href="{{home}}" aria-label="{{nav.2}}" style="display:block;line-height:0"><img src="{{root}}assets/logo.png" alt="{{nav.3}}" width="800" height="272" style="height:44px;width:auto;display:block"></a><div class="nav-right">{{langswitch}}<a class="back" href="{{home}}">← {{legal.back}}</a></div></nav>
+<main class="doc">
+  <h1>{{page_title}}</h1>
+  <p class="doc-updated">{{legal.updated}}</p>
+{{body}}
+</main>
+<script src="{{root}}js/lang/{{lang}}.js?v={{v}}"></script>
+<script src="{{root}}js/common.js?v={{v}}"></script>
+</body>
+</html>
