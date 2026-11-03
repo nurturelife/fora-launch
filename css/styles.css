@@ -316,3 +316,6 @@ h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
 /* Anchor targets land below the pinned bar */
 #view-pdp [id]{scroll-margin-top:84px}
 @media (max-width:900px){#view-pdp [id]{scroll-margin-top:64px}}
+
+/* In-page anchors land just below the sticky nav (Explore more → #top, footer links) */
+#top{scroll-margin-top:64px}

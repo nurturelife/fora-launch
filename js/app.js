@@ -154,6 +154,13 @@
   // ---------- Navigation / CTAs ----------
   function goPlans() {
     var el = $('#plans'); if (!el) return;
+    var sec = $('#top'), nav = $('[data-sticky-nav]'), navH = nav ? nav.offsetHeight : 0, room = window.innerHeight - navH;
+    if (sec && sec.offsetHeight <= window.innerHeight) {
+      // product section fits the screen: centre it in the space below the sticky nav
+      var r = sec.getBoundingClientRect();
+      window.scrollTo({ top: r.top + window.scrollY - navH - Math.max((room - r.height) / 2, 0), behavior: 'smooth' });
+      return;
+    }
     var sticky = !stickyD.hidden ? stickyD.getBoundingClientRect().height : 0;
     scrollToEl(el, sticky + 16);
   }
