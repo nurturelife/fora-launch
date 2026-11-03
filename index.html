@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=20261103094239">
+<link rel="stylesheet" href="css/styles.css?v=20261103094635">
 <script>
 /* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
    Paste Fora's IDs below. An empty ID means that tool is never loaded.
@@ -90,6 +90,8 @@ window.foraLoadPosthog = function () {
 };
 try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
 </script>
+
+<style>@media (min-width: 1024px){ [data-trust-row]{ flex-wrap: nowrap !important; gap: 8px 12px !important; font-size: 12px !important; } }</style>
 </head>
 <body>
 <div id="view-pdp">
@@ -100,10 +102,10 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
   <div data-track="announcement_view" style="background: rgb(11, 59, 35); color: rgb(201, 245, 66); text-align: center; font-size: 12px; letter-spacing: 0.14em; font-weight: 700; text-transform: uppercase; padding: 10px 16px;">28-day love-it guarantee · About £1 a day on the 3-month plan</div>
 
   
-  <nav style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px clamp(16px, 4vw, 48px); border-bottom: 1px solid rgba(11, 59, 35, 0.14); background: rgb(250, 250, 244);">
+  <nav data-sticky-nav="1" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px clamp(16px, 4vw, 48px); border-bottom: 1px solid rgba(11, 59, 35, 0.14); background: rgb(250, 250, 244);">
     <a href="#top" style="display:block;line-height:0"><img src="assets/logo.png" alt="Fora" width="800" height="272" style="height:44px;width:auto;display:block"></a>
     <div data-nav-links="1" style="display: flex; gap: 28px; font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">
-      <a href="#benefits">Benefits</a><a href="#inside">What's Inside</a><a href="#why">Why Fora</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
+      <a href="#benefits">Benefits</a><a href="#inside">What's Inside</a><a href="#why">Why Fora</a><a href="#faq">FAQ</a>
     </div>
     <a href="#plans" data-track="nav_shop_click" class="scp0" style="cursor: pointer; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-weight: 800; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 18px; border-radius: 4px;">Shop Fora</a>
   </nav>
@@ -112,6 +114,31 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
   
 
   
+  <!-- Pitch: sized to fit one desktop screen below the announcement bar + nav (~110px). Type and gaps scale with viewport height so the CTA stays above the fold. -->
+  <section data-screen-label="Pitch" data-pitch="1" style="background: rgb(11, 59, 35); color: rgb(250, 250, 244); padding: clamp(28px, 4vh, 56px) clamp(16px, 4vw, 48px); min-height: calc(100vh - 110px); min-height: calc(100svh - 110px); display: flex; align-items: center;">
+    <div data-cols-2="1" style="max-width: 1320px; width: 100%; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1.1fr) minmax(0px, 0.9fr); gap: clamp(28px, 5vw, 80px); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: clamp(14px, 2.2vh, 26px); min-width: 0px;">
+        <h2 style="margin: 0px; letter-spacing: -0.02em; line-height: 0.98; font-size: clamp(36px, min(5.4vw, 7.6vh), 80px); text-wrap: balance;">Your greens and nutrition. <span style="color: rgb(201, 245, 66);">Turning your snacks into a healthy habit.</span></h2>
+        <p style="margin: 0px; max-width: 48ch; font-size: clamp(16px, min(1.3vw, 2.3vh), 20px); line-height: 1.45; color: rgba(250, 250, 244, 0.9); text-wrap: pretty;">39 nutrient-rich actives for your gut, immunity and energy, all in one zero-sugar daily pack. Tear it open, chew and get on with your day. No prep. No mess. No excuses.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px 32px; line-height: 1;">
+          <span style="display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(25px, min(1.95vw, 3.6vh), 29px); letter-spacing: 0.01em;"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="rgb(201, 245, 66)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M7.5 12c1.5-1.6 3-1.6 4.5 0s3 1.6 4.5 0"/></svg>Gut Health</span>
+          <span style="display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(25px, min(1.95vw, 3.6vh), 29px); letter-spacing: 0.01em;"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="rgb(201, 245, 66)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l7 2.8v5.2c0 4.1-2.9 7.6-7 9-4.1-1.4-7-4.9-7-9V6.3z"/></svg>Immunity</span>
+          <span style="display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(25px, min(1.95vw, 3.6vh), 29px); letter-spacing: 0.01em;"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="rgb(201, 245, 66)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg>Energy</span>
+        </div>
+        <div style="height: 1px; background: rgba(250, 250, 244, 0.22);"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px clamp(20px, 3vw, 44px); font-weight: 700; font-size: clamp(20px, min(2vw, 3vh), 30px); letter-spacing: -0.01em; line-height: 1;">
+          <span style="display: inline-flex; align-items: baseline; gap: 8px;"><span style="color: rgb(255, 90, 31); font-size: 13px; letter-spacing: 0.1em; font-weight: 800;">01</span>Tear</span><span style="display: inline-flex; align-items: baseline; gap: 8px;"><span style="color: rgb(255, 90, 31); font-size: 13px; letter-spacing: 0.1em; font-weight: 800;">02</span>Chew</span><span style="display: inline-flex; align-items: baseline; gap: 8px;"><span style="color: rgb(255, 90, 31); font-size: 13px; letter-spacing: 0.1em; font-weight: 800;">03</span>Done</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+          <a href="#top" data-track="pitch_cta_click" class="scp1" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: rgb(255, 90, 31); color: rgb(11, 59, 35); border-radius: 6px; padding: 18px 32px; font-weight: 900; font-stretch: 108%; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; min-height: 56px; max-width: 100%;">Explore more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+          <span style="font-size: 14px; color: rgba(250, 250, 244, 0.85); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;"><span style="color: rgb(255, 90, 31); letter-spacing: 2px; font-size: 14px;">★★★★★</span><strong style="color: rgb(201, 245, 66); font-weight: 800;">4.8</strong>from 186 reviews<span style="opacity: 0.5;">·</span>28-day love-it guarantee</span>
+        </div>
+      </div>
+      <!-- PITCH IMAGE: swap the src/alt on #pitch-image only. The frame keeps a fixed 1:1 box and crops with object-fit, so any image size works without moving the layout. -->
+      <div data-end="1" data-pitch-image-frame="1" style="position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 1 / 1; width: min(100%, 560px, calc(100vh - 240px)); width: min(100%, 560px, calc(100svh - 240px)); justify-self: end; min-width: 0px; background: rgb(201, 245, 66); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);"><img id="pitch-image" src="assets/img/hero-03-hand.webp" alt="Hand holding a lime-green Fora Super Greens+ sachet through torn dark-green paper" fetchpriority="high" decoding="async" width="800" height="800" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"></div>
+    </div>
+  </section>
+
   <section id="top" data-screen-label="Hero" style="padding: clamp(20px, 3vw, 40px) clamp(16px, 4vw, 48px) clamp(40px, 5vw, 72px);">
     
   <div data-hero-grid="1" style="max-width: 1320px; margin: 0px auto; display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: clamp(24px, 4vw, 64px); align-items: start;">
@@ -141,114 +168,92 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
       </div>
 
       
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px;">
-          <span style="color: rgb(255, 90, 31); letter-spacing: 2px; font-size: 16px;">★★★★★</span>
-          <strong style="font-weight: 900;">4.8</strong>
-          <span style="opacity: 0.8;">from 186 Reviews</span>
-          
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 700; text-transform: uppercase; color: rgb(62, 107, 80);">Daily Health Boost · Super Greens+ Gummies</div>
-          <h1 style="margin: 0px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.025em; line-height: 0.94; font-size: clamp(36px, 4.4vw, 62px); white-space: pre-line; text-wrap-style: balance;">The healthy habit
-You'll actually keep.</h1>
-          <p style="margin: 0px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.45; max-width: 52ch; text-wrap: pretty;">Serious daily nutrition without the scoop, shaker or pill drawer. One zero-sugar daily pack designed to support your gut, immunity and energy.</p>
+      <div style="display: flex; flex-direction: column; gap: clamp(18px, 2vw, 26px);">
+        <div data-intro="1" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px;">
+            <span style="color: rgb(255, 90, 31); letter-spacing: 2px; font-size: 16px;">★★★★★</span>
+            <strong style="font-weight: 900;">4.8</strong>
+            <span style="opacity: 0.8;">from 186 Reviews</span>
+          </div>
+          <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 700; text-transform: uppercase; color: rgb(62, 107, 80);">Daily Greens+ Gummies</div>
+          <h1 style="margin: 0px; font-weight: 900; font-stretch: 112%; letter-spacing: -0.025em; line-height: 1.02; font-size: clamp(51px, 6.3vw, 90px); text-wrap: balance;">Daily greens for a <span style="position: relative; display: inline; white-space: nowrap; background: linear-gradient(transparent 38%, rgba(201, 245, 66, 0.9) 38%, rgba(201, 245, 66, 0.9) 92%, transparent 92%); padding: 0px 0.12em 0px 0.08em; margin-left: -0.08em; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">healthier, happier you.<svg width="0.42em" height="0.42em" viewBox="0 0 24 24" fill="none" stroke="rgb(255, 90, 31)" stroke-width="3.2" stroke-linecap="round" aria-hidden="true" style="position: absolute; top: -0.28em; right: -0.2em;"><path d="M12 3v6M5.5 6.5l3.5 4.5M18.5 6.5L15 11"/></svg></span></h1>
+          <p style="margin: 0px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.45; max-width: 52ch; text-wrap: pretty;">The easy, sugar-free daily greens for your gut, immunity and natural energy, in a delicious gummy.</p>
         </div>
 
-        
-        <div style="border-top: 1px solid rgba(11, 59, 35, 0.14);">
-          
-            <div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0px; border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-              <span style="width: 12px; height: 12px; background: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); flex: 0 0 auto; transform: translateY(1px);"></span>
-              <span style="font-weight: 900; font-stretch: 108%; letter-spacing: -0.01em; font-size: 18px; ">Gut boost</span>
-              <span style="font-size: 14px; color: rgb(62, 107, 80); margin-left: auto; text-align: right;">Prebiotics + greens</span>
-            </div>
-          
-            <div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0px; border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-              <span style="width: 12px; height: 12px; background: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); flex: 0 0 auto; transform: translateY(1px);"></span>
-              <span style="font-weight: 900; font-stretch: 108%; letter-spacing: -0.01em; font-size: 18px; ">Immune boost</span>
-              <span style="font-size: 14px; color: rgb(62, 107, 80); margin-left: auto; text-align: right;">Vitamin C, D3 + zinc</span>
-            </div>
-          
-            <div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0px; border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
-              <span style="width: 12px; height: 12px; background: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); flex: 0 0 auto; transform: translateY(1px);"></span>
-              <span style="font-weight: 900; font-stretch: 108%; letter-spacing: -0.01em; font-size: 18px; ">Energy boost</span>
-              <span style="font-size: 14px; color: rgb(62, 107, 80); margin-left: auto; text-align: right;">B vitamins · no caffeine</span>
-            </div>
-          
+        <div data-benefits="1" style="display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 12px; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5h8a3.5 3.5 0 0 1 0 7H9a3.5 3.5 0 0 0 0 7h7"/><path d="M6.5 4.5h1.5M16 18.5h1.5"/><path d="M8.5 8h7M8.5 15h7"/></svg></span><span style="font-weight: 800; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">Healthier<br>gut</span></div>
+          <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l7 2.8v5.2c0 4.1-2.9 7.6-7 9-4.1-1.4-7-4.9-7-9V6.3z"/><path d="M9 12l2 2 4-4.5"/></svg></span><span style="font-weight: 800; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">Stronger<br>immunity</span></div>
+          <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg></span><span style="font-weight: 800; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">More<br>natural energy</span></div>
         </div>
 
-        
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">
+        <div data-pills="1" style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">
           <span style="border: 1.5px solid rgb(255, 90, 31); padding: 6px 10px; border-radius: 4px; color: rgb(255, 90, 31);">Zero sugar</span>
           <span style="border: 1.5px solid rgb(11, 59, 35); padding: 6px 10px; border-radius: 4px;">28 daily packs</span><span style="border: 1.5px solid rgb(11, 59, 35); padding: 6px 10px; border-radius: 4px;">Whole-body nutrition</span>
           <span style="border: 1.5px solid rgb(11, 59, 35); padding: 6px 10px; border-radius: 4px;">30-second habit</span>
-          
+
         </div>
 
-        
+
         <div id="plans" data-plan-selector="1" style="display: flex; flex-direction: column; gap: 10px;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;">
             <div style="font-size: 12px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase;">Choose your plan</div>
             <div style="font-size: 13px; color: rgb(62, 107, 80);">Pause, skip or cancel any time</div>
           </div>
           
-            <button data-track="plan_selected" data-plan="three_month" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: start; text-align: left; width: 100%; border: 2px solid rgb(11, 59, 35); background: rgb(243, 252, 217); color: rgb(11, 59, 35); border-radius: 8px; padding: 16px; transition: border-color 0.15s, background 0.15s;">
-              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center; margin-top: 2px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: rgb(11, 59, 35);"></span></span>
-              <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0px;">
-                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 17px; letter-spacing: -0.01em;">3-month subscription</span><span style="display: inline-block; background: rgb(201, 245, 66); color: rgb(11, 59, 35); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;">BEST VALUE</span></span>
-                <span style="font-size: 13px; color: rgb(62, 107, 80);">£89.97 billed every 3 months</span>
-                <span style="font-size: 13px; font-weight: 600;">Build the habit properly.</span>
+            <button data-track="plan_selected" data-plan="three_month" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: center; text-align: left; width: 100%; border: 2px solid rgb(11, 59, 35); background: rgb(243, 252, 217); color: rgb(11, 59, 35); border-radius: 10px; padding: 16px 18px; transition: border-color 0.15s, background 0.15s;">
+              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center;"><span style="width: 12px; height: 12px; border-radius: 50%; background: rgb(11, 59, 35);"></span></span>
+              <span style="display: flex; flex-direction: column; gap: 5px; min-width: 0px;">
+                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 18px; letter-spacing: -0.01em; line-height: 1.1;">3-month subscription</span><span style="display: inline-block; background: rgb(201, 245, 66); color: rgb(11, 59, 35); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;">BEST VALUE</span></span>
+                <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>£89.97 billed every 12 weeks</span><span style="font-weight: 700; color: rgb(11, 59, 35);">Build the habit properly.</span></span>
               </span>
-              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 22px; letter-spacing: -0.02em; line-height: 1;">£29.99<span style="font-size: 12px; font-weight: 600; letter-spacing: 0px;">/ month</span></span>
+              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£29.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">/month</span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">≈ £1.07 / day</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);">Save 27% vs one-time</span>
               </span>
             </button>
           
-            <button data-track="plan_selected" data-plan="one_month" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: start; text-align: left; width: 100%; border: 1.5px solid rgba(11, 59, 35, 0.2); background: rgb(255, 255, 255); color: rgb(11, 59, 35); border-radius: 8px; padding: 16px; transition: border-color 0.15s, background 0.15s;">
-              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center; margin-top: 2px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: transparent;"></span></span>
-              <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0px;">
-                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 17px; letter-spacing: -0.01em;">1-month subscription</span><span style="display: inline-block; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;">FLEXIBLE</span></span>
-                <span style="font-size: 13px; color: rgb(62, 107, 80);">Billed monthly</span>
-                <span style="font-size: 13px; font-weight: 600;">Pause, skip or cancel.</span>
+            <button data-track="plan_selected" data-plan="one_month" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: center; text-align: left; width: 100%; border: 1.5px solid rgba(11, 59, 35, 0.2); background: rgb(255, 255, 255); color: rgb(11, 59, 35); border-radius: 10px; padding: 16px 18px; transition: border-color 0.15s, background 0.15s;">
+              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center;"><span style="width: 12px; height: 12px; border-radius: 50%; background: transparent;"></span></span>
+              <span style="display: flex; flex-direction: column; gap: 5px; min-width: 0px;">
+                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 18px; letter-spacing: -0.01em; line-height: 1.1;">1-month subscription</span><span style="display: inline-block; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;">FLEXIBLE</span></span>
+                <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>Billed every 4 weeks</span><span style="font-weight: 700; color: rgb(11, 59, 35);">Pause, skip or cancel.</span></span>
               </span>
-              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 22px; letter-spacing: -0.02em; line-height: 1;">£34.99<span style="font-size: 12px; font-weight: 600; letter-spacing: 0px;">/ month</span></span>
+              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£34.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">/month</span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">≈ £1.25 / day</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);">Save 15% vs one-time</span>
               </span>
             </button>
           
-            <button data-track="plan_selected" data-plan="one_time" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: start; text-align: left; width: 100%; border: 1.5px solid rgba(11, 59, 35, 0.2); background: rgb(255, 255, 255); color: rgb(11, 59, 35); border-radius: 8px; padding: 16px; transition: border-color 0.15s, background 0.15s;">
-              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center; margin-top: 2px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: transparent;"></span></span>
-              <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0px;">
-                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 17px; letter-spacing: -0.01em;">One-time purchase</span><span style="display: none; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;"></span></span>
-                <span style="font-size: 13px; color: rgb(62, 107, 80);">One pouch · 28 daily packs</span>
-                <span style="font-size: 13px; font-weight: 600;">No subscription.</span>
+            <button data-track="plan_selected" data-plan="one_time" class="scp2" style="display: grid; grid-template-columns: 22px minmax(0px, 1fr) auto; gap: 14px; align-items: center; text-align: left; width: 100%; border: 1.5px solid rgba(11, 59, 35, 0.2); background: rgb(255, 255, 255); color: rgb(11, 59, 35); border-radius: 10px; padding: 16px 18px; transition: border-color 0.15s, background 0.15s;">
+              <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center;"><span style="width: 12px; height: 12px; border-radius: 50%; background: transparent;"></span></span>
+              <span style="display: flex; flex-direction: column; gap: 5px; min-width: 0px;">
+                <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 18px; letter-spacing: -0.01em; line-height: 1.1;">One-time purchase</span><span style="display: none; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;"></span></span>
+                <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>One pouch · 28 daily packs</span><span style="font-weight: 700; color: rgb(11, 59, 35);">No subscription.</span></span>
               </span>
-              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 22px; letter-spacing: -0.02em; line-height: 1;">£40.99<span style="font-size: 12px; font-weight: 600; letter-spacing: 0px;"></span></span>
+              <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£40.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;"></span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">≈ £1.46 / day</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);"></span>
               </span>
             </button>
-          
+
         </div>
 
-        
+
         <div style="display: flex; flex-direction: column; gap: 12px;">
-          <button data-track="hero_cta_click" class="scp1" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 12px; width: 100%; background: rgb(255, 90, 31); color: rgb(11, 59, 35); border: 0px; border-radius: 6px; padding: 20px 22px; font-weight: 900; font-stretch: 108%; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; min-height: 64px;">
-            <span>START MY HABIT</span><span data-sel-total style="font-size: 13px; letter-spacing: 0px; text-transform: none; font-weight: 700; text-align: right;">£89.97 · billed today, every 3 months</span>
+          <button data-track="hero_cta_click" class="scp1" style="display: flex; justify-content: center; align-items: center; gap: 14px; width: 100%; background: rgb(255, 90, 31); color: rgb(250, 250, 244); border: 0px; border-radius: 8px; padding: 20px 22px; font-weight: 900; font-stretch: 108%; font-size: clamp(17px, 1.4vw, 21px); letter-spacing: 0.1em; text-transform: uppercase; min-height: 66px;">
+            <span>START MY HABIT</span>
           </button>
-          <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: rgb(62, 107, 80); justify-content: center; text-align: center;">
-            <span><strong style="color: rgb(11, 59, 35);">28-day</strong> guarantee</span><span>Secure checkout</span><span>Pause, skip or cancel</span>
-            <span>Free UK delivery</span>
+          <div data-sel-total style="text-align: center; font-size: 13px; font-weight: 700; color: rgb(62, 107, 80);">£89.97 · billed today, every 3 months</div>
+          <div data-trust-row style="display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 12.5px; font-weight: 600; color: rgb(11, 59, 35); justify-content: center; align-items: center; text-align: center; border-top: 1px solid rgba(11, 59, 35, 0.14); padding-top: 14px;">
+            <span style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>28-day guarantee</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Secure checkout</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14.5 4.6M4 12A8 8 0 0 1 18.5 7.4"/><path d="M19 3v4.5h-4.5M5 21v-4.5h4.5"/></svg>Pause, skip or cancel</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>Free UK delivery</span>
           </div>
-          
-            
-          
+
         </div>
       </div>
     </div></section>
@@ -259,11 +264,10 @@ You'll actually keep.</h1>
   <section data-screen-label="Proof" style="background: rgb(201, 245, 66); padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px);">
     <div data-cols-2="1" style="max-width: 1320px; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1.1fr) minmax(0px, 0.9fr); gap: clamp(24px, 5vw, 80px); align-items: center;">
       <div style="min-width: 0;">
-        <img src="assets/logo.png" alt="Fora" width="800" height="272" style="height:clamp(40px,4.5vw,56px);width:auto;display:block;margin:0 0 clamp(24px,4vw,56px);">
-        <div data-proof-h="1" style="margin: 0px 0px clamp(20px,3vw,36px); font-family: var(--font-heading); font-weight: 900; letter-spacing: -0.02em; line-height: 1.02; font-size: clamp(40px, 6vw, 96px); text-wrap: balance; overflow-wrap: anywhere;">Your daily greens, <span style="position:relative;display:inline-block;white-space:nowrap;">made easy.<svg viewBox="0 0 340 14" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:4%;right:4%;bottom:-0.08em;width:92%;height:0.14em;display:block;"><path d="M4 10 C 90 2, 250 2, 336 8" fill="none" stroke="#3EBF4A" stroke-width="7" stroke-linecap="round"/></svg></span></div>
-        <p data-proof-p="1" style="margin: 0px 0px clamp(28px,4vw,56px); font-size: clamp(17px, 1.45vw, 26px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.5; max-width: 42ch; text-wrap: pretty;">All the goodness of greens in a delicious, zero-sugar gummy to support your <strong style="font-weight:800;">gut, immunity</strong> and <strong style="font-weight:800;">natural energy</strong> – daily.</p>
+        <div data-proof-h="1" style="margin: 0px 0px clamp(20px,3vw,36px); font-family: var(--font-heading); font-weight: 900; letter-spacing: -0.02em; line-height: 1.02; font-size: clamp(36px, 5.2vw, 84px); overflow-wrap: anywhere;">Your daily<br><span style="white-space:nowrap;">greens, <span style="position:relative;display:inline-block;white-space:nowrap;">made easy.<svg viewBox="0 0 340 14" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:4%;right:4%;bottom:-0.08em;width:92%;height:0.14em;display:block;"><path d="M4 10 C 90 2, 250 2, 336 8" fill="none" stroke="#3EBF4A" stroke-width="7" stroke-linecap="round"/></svg></span></span></div>
+        <p data-proof-p="1" style="margin: 0px 0px clamp(28px,4vw,56px); font-size: clamp(17px, 1.45vw, 26px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.5; max-width: 42ch; text-wrap: pretty;">All the goodness of greens in a delicious, zero-sugar gummy to support your <strong style="font-weight:800;">gut, immunity</strong> and <strong style="font-weight:800;">natural energy</strong>, every day.</p>
         <div data-proof-list="1" data-pitch-points style="display: flex; flex-wrap: wrap; gap: clamp(14px,1.6vw,20px) clamp(16px,2vw,32px);">
-          <div style="display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);min-width:0;padding-right:clamp(16px,2vw,32px);border-right:1.5px solid rgba(11,59,35,.35);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0B3B23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;width:clamp(44px,3.2vw,56px);height:auto;" aria-hidden="true"><path d="M10 46C10 26 24 12 46 10c2 22-12 36-32 36"/><path d="M10 46 38 18"/></svg><div style="font-weight:800;font-size:clamp(17px,1.5vw,24px);line-height:1.15;letter-spacing:-0.01em;">28 daily<br>servings</div></div>
+          <div style="display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);min-width:0;padding-right:clamp(16px,2vw,32px);border-right:1.5px solid rgba(11,59,35,.35);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0B3B23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;width:clamp(44px,3.2vw,56px);height:auto;" aria-hidden="true"><path d="M10 46C10 26 24 12 46 10c2 22-12 36-32 36"/><path d="M10 46 38 18"/></svg><div style="font-weight:800;font-size:clamp(17px,1.5vw,24px);line-height:1.15;letter-spacing:-0.01em;">Daily<br>servings</div></div>
           <div style="display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);min-width:0;padding-right:clamp(16px,2vw,32px);border-right:1.5px solid rgba(11,59,35,.35);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0B3B23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;width:clamp(44px,3.2vw,56px);height:auto;" aria-hidden="true"><path d="M28 8 46 18v20L28 48 10 38V18z"/><path d="M10 18l18 10 18-10M28 28v20"/><path d="M8 50 48 6"/></svg><div style="font-weight:800;font-size:clamp(17px,1.5vw,24px);line-height:1.15;letter-spacing:-0.01em;">Zero<br>sugar</div></div>
           <div style="display:flex;align-items:center;gap:clamp(12px,1.2vw,18px);min-width:0;"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#0B3B23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;width:clamp(44px,3.2vw,56px);height:auto;" aria-hidden="true"><rect x="8" y="12" width="40" height="36" rx="4"/><path d="M8 22h40M18 8v8M38 8v8"/><circle cx="18" cy="31" r="1.6" fill="#0B3B23"/><circle cx="28" cy="31" r="1.6" fill="#0B3B23"/><circle cx="38" cy="31" r="1.6" fill="#0B3B23"/><circle cx="18" cy="40" r="1.6" fill="#0B3B23"/><circle cx="28" cy="40" r="1.6" fill="#0B3B23"/><circle cx="38" cy="40" r="1.6" fill="#0B3B23"/></svg><div style="font-weight:800;font-size:clamp(17px,1.5vw,24px);line-height:1.15;letter-spacing:-0.01em;">A simple<br>daily habit</div></div>
         </div>
@@ -275,9 +279,10 @@ You'll actually keep.</h1>
   
   <section id="why" data-screen-label="Why Fora" style="padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
     <div data-cols-2="1" style="max-width: 1320px; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start;">
-      <div data-sticky-col="1" style="position: sticky; top: 96px;">
-        <h2 style="margin: 0px 0px 24px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px);">Big health.<br>Tiny habit.</h2>
-        <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 4 / 5; max-width: 520px; min-width: 0px;"><img src="assets/img/why-lifestyle.webp" alt="Pack on a kitchen counter, real morning, real hands" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:8px;"></div>
+      <div data-sticky-col="1" style="position: sticky; top: 96px; container-type: inline-size;">
+        <div style="display: inline-block; position: relative; margin: 0px 0px 18px; color: rgb(46, 139, 87); font-weight: 900; font-size: clamp(12px, 1.1vw, 15px); letter-spacing: 0.18em; text-transform: uppercase; line-height: 1;">SUPER GREENS⁺ GUMMIES<svg aria-hidden="true" viewBox="0 0 200 12" preserveAspectRatio="none" style="position: absolute; left: -2%; right: -2%; width: 104%; bottom: -9px; height: 8px; display: block; overflow: visible;"><path d="M2 8 C 30 2, 60 10, 95 6 S 160 3, 198 7" fill="none" stroke="rgb(46, 139, 87)" stroke-width="2.6" stroke-linecap="round"></path></svg></div>
+        <h2 style="margin: 0px 0px 28px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.04em; line-height: 0.88; font-size: clamp(44px, 17.6cqw, 144px); white-space: nowrap;">Big health.<br>Tiny habit.</h2>
+        <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 3 / 2; max-width: 600px; min-width: 0px;"><img src="assets/img/why-lifestyle.webp" alt="Pack on a kitchen counter, real morning, real hands" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:8px;"></div>
       </div>
       <div style="display: flex; flex-direction: column; border-top: 1.5px solid rgb(11, 59, 35);">
         <div style="display: grid; grid-template-columns: 56px minmax(0px, 1fr); gap: 16px; padding: 28px 0px; border-bottom: 1px solid rgba(11, 59, 35, 0.14);">
@@ -302,7 +307,8 @@ You'll actually keep.</h1>
   </section>
 
   
-  <section data-screen-label="Problem" style="background: rgb(11, 59, 35); color: rgb(250, 250, 244); padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
+  <!-- Hidden: "You bought the powder. Then stopped using it." (remove the hidden attribute to bring it back) -->
+  <section hidden data-screen-label="Problem" style="background: rgb(11, 59, 35); color: rgb(250, 250, 244); padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
     <div style="max-width: 1320px; margin: 0px auto;">
       <div data-cols-2="1" style="display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr); gap: clamp(32px, 5vw, 80px); align-items: end;">
         <h2 style="margin: 0px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px); color: rgb(201, 245, 66);">You bought the powder.<br>Then stopped using it.</h2>
@@ -345,59 +351,54 @@ You'll actually keep.</h1>
   
   <section id="benefits" data-screen-label="How it works" style="padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px); scroll-margin-top: 80px;">
     <div style="max-width: 1320px; margin: 0px auto;">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: clamp(32px, 4vw, 56px);">
-        <h2 style="margin: 0px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px);">How it works<br>for you.</h2>
-        <p style="margin: 0px; max-width: 36ch; color: rgb(62, 107, 80); text-wrap: pretty;">Understand what Fora does, how it works, and exactly what you’re getting in every daily pack.</p>
+      <div data-hiw-head="1" style="display: grid; grid-template-columns: minmax(0px, 1.1fr) minmax(0px, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; margin-bottom: clamp(28px, 4vw, 48px);">
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px; min-width: 0px;">
+          <span style="display: inline-block; background: rgb(201, 245, 66); color: rgb(11, 59, 35); font-size: 13px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; line-height: 1.2;">How it works</span>
+          <h2 style="margin: 0px; font-size: clamp(40px, 5.4vw, 84px); letter-spacing: -0.03em; line-height: 0.95; max-width: 11ch;">Three daily wins for a <span style="position: relative; display: inline-block; white-space: nowrap;">happier you.<svg aria-hidden="true" viewBox="0 0 300 18" preserveAspectRatio="none" style="position: absolute; left: 0px; right: 0px; bottom: -0.22em; width: 100%; height: 0.22em; overflow: visible; display: block;"><path d="M4 12 C 60 4, 140 2, 296 9" fill="none" stroke="rgb(255, 90, 31)" stroke-width="7" stroke-linecap="round"/></svg></span></h2>
+        </div>
+        <div data-hiw-aside="1" style="display: flex; flex-direction: column; gap: clamp(20px, 3vh, 36px); padding-left: clamp(0px, 3vw, 48px); border-left: 1.5px solid rgba(11, 59, 35, 0.35); min-width: 0px; align-self: stretch; justify-content: center;">
+          <p style="margin: 0px; font-size: clamp(18px, 1.5vw, 26px); line-height: 1.35; letter-spacing: -0.01em; text-wrap: pretty; max-width: 22ch;">A simple daily habit that supports your gut, immune system and natural energy, all in one pack.</p>
+          <div data-hiw-summary="1" style="display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 12px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 10 11 5 20 4.5c-.5 9-5.5 15-14.5 14.5z"/><path d="M5 19c3-4 6-7 10-10"/></svg></span><span style="font-weight: 800; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">Gut<br>support</span></div>
+            <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l7 2.8v5.2c0 4.1-2.9 7.6-7 9-4.1-1.4-7-4.9-7-9V6.3z"/><path d="M9 12l2 2 4-4.5"/></svg></span><span style="font-weight: 800; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">Immune<br>support</span></div>
+            <div style="display: flex; align-items: center; gap: 12px; min-width: 0px;"><span style="width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; background: rgb(236, 250, 196); display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg></span><span style="font-weight: 800; font-size: clamp(15px, 1.2vw, 19px); line-height: 1.2; letter-spacing: -0.01em;">Natural<br>energy</span></div>
+          </div>
+        </div>
       </div>
-      <div data-cols-3="1" style="display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: clamp(20px, 3vw, 40px); border-top: 1.5px solid rgb(11, 59, 35);">
-        <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 16px; order: 0;">
-          <div style="font-weight: 900; font-size: 14px; letter-spacing: 0.1em; color: rgb(255, 90, 31);">01</div>
-          <div style="position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 4 / 3; min-width: 0px;"><img src="assets/img/boost-gut.webp" alt="Real greens or real moment" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:6px;"></div>
-          <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Gut boost</h3>
-          <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">Daily prebiotic support and greens for a happier gut.</p>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
-            <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">Prebiotic inulin helps nourish the bacteria in your gut, paired with 5 billion CFU of Bacillus coagulans in every daily serving.</p>
-          </div>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 8px;">In the pack <span style="color: rgb(62, 107, 80);">· per serving</span></div>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-              <span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Inulin 400 mg</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">B. coagulans 5 bn CFU</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Fibre</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Spirulina</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Chlorella</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Kale</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Wheatgrass</span>
+      <div data-cols-3="1" style="display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: clamp(16px, 2.2vw, 28px);">
+        <article data-hiw-card="1" style="order: 0; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(11, 59, 35, 0.08); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px -18px rgba(11, 59, 35, 0.25); min-width: 0px;">
+          <div data-hiw-img="1" style="position: relative; overflow: hidden; aspect-ratio: 21 / 10; min-width: 0px; background: rgb(236, 250, 196);"><img src="assets/img/boost-gut.webp" alt="Hands holding a Fora Super Greens+ pack at the stomach" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"><span style="position: absolute; top: 14px; left: 14px; background: rgb(255, 90, 31); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; line-height: 1;">01</span></div>
+          <div data-hiw-body="1" style="display: flex; flex-direction: column; gap: 14px; padding: clamp(18px, 2vw, 28px) clamp(18px, 2vw, 28px) clamp(18px, 2vw, 24px);">
+            <div style="display: grid; grid-template-columns: 48px minmax(0px, 1fr); column-gap: 18px; row-gap: 6px; align-items: center;">
+              <svg data-hiw-icon="1" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;"><path d="M8 4.5h8a3.5 3.5 0 0 1 0 7H9a3.5 3.5 0 0 0 0 7h7"/><path d="M6.5 4.5h1.5M16 18.5h1.5"/><path d="M8.5 8h7M8.5 15h7"/></svg>
+              <h3 style="margin: 0px; font-size: clamp(26px, 2.2vw, 36px); letter-spacing: -0.02em; line-height: 1;">Gut support</h3>
+              <p style="grid-column: 2; margin: 0px; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.45; letter-spacing: -0.005em; text-wrap: pretty;">Prebiotics and greens to help nourish a balanced, happier gut.</p>
             </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Inulin 400 mg</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">B. coagulans 5 bn CFU</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Fibre</span></div>
           </div>
-        </div>
-        <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 16px; order: 1;">
-          <div style="font-weight: 900; font-size: 14px; letter-spacing: 0.1em; color: rgb(255, 90, 31);">02</div>
-          <div style="position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 4 / 3; min-width: 0px;"><img src="assets/img/boost-immune.webp" alt="Real greens or real moment" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:6px;"></div>
-          <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Immune boost</h3>
-          <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">Immune support, every single day. Immunity is a habit, not an emergency.</p>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
-            <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">Vitamin C, vitamin D and zinc contribute to the normal function of the immune system. One pack, every day, so you don't have to remember.</p>
-          </div>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 8px;">In the pack <span style="color: rgb(62, 107, 80);">· per serving</span></div>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-              <span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin C</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin D3</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Zinc</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Selenium</span>
+        </article>
+        <article data-hiw-card="1" style="order: 1; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(11, 59, 35, 0.08); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px -18px rgba(11, 59, 35, 0.25); min-width: 0px;">
+          <div data-hiw-img="1" style="position: relative; overflow: hidden; aspect-ratio: 21 / 10; min-width: 0px; background: rgb(236, 250, 196);"><img src="assets/img/boost-immune.webp" alt="Gloved hand holding a Fora pack against a winter sky" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"><span style="position: absolute; top: 14px; left: 14px; background: rgb(255, 90, 31); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; line-height: 1;">02</span></div>
+          <div data-hiw-body="1" style="display: flex; flex-direction: column; gap: 14px; padding: clamp(18px, 2vw, 28px) clamp(18px, 2vw, 28px) clamp(18px, 2vw, 24px);">
+            <div style="display: grid; grid-template-columns: 48px minmax(0px, 1fr); column-gap: 18px; row-gap: 6px; align-items: center;">
+              <svg data-hiw-icon="1" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;"><path d="M12 3.5l7 2.8v5.2c0 4.1-2.9 7.6-7 9-4.1-1.4-7-4.9-7-9V6.3z"/><path d="M9 12l2 2 4-4.5"/></svg>
+              <h3 style="margin: 0px; font-size: clamp(26px, 2.2vw, 36px); letter-spacing: -0.02em; line-height: 1;">Immune support</h3>
+              <p style="grid-column: 2; margin: 0px; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.45; letter-spacing: -0.005em; text-wrap: pretty;">Key vitamins and minerals to support your immune system, every day.</p>
             </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin C</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin D3</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Zinc</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Selenium</span></div>
           </div>
-        </div>
-        <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 16px; order: 2;">
-          <div style="font-weight: 900; font-size: 14px; letter-spacing: 0.1em; color: rgb(255, 90, 31);">03</div>
-          <div style="position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 4 / 3; min-width: 0px;"><img src="assets/img/boost-energy.webp" alt="Real greens or real moment" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:6px;"></div>
-          <h3 style="margin: 0px; font-weight: 900; font-stretch: 112%;  font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -0.025em; line-height: 0.95;">Energy boost</h3>
-          <p style="margin: 0px; font-size: clamp(17px, 1.3vw, 20px); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;">The B vitamins your 3pm is missing. No caffeine. No crash.</p>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 6px;">Mechanism</div>
-            <p style="margin: 0px; font-size: 15px; color: rgb(62, 107, 80); text-wrap: pretty;">B vitamins, vitamin C and iron contribute to normal energy-yielding metabolism and the reduction of tiredness and fatigue.</p>
-          </div>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 8px;">In the pack <span style="color: rgb(62, 107, 80);">· per serving</span></div>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-              <span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Full B-complex</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin C</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Iron</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Folate</span><span style="border: 1px solid rgba(11, 59, 35, 0.3); padding: 4px 9px; border-radius: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">No caffeine</span>
+        </article>
+        <article data-hiw-card="1" style="order: 2; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(11, 59, 35, 0.08); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px -18px rgba(11, 59, 35, 0.25); min-width: 0px;">
+          <div data-hiw-img="1" style="position: relative; overflow: hidden; aspect-ratio: 21 / 10; min-width: 0px; background: rgb(236, 250, 196);"><img src="assets/img/boost-energy.webp" alt="Person jumping in orange trousers against a lime wall" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;"><span style="position: absolute; top: 14px; left: 14px; background: rgb(255, 90, 31); color: rgb(255, 255, 255); font-weight: 800; font-size: 15px; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; line-height: 1;">03</span></div>
+          <div data-hiw-body="1" style="display: flex; flex-direction: column; gap: 14px; padding: clamp(18px, 2vw, 28px) clamp(18px, 2vw, 28px) clamp(18px, 2vw, 24px);">
+            <div style="display: grid; grid-template-columns: 48px minmax(0px, 1fr); column-gap: 18px; row-gap: 6px; align-items: center;">
+              <svg data-hiw-icon="1" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgb(11, 59, 35)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;"><path d="M13 3L5.5 13.5H12L11 21l7.5-10.5H12z"/></svg>
+              <h3 style="margin: 0px; font-size: clamp(26px, 2.2vw, 36px); letter-spacing: -0.02em; line-height: 1;">Natural energy</h3>
+              <p style="grid-column: 2; margin: 0px; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.45; letter-spacing: -0.005em; text-wrap: pretty;">B vitamins, vitamin C and iron to help reduce tiredness and keep you going.</p>
             </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Full B-complex</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Vitamin C</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Iron</span><span style="border: 1px solid rgba(11, 59, 35, 0.28); background: rgb(255, 255, 255); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.3; white-space: nowrap; letter-spacing: -0.005em;">Folate</span></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
@@ -428,7 +429,7 @@ You'll actually keep.</h1>
           <h3 style="margin: 0px 0px 12px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.92; font-size: clamp(32px, 3.6vw, 52px);">Consistency beats perfection.</h3>
           <p style="margin: 0px; max-width: 40ch; color: rgb(62, 107, 80); text-wrap: pretty;">One pack a day. A pouch lasts exactly four weeks. No counting, no half-scoops, no "did I take it?"</p>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(7, minmax(0px, 1fr)); gap: 6px;">
+        <div data-days="1" style="display: grid; grid-template-columns: repeat(7, minmax(0px, 1fr)); gap: 6px;">
           
             <div style="aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 4px; background: rgb(201, 245, 66); color: rgb(11, 59, 35); border: 1px solid rgb(201, 245, 66); font-weight: 900; font-size: clamp(12px, 1.4vw, 18px); letter-spacing: -0.02em;">01</div>
           
@@ -559,40 +560,13 @@ You'll actually keep.</h1>
   </section>
 
   
-  <section id="reviews" data-screen-label="Reviews" style="background: rgb(255, 255, 255); border-top: 1px solid rgba(11, 59, 35, 0.14); padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
-    <div style="max-width: 1320px; margin: 0px auto;">
-      
-        <h2 style="margin: 0px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px);">The habit people<br>actually stick to.</h2>
-        
-          <div style="display: flex; align-items: center; gap: 10px;"><span style="color: rgb(255, 90, 31); letter-spacing: 3px; font-size: 22px;">★★★★★</span><span style="font-weight: 900; font-size: 28px; letter-spacing: -0.02em;">4.8</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: rgb(10, 59, 35);"><b>from 186 Reviews</b></span></div>
-          
-        
-      
-      <div style="display: flex; gap: 8px; overflow-x: auto; margin-top: clamp(24px, 3vw, 40px); padding-bottom: 4px;">
-        
-          <button data-track="review_filter" data-filter="0" class="scp3" style="flex: 0 0 auto; background: rgb(11, 59, 35); color: rgb(201, 245, 66); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Overall</button>
-        
-          <button data-track="review_filter" data-filter="1" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Gut</button>
-        
-          <button data-track="review_filter" data-filter="2" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Energy</button>
-        
-          <button data-track="review_filter" data-filter="3" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Immunity</button>
-        
-          <button data-track="review_filter" data-filter="4" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Taste</button>
-        
-          <button data-track="review_filter" data-filter="5" class="scp3" style="flex: 0 0 auto; background: transparent; color: rgb(11, 59, 35); border: 1.5px solid rgb(11, 59, 35); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; min-height: 44px;">Easy to Stick To</button>
-        
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: clamp(16px, 2vw, 28px); margin-top: 24px; border-top: 1.5px solid rgb(11, 59, 35); padding-top: 24px;"></div>
-      
-    </div>
-  </section>
+  
 
   
   <section data-screen-label="Comparison" data-track="comparison_view" style="padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
     <div style="max-width: 1320px; margin: 0px auto;">
-      <h2 style="margin: 0px 0px clamp(24px, 3vw, 40px); font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px);">Your old routine has competition.</h2>
-      <p style="margin: calc(-1 * clamp(10px, 1.5vw, 20px)) 0px clamp(24px, 3vw, 40px); font-size: clamp(16px, 1.4vw, 21px); color: rgb(62, 107, 80); line-height: 1.45; max-width: 60ch;">All the benefits of a greens routine, in an easy, great-tasting daily gummy.</p>
+      <h2 style="margin: 0px 0px 16px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.95; font-size: clamp(36px, 4.6vw, 68px); text-wrap: balance;">Your old routine has competition.</h2>
+      <p style="margin: 0px 0px clamp(28px, 3.5vw, 48px); max-width: 640px; font-size: clamp(16px, 1.3vw, 20px); line-height: 1.45; opacity: 0.78; text-wrap: pretty;">All the benefits of a greens routine, in an easy, great-tasting daily gummy.</p>
       <div style="overflow-x: auto;">
         <div style="min-width: 680px;">
           <div style="display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 0px 16px; padding: 14px 0px; border-top: 1.5px solid rgb(11, 59, 35); border-bottom: 1.5px solid rgb(11, 59, 35); font-size: 12px; letter-spacing: 0.14em; font-weight: 800; text-transform: uppercase;">
@@ -706,7 +680,7 @@ You'll actually keep.</h1>
         <p style="margin: 0px 0px 14px; font-size: clamp(16px, 1.3vw, 19px); max-width: 56ch; text-wrap: pretty; line-height: 1.5;">We started Fora because we wanted an easier way to get the goodness of a greens routine into a busy, modern life.</p>
         <p style="margin: 0px 0px 14px; font-size: clamp(16px, 1.3vw, 19px); max-width: 56ch; text-wrap: pretty; line-height: 1.5;">Between long workdays, workouts, travel and everything in between, it's not always easy to eat as well as we'd like. So we created Fora. A great-tasting daily gummy that brings together 30+ plant nutrients from greens, fruits and botanicals.</p>
         <p style="margin: 0px 0px 14px; font-size: clamp(16px, 1.3vw, 19px); max-width: 56ch; text-wrap: pretty; line-height: 1.5;">It's simple, enjoy it when it works for you, and feel good knowing you're giving your body everyday nutritional support, without the hassle.</p>
-        <div style="display: inline-block; position: relative; margin: 6px 0px 0px; font-family: 'Savoye LET', 'Snell Roundhand', 'Brush Script MT', 'Segoe Script', 'Bradley Hand', cursive; font-size: clamp(26px, 2.2vw, 34px); line-height: 1; color: rgb(11, 59, 35); padding-bottom: 8px;">The Fora Founders<svg aria-hidden="true" viewBox="0 0 200 10" preserveAspectRatio="none" style="position: absolute; left: 0px; bottom: 0px; width: 100%; height: 6px;"><path d="M2 6 C 50 1, 120 2, 198 5" fill="none" stroke="rgb(46, 139, 87)" stroke-width="3" stroke-linecap="round"></path></svg></div>
+        <div style="display: inline-block; position: relative; margin: 6px 0px 0px; font-weight: 900; font-stretch: 110%; letter-spacing: -0.03em; font-size: clamp(20px, 1.7vw, 26px); line-height: 1; color: rgb(11, 59, 35); padding-bottom: 8px;">The Fora Founders<svg aria-hidden="true" viewBox="0 0 200 10" preserveAspectRatio="none" style="position: absolute; left: 0px; bottom: 0px; width: 100%; height: 6px;"><path d="M2 6 C 50 1, 120 2, 198 5" fill="none" stroke="rgb(46, 139, 87)" stroke-width="3" stroke-linecap="round"></path></svg></div>
         <div data-perfect-for="1" style="margin-top: clamp(24px, 3vw, 40px); padding-top: clamp(18px, 2vw, 28px); border-top: 1px solid rgba(11, 59, 35, 0.14);">
           <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 800; text-transform: uppercase; color: rgb(62, 107, 80); margin-bottom: 14px;">Perfect for</div>
           <div data-perfect-grid="1" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: clamp(10px, 1vw, 14px);">
@@ -768,7 +742,7 @@ You'll actually keep.</h1>
             <span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(11, 59, 35); display: grid; place-items: center; margin-top: 2px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: transparent;"></span></span>
             <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0px;">
               <span style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span style="font-weight: 900; font-size: 17px; letter-spacing: -0.01em;">1-month subscription</span><span style="display: inline-block; background: rgb(11, 59, 35); color: rgb(201, 245, 66); font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 7px; border-radius: 3px;">FLEXIBLE</span></span>
-              <span style="font-size: 13px; color: rgb(62, 107, 80);">Billed monthly</span>
+              <span style="font-size: 13px; color: rgb(62, 107, 80);">Billed every 4 weeks</span>
               <span style="font-size: 13px; font-weight: 600;">Pause, skip or cancel.</span>
             </span>
             <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; white-space: nowrap;">
@@ -806,17 +780,6 @@ You'll actually keep.</h1>
   
 
   
-  <section data-screen-label="Guarantee" style="background: rgb(201, 245, 66); padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
-    <div data-cols-2="1" style="max-width: 1320px; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr); gap: clamp(16px, 4vw, 64px); align-items: center;">
-      <div style="font-weight: 900; font-stretch: 120%; letter-spacing: -0.05em; line-height: 0.8; font-size: clamp(96px, 18vw, 280px); min-width: 0px;">28<span style="display: block; font-size: clamp(28px, 4vw, 64px); letter-spacing: -0.02em; line-height: 1; margin-top: 8px;">days</span></div>
-      <div>
-        <h2 style="margin: 0px 0px 16px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 4.5vw, 64px); white-space: pre-line;">Love the habit
-or let us know.</h2>
-        <p style="margin: 0px; font-size: clamp(17px, 1.4vw, 21px); max-width: 40ch; text-wrap: pretty;">Try your first pack properly. If Fora isn't for you, contact us within 28 days.</p>
-        
-      </div>
-    </div>
-  </section>
 
   
   <section id="faq" data-screen-label="FAQ" style="padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px); position: relative;">
@@ -825,84 +788,55 @@ or let us know.</h2>
         
         <h2 data-faq-h="1" style="margin: 0px 0px 16px; font-weight: 900; font-stretch: 90%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px); width: 400px; max-width: 100%; height: 250px; overflow: visible;"><span style="font-size: clamp(40px, 5.5vw, 80px); letter-spacing: -0.03em;">Good questions.</span><br><span style="font-size: clamp(40px, 5.5vw, 80px); letter-spacing: -0.03em;">Straight answers.</span></h2>
       </div>
-      <div style="border-top: 1.5px solid rgb(11, 59, 35);" data-faq-list>
+      <div data-faq-list style="border-top: 1.5px solid rgb(11, 59, 35); min-width: 0px;">
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="0" aria-expanded="true" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What does Fora taste like?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: rotate(45deg); transition: transform 0.2s;">+</span></button>
-            <p style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Raspberry and lemon. Natural flavours, no earthy greens aftertaste. Zero sugar.</p>
+            <button type="button" data-track="faq_open" data-faq="0" aria-expanded="true" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>What does Fora taste like?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: rotate(45deg); transition: transform 0.2s;">+</span></button>
+            <p style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Raspberry and lemon. Natural flavours with no earthy greens aftertaste, and zero sugar.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="1" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora really zero sugar?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. 0.0 g sugars per serving and per 100 g. Sweetness comes from polyols with stevia and thaumatin.</p>
+            <button type="button" data-track="faq_open" data-faq="1" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>Is Fora really zero sugar?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. 0.0 g sugars per serving and per 100 g. Sweetness comes from sugar-free polyols with stevia and thaumatin; the green colour is from black carrot extract.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="2" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What sweetener does Fora use?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Sugar-free polyols, plus stevia and thaumatin. No sugar, no artificial colours. The green comes from black carrot extract.</p>
+            <button type="button" data-track="faq_open" data-faq="2" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>What's inside Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">39 active ingredients: 8 greens, 8 fruits and vegetables, 21 vitamins and minerals, prebiotic inulin and Bacillus coagulans live cultures (5 billion CFU per serving). The full ingredient list is under ‘What’s inside’ above.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="3" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>How many gummies are in one daily pack?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">One pack is one serving: 5 gummies (14 g).</p>
+            <button type="button" data-track="faq_open" data-faq="3" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>How and when should I take Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">One pack a day: 5 gummies (14 g). Tear, chew, done. No water needed, so take it whenever suits you.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="4" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>When should I take Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Whenever you'll remember. Morning, desk, train, 3pm. It needs no water, so it fits wherever your day is.</p>
+            <button type="button" data-track="faq_open" data-faq="4" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>Is Fora vegan and allergen-friendly?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora uses a pectin base, not gelatin, and is free from all 14 declarable allergens, including gluten, milk, nuts and soya.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="5" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Do I need water?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">No. Tear, chew, done.</p>
+            <button type="button" data-track="faq_open" data-faq="5" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>Is Fora suitable for everyone?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora is a food supplement for adults and should not replace a varied, balanced diet. If you are pregnant, breastfeeding, on medication or have a medical condition, speak to your GP first. Keep out of reach of young children.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="6" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What exactly is inside Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">39 active ingredients: 8 greens, 8 fruits and vegetables, 21 vitamins and minerals, prebiotic inulin, and Bacillus coagulans live cultures (5 billion CFU per serving). The full ingredient list and nutrition information are under 'What's inside' above.</p>
+            <button type="button" data-track="faq_open" data-faq="6" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>Can I pause or cancel my subscription?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. Pause, skip or cancel any time from your account, with no phone call required. You will get a reminder before every charge.</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="7" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora vegan?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora uses a pectin base, not gelatin.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="8" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Does it contain gluten, dairy or nuts?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">No. Fora is free from all 14 declarable allergens, including gluten-containing cereals, milk, peanuts, tree nuts, soya, eggs, fish, crustaceans, molluscs, celery, mustard, sesame, sulphites and lupin.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="9" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Can I pause or cancel my subscription?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. Pause, skip or cancel any time from your account. No phone call required. You'll get a reminder before every charge.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="10" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>When will my order arrive?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Your order will arrive within 3 working days. If you subscribe, you'll also get free UK delivery on every order.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="11" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>What does the guarantee cover?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Try your first pack properly. If Fora isn't for you, contact us within 28 days.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="12" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Is Fora suitable for everyone?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora is a food supplement for adults. Do not exceed the stated recommended daily dose. Food supplements should not be used as a substitute for a varied and balanced diet and a healthy lifestyle. Keep out of reach of young children. Excessive consumption may produce laxative effects. If you are pregnant, breastfeeding, on medication or have a medical condition, speak to your GP first.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="13" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>How should I store Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">In its tightly closed original packaging, in a cool, dry place below 25°C and away from direct sunlight. Shelf life is 24 months from the date of manufacture.</p>
-          </div>
-          <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
-            <button type="button" data-track="faq_open" data-faq="14" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 20px 0px; font-weight: 800; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -0.01em; min-height: 56px;"><span>Do I need to take anything else alongside Fora?</span><span data-faq-icon style="flex: 0 0 auto; width: 28px; height: 28px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 18px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 40px 22px 0px; color: rgb(62, 107, 80); max-width: 60ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Fora is designed as a daily nutrition backup, not a replacement for food.</p>
+            <button type="button" data-track="faq_open" data-faq="7" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>When will my order arrive?</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Within 3 working days. If you subscribe, UK delivery is free on every order.</p>
           </div>
       </div>
     </div>
   </section>
 
   
-  <section data-screen-label="Final CTA" style="background: rgb(11, 59, 35); color: rgb(250, 250, 244); padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 48px);">
-    <div data-cols-2="1" style="max-width: 1320px; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr); gap: clamp(24px, 5vw, 80px); align-items: center;">
-      <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 1 / 1; max-height: 640px; max-width: 640px; min-width: 0px;"><img src="assets/img/final-product.webp" alt="Torn Fora Super Greens+ sachet with dark green gummies on crumpled lime paper" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border-radius:8px;"></div>
-      <div>
-        <h2 style="margin: 0px 0px 20px; font-weight: 900; font-stretch: 112%;  letter-spacing: -0.03em; line-height: 0.9; font-size: clamp(36px, 5.2vw, 72px); color: rgb(201, 245, 66);">Your daily greens, made easy.</h2>
-        <p style="margin: 0px 0px 28px; font-size: clamp(20px, 2vw, 28px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;">All the goodness of greens in a delicious, zero-sugar gummy to support your <strong>gut, immunity</strong> and <strong>natural energy</strong> – daily.</p>
-        <div style="border-top: 1px solid rgba(250, 250, 244, 0.25); padding-top: 20px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px;">
-          <div style="font-weight: 900; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.03em;">28 daily<br>servings</div>
-          <div style="color: rgb(255, 90, 31); font-weight: 800; font-size: 16px;">Zero<br>sugar</div>
-        </div>
-        <button data-track="final_cta_click" class="scp5" style="margin-top: 24px; width: 100%; max-width: 440px; background: rgb(255, 90, 31); color: rgb(11, 59, 35); border: 0px; border-radius: 6px; padding: 20px 22px; font-weight: 900; font-size: 18px; letter-spacing: 0.06em; text-transform: uppercase; min-height: 64px;">A simple<br>daily habit</button>
+  <section data-screen-label="Final CTA" data-pitch style="background: rgb(201, 245, 66); color: rgb(11, 59, 35); padding: clamp(40px, 6vh, 80px) clamp(16px, 4vw, 48px); min-height: 80vh; display: flex; align-items: center;">
+    <div data-cols-2="1" style="width: 100%; max-width: 1480px; margin: 0px auto; display: grid; grid-template-columns: minmax(0px, 1.15fr) minmax(0px, 1fr); gap: clamp(24px, 4vw, 72px); align-items: center;">
+      <div style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start;">
+        <img src="assets/logo.png" alt="Fora" width="800" height="272" style="height:clamp(40px,5vh,52px);width:auto;display:block;margin:0 0 clamp(24px,4.5vh,48px);">
+        <div style="font-size: clamp(11px, 0.85vw, 13px); font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 clamp(14px,2vh,20px); display:flex; align-items:center; gap:12px;"><span style="display:block;width:28px;height:2px;background:#0B3B23;"></span>Good habits start small.</div>
+        <h2 style="margin: 0px 0px clamp(18px,3vh,30px); font-family: var(--font-heading); font-weight: 900; letter-spacing: -0.025em; line-height: 0.98; font-size: clamp(44px, min(5.8vw, 10vh), 104px); text-wrap: balance;">A little good, <span style="position:relative;display:inline-block;white-space:nowrap;">every day.<svg viewBox="0 0 340 14" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:4%;right:4%;bottom:-0.08em;width:92%;height:0.14em;display:block;"><path d="M4 10 C 90 2, 250 2, 336 8" fill="none" stroke="#3EBF4A" stroke-width="7" stroke-linecap="round"/></svg></span></h2>
+        <p style="margin: 0px 0px clamp(26px,4.5vh,44px); font-size: clamp(17px, min(1.35vw, 2.5vh), 23px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.5; max-width: 44ch; text-wrap: pretty;">Your daily greens don't need to be complicated. Just five delicious gummies, one simple habit, and a little something good for yourself every day.</p>
+        <a href="#plans" data-track="final_cta_click" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#0B3B23;color:#C9F542;text-decoration:none;font-weight:900;font-size:clamp(14px,1vw,17px);letter-spacing:.08em;text-transform:uppercase;padding:clamp(16px,2vh,22px) clamp(28px,2.6vw,44px);border-radius:999px;box-shadow:0 12px 32px rgba(11,59,35,.22);transition:transform .2s ease, box-shadow .2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 18px 40px rgba(11,59,35,.28)'" onmouseout="this.style.transform='';this.style.boxShadow='0 12px 32px rgba(11,59,35,.22)'">Make Fora My Daily Habit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div style="margin: clamp(16px,2.4vh,24px) 0 0; font-size: clamp(13px, 0.95vw, 15px); font-weight: 600; letter-spacing: 0.02em; color: rgba(11,59,35,.78); display:flex; flex-wrap:wrap; gap: 0 10px;"><span>Zero sugar</span><span aria-hidden="true">·</span><span>28 daily sachets</span><span aria-hidden="true">·</span><span>Made for real life</span></div>
       </div>
+      <div data-pitch-image-frame style="position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 5 / 6; width: min(100%, 560px, calc((80vh - 2 * clamp(40px, 6vh, 80px)) * 0.83)); justify-self: end; min-width: 0px;"><img src="assets/img/proof-pack-gummies.webp" alt="Torn Fora Super Greens+ sachet with dark green gummies on crumpled lime paper" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;border-radius:10px;"></div>
     </div>
   </section>
 
@@ -1073,10 +1007,10 @@ or let us know.</h2>
 </div>
 
 <noscript><p style="padding:16px">Please enable JavaScript to see this page.</p></noscript>
-<script src="js/config.js?v=20261103094239"></script>
-<script src="js/lang/en.js?v=20261103094239"></script>
-<script src="js/klaviyo.js?v=20261103094239"></script>
-<script src="js/common.js?v=20261103094239"></script>
-<script src="js/app.js?v=20261103094239"></script>
+<script src="js/config.js?v=20261103094635"></script>
+<script src="js/lang/en.js?v=20261103094635"></script>
+<script src="js/klaviyo.js?v=20261103094635"></script>
+<script src="js/common.js?v=20261103094635"></script>
+<script src="js/app.js?v=20261103094635"></script>
 </body>
 </html>
