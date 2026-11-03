@@ -362,3 +362,7 @@ html[lang="de"] #view-pdp section[data-screen-label="Proof"] [data-proof-h]{zoom
   html[lang="de"] [data-proof-list] br{display:none}
   html[lang="de"] [data-proof-list] svg{width:clamp(24px,2.4vw,44px);height:auto}
 }
+
+/* German: "So funktioniert's" heading on three lines like the English one */
+html[lang="de"] #view-pdp section[data-screen-label="How it works"] h2{zoom:1;font-size:clamp(28px,min(3.4vw,6vh),60px)!important;max-width:none!important;hyphens:manual}
+@media (min-width:700px){html[lang="de"] #view-pdp section[data-screen-label="How it works"] h2 span{white-space:nowrap!important}}
