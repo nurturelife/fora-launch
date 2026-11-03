@@ -319,3 +319,13 @@ h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
 
 /* In-page anchors land just below the sticky nav (Explore more → #top, footer links) */
 #top{scroll-margin-top:64px}
+
+/* German copy is longer: let headings, pills and the trust row wrap instead of overflowing */
+html[lang="de"] #top h1,html[lang="de"] #top h1 span{white-space:normal!important}
+html[lang="de"] [data-proof-h]{font-size:clamp(34px,4.4vw,72px)!important}
+html[lang="de"] [data-proof-h] span{white-space:normal!important}
+@media (min-width:901px){
+  html[lang="de"] #top [data-pills]{flex-wrap:wrap!important;gap:6px!important}
+  html[lang="de"] #top [data-pills]>span{white-space:normal;padding:4px 8px!important;font-size:11px!important;letter-spacing:.06em!important}
+  html[lang="de"] [data-trust-row]{flex-wrap:wrap!important;justify-content:center!important;gap:6px 14px!important;font-size:12px!important}
+}
