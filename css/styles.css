@@ -350,3 +350,15 @@ html[lang="de"] [data-screen-label="Why Fora"] h2{zoom:.78}
   html[lang="de"] [data-pitch] svg[width="42"]{width:32px;height:32px}
 }
 html[lang="de"] h1{hyphens:manual;-webkit-hyphens:manual}
+
+/* German: "Your daily greens" section: heading on two lines, the three benefits on one row */
+html[lang="de"] #view-pdp section[data-screen-label="Proof"] [data-proof-h]{zoom:1;font-size:clamp(28px,4.2vw,64px)!important}
+@media (min-width:700px) and (max-width:1100px){html[lang="de"] #view-pdp section[data-screen-label="Proof"] [data-proof-h]{font-size:clamp(22px,3.7vw,42px)!important}}
+@media (min-width:700px){
+  html[lang="de"] [data-proof-h] span{white-space:nowrap!important}
+  html[lang="de"] [data-proof-list]{flex-wrap:nowrap!important;gap:clamp(6px,1vw,22px)!important}
+  html[lang="de"] [data-proof-list]>div{padding-right:clamp(6px,1vw,22px)!important;gap:clamp(6px,.8vw,12px)!important;white-space:nowrap}
+  html[lang="de"] [data-proof-list]>div>div{font-size:clamp(12px,1.2vw,19px)!important}
+  html[lang="de"] [data-proof-list] br{display:none}
+  html[lang="de"] [data-proof-list] svg{width:clamp(24px,2.4vw,44px);height:auto}
+}
