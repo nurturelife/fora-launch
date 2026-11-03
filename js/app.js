@@ -147,7 +147,7 @@
   var stickyD = $('#sticky-desk'), stickyM = $('#sticky-mob');
   function onScroll() {
     var past = heroCta ? heroCta.parentNode.getBoundingClientRect().bottom < 0 : window.scrollY > 700;
-    if (past !== state.scrolled) { state.scrolled = past; stickyD.hidden = stickyM.hidden = !past; }
+    if (past !== state.scrolled) { state.scrolled = past; stickyM.hidden = !past; /* desktop header stays the regular sticky nav; stickyD is not shown */ }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
