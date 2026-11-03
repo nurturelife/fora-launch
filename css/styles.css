@@ -342,3 +342,11 @@ html[lang="de"] h1 span,html[lang="de"] h2 span,html[lang="de"] h3 span,html[lan
   html[lang="de"] [data-screen-label="Why Fora"] h2{zoom:.75}
 }
 html[lang="de"] [data-screen-label="Why Fora"] h2{zoom:.78}
+
+/* German: pitch hero benefits (Darmgesundheit / Immunsystem / Energie) on one line, slightly smaller */
+@media (min-width:700px){
+  html[lang="de"] [data-pitch] div:has(>span>svg[width="42"]){flex-wrap:nowrap!important;gap:10px clamp(14px,2vw,26px)!important}
+  html[lang="de"] [data-pitch] span:has(>svg[width="42"]){font-size:clamp(17px,min(1.55vw,3vh),23px)!important;gap:9px!important;white-space:nowrap}
+  html[lang="de"] [data-pitch] svg[width="42"]{width:32px;height:32px}
+}
+html[lang="de"] h1{hyphens:manual;-webkit-hyphens:manual}
