@@ -79,4 +79,46 @@
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+  /* ---- sticky nav: shadow + compact height once scrolled ---- */
+  var stickyNav = document.querySelector('[data-sticky-nav]');
+  if (stickyNav) {
+    var navTicking = false;
+    var updateNav = function () {
+      navTicking = false;
+      stickyNav.classList.toggle('is-scrolled', (window.scrollY || document.documentElement.scrollTop) > 8);
+    };
+    window.addEventListener('scroll', function () {
+      if (!navTicking) { navTicking = true; requestAnimationFrame(updateNav); }
+    }, { passive: true });
+    updateNav();
+  }
+
+  /* ---- viewport fit: each home-page section is one laptop screen below the nav. If a section's
+     content would still overflow (short viewports), scale its inner block down — never up. ---- */
+  var fitRoot = document.getElementById('view-pdp');
+  if (fitRoot && 'zoom' in document.documentElement.style) {
+    var fitTicking = false;
+    var fitSections = function () {
+      fitTicking = false;
+      var desktop = window.innerWidth >= 901 && window.innerHeight >= 640;
+      var navH = 60;
+      fitRoot.querySelectorAll('section[data-screen-label]:not([hidden])').forEach(function (s) {
+        var inner = s.firstElementChild;
+        if (!inner) return;
+        inner.style.zoom = '';
+        if (!desktop) return;
+        var cs = getComputedStyle(s);
+        var avail = window.innerHeight - (s.getAttribute('data-screen-label') === 'Pitch' ? 110 : navH) - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        var need = inner.getBoundingClientRect().height;
+        if (need > avail + 1) inner.style.zoom = String(Math.max(0.6, Math.floor((avail / need) * 1000) / 1000));
+      });
+    };
+    window.addEventListener('resize', function () {
+      if (!fitTicking) { fitTicking = true; requestAnimationFrame(fitSections); }
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSections);
+    window.addEventListener('load', fitSections);
+    fitSections();
+  }
 })();

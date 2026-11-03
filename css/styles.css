@@ -22,15 +22,37 @@
   @keyframes foraRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   @media (max-width:900px){
     [data-desk]{display:none!important}
+    #top [data-benefits]{gap:10px!important}
+    #top [data-benefits]>div{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+    #top [data-benefits]>div>span:first-child{width:48px!important;height:48px!important}
+    #top [data-benefits]>div>span:last-child{font-size:15px!important}
+    #top [data-plan-selector] button[data-plan]>span:nth-child(3)>span:first-child{font-size:20px!important}
     [data-hero-grid]{grid-template-columns:minmax(0,1fr)!important}
     [data-cols-2]{grid-template-columns:minmax(0,1fr)!important}
+    [data-perfect-grid]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
     [data-cols-3]{grid-template-columns:minmax(0,1fr)!important}
+    [data-hiw-head]{grid-template-columns:minmax(0,1fr)!important}
+    [data-hiw-aside]{border-left:0!important;padding-left:0!important}
+    [data-hiw-summary]>div{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+    [data-hiw-summary]>div>span:first-child{width:48px!important;height:48px!important}
+    [data-hiw-summary]>div>span:last-child{font-size:15px!important}
     [data-nav-links]{display:none!important}
     [data-pad-mob]{padding-bottom:96px!important}
     [data-cols-2] > [data-end]{justify-self:start!important;max-width:100%!important}
     [data-proof-h]{font-size:clamp(32px,10.5vw,44px)!important}
     [data-faq-h]{width:100%!important;max-width:100%!important;height:auto!important;margin-bottom:24px!important}
     [data-sticky-col]{position:static!important}
+    [data-inside-stats]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px 0!important}
+    [data-inside-stats]>div{border-left:0!important;padding:0 8px!important}
+    [data-inside-stats]>div:nth-child(even){border-left:1px solid rgba(11,59,35,.18)!important;padding-left:16px!important}
+    [data-inside-ing]{grid-template-columns:minmax(0,1fr)!important}
+    [data-inside-ctas]{grid-template-columns:minmax(0,1fr)!important}
+    [data-inside-ctas] button{white-space:normal!important}
+    [data-inside-img]>div{aspect-ratio:4/3!important}
+    [data-pitch]{min-height:0!important;padding-top:40px!important;padding-bottom:48px!important}
+    [data-pitch-image-frame]{width:100%!important;max-width:520px!important;justify-self:start!important}
+    [data-pitch-points]{flex-direction:column!important;align-items:flex-start!important}
+    [data-pitch-points]>div{border-right:0!important;padding-right:0!important}
   }
   @media (max-width:640px){
     [data-cols-3]{grid-template-columns:minmax(0,1fr)!important}
@@ -45,6 +67,190 @@
     [data-habit-h]{font-size:clamp(40px,7vw,64px)!important}
   }
   @media (min-width:901px){[data-mob]{display:none!important}}
+  /* Hero pills: one row on desktop, never wrap. The hero text column is the size container (cqw on the row itself would resolve against the viewport). */
+  @media (min-width:901px){
+    #top [data-hero-grid]>div:has(>[data-pills]){container-type:inline-size}
+    #top [data-pills]{flex-wrap:nowrap!important;gap:clamp(3px,1cqw,8px)!important;max-width:100%}
+    #top [data-pills]>span{flex:0 0 auto;white-space:nowrap;padding:4px clamp(3px,1.1cqw,10px)!important;font-size:clamp(7px,1.85cqw,11px)!important;letter-spacing:clamp(0em,0.12cqw,0.1em)!important}
+  }
+
+/* ---------- Desktop fit: every section sits inside one viewport (≥901px wide, ≥640px tall).
+   Vertical rhythm, type and image frames scale with vh; mobile keeps the original flow. ---------- */
+@media (min-width:901px) and (min-height:640px){
+  #view-pdp{--fit-pad:clamp(20px,3.5vh,48px);--nav-h:60px}
+  #view-pdp section[data-screen-label]:not([data-pitch]):not(#top){padding-top:var(--fit-pad)!important;padding-bottom:var(--fit-pad)!important}
+  /* Every section = one laptop viewport below the pinned nav (sticky nav shrinks to ~60px once scrolled) */
+  #view-pdp section[data-screen-label]:not([data-pitch]):not([hidden]){min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;scroll-margin-top:var(--nav-h)}
+  #view-pdp section[data-screen-label]:not([data-pitch])>div{width:100%}
+  #view-pdp section[data-screen-label="Final CTA"]{min-height:calc(100vh - var(--nav-h))!important;min-height:calc(100svh - var(--nav-h))!important}
+  #view-pdp section[data-screen-label] [data-sticky-col]{position:static!important}
+  #view-pdp section[data-screen-label] h2{text-wrap:balance}
+
+  /* Hero / plan selector */
+  #top{padding-top:clamp(16px,2.5vh,28px)!important;padding-bottom:clamp(20px,3.5vh,40px)!important}
+  #top [data-hero-grid]{align-items:center!important}
+  #top [data-sticky-col]{width:min(100%,calc(100vh - 230px));justify-self:end}
+  #top [data-sticky-col]>div:first-child{max-height:none!important}
+  #top [data-sticky-col]>div:last-child{margin-top:8px!important}
+  #top [data-hero-grid]>div:last-child{gap:clamp(10px,1.6vh,18px)!important}
+  #top [data-intro]{gap:clamp(6px,1vh,10px)!important}
+  #top h1{font-size:clamp(30px,min(3.2vw,4.8vh),50px)!important}
+  #top h1+p{font-size:clamp(14px,1.7vh,16px)!important;line-height:1.4!important}
+  #top [data-benefits]{gap:clamp(6px,1vw,12px)!important}
+  #top [data-benefits]>div>span:first-child{width:clamp(40px,5.2vh,52px)!important;height:clamp(40px,5.2vh,52px)!important}
+  #top [data-benefits]>div>span:last-child{font-size:clamp(14px,1.8vh,17px)!important}
+  #top [data-plan-selector]{gap:8px!important}
+  #top [data-plan-selector] button{padding:clamp(10px,1.4vh,14px) 14px!important}
+  #top [data-plan-selector] button>span:nth-child(2){gap:2px!important}
+  #top button[data-track="hero_cta_click"]{min-height:54px!important;padding:12px 20px!important;font-size:16px!important}
+  /* Hero: plan cards as compact two-line rows (pill sizing lives in the width-only rule above) */
+  #top [data-plan-selector] button[data-plan]{padding:8px 12px!important;align-items:center!important;grid-template-columns:22px minmax(0,1fr) max-content!important}
+  #top [data-plan-selector] button[data-plan]>span:first-child{margin-top:0!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(2){flex-direction:row!important;flex-wrap:wrap;align-items:baseline;gap:0 10px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(2)>span:first-child{flex-basis:100%;font-size:15px}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(2)>span:first-child>span:first-child{font-size:15px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(2)>span:not(:first-child){font-size:12px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(3){gap:1px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(3)>span:first-child{font-size:18px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(3)>span:nth-child(2){font-size:12px!important}
+  #top [data-plan-selector] button[data-plan]>span:nth-child(3)>span:nth-child(3){font-size:10px!important}
+  #top [data-hero-grid]>div:last-child>div:last-child{gap:8px!important}
+
+  /* Proof */
+  #view-pdp section[data-screen-label="Proof"]{display:flex;align-items:center}
+  #view-pdp section[data-screen-label="Proof"]>[data-cols-2]{width:100%}
+  #view-pdp section[data-screen-label="Proof"] [data-proof-h]{font-size:clamp(40px,min(5.6vw,9.5vh),88px)!important}
+  #view-pdp section[data-screen-label="Proof"] [data-proof-p]{font-size:clamp(15px,min(1.35vw,2.2vh),20px)!important}
+  #view-pdp section[data-screen-label="Proof"] [data-cols-2]>div:last-child{width:min(100%,512px,calc((100vh - var(--nav-h) - 2*var(--fit-pad))*.8))!important;justify-self:end}
+
+  /* Why Fora — fills one viewport below the 73px sticky nav; content scales with vh */
+  #view-pdp section[data-screen-label="Why Fora"]{display:flex;align-items:center;padding-top:clamp(24px,4vh,56px)!important;padding-bottom:clamp(24px,4vh,56px)!important}
+  #view-pdp section[data-screen-label="Why Fora"]>[data-cols-2]{width:100%;align-items:center!important;gap:clamp(40px,6vw,112px)!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-sticky-col]>div:first-child{margin-bottom:clamp(14px,2.2vh,24px)!important}
+  #view-pdp section[data-screen-label="Why Fora"] h2{font-size:clamp(40px,min(6.4vw,9vh),104px)!important;margin-bottom:clamp(20px,3.5vh,40px)!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-sticky-col]>div:last-child{width:min(100%,640px,calc((100vh - var(--nav-h) - 2*var(--fit-pad) - 26vh)*1.1))!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-cols-2]>div:last-child>div{padding:clamp(16px,3.2vh,40px) 0!important;grid-template-columns:clamp(48px,5vh,64px) minmax(0,1fr)!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-cols-2]>div:last-child>div:last-child{padding-top:clamp(20px,3.6vh,44px)!important;padding-bottom:0!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-cols-2]>div:last-child>div>div:first-child{font-size:clamp(14px,1.7vh,17px)!important}
+  #view-pdp section[data-screen-label="Why Fora"] h3{font-size:clamp(22px,3.4vh,36px)!important;margin-bottom:clamp(4px,.8vh,10px)!important}
+  #view-pdp section[data-screen-label="Why Fora"] [data-cols-2]>div:last-child p{font-size:clamp(15px,2.1vh,20px)!important;line-height:1.45}
+  #view-pdp section[data-screen-label="Why Fora"] button[data-see-plans]{padding:clamp(14px,2vh,18px) clamp(20px,2.6vh,28px)!important;font-size:clamp(13px,1.6vh,15px)!important}
+
+  /* Problem (DE) */
+  #view-pdp section[data-screen-label="Problem"] h2{font-size:clamp(32px,6.2vh,64px)!important}
+  #view-pdp section[data-screen-label="Problem"] [data-cols-2]:first-child>div>div{padding:clamp(8px,1.2vh,12px) 0!important;font-size:clamp(17px,2.3vh,24px)!important}
+  #view-pdp section[data-screen-label="Problem"] [data-cols-2]+[data-cols-2]{margin-top:clamp(20px,3.5vh,48px)!important;padding-top:clamp(16px,2.5vh,32px)!important}
+  #view-pdp section[data-screen-label="Problem"] .display{font-size:clamp(32px,6.2vh,64px)!important}
+  #view-pdp section[data-screen-label="Problem"] [data-cols-2]+[data-cols-2]+div{margin-top:clamp(16px,2.5vh,32px)!important}
+  #view-pdp section[data-screen-label="Problem"] [data-cols-2]+[data-cols-2]+div>div{flex-basis:clamp(120px,14vh,220px)!important}
+
+  /* How it works: header + three cards inside one viewport */
+  #view-pdp section[data-screen-label="How it works"]{display:flex;align-items:center}
+  #view-pdp section[data-screen-label="How it works"]>div{width:100%}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-head]{margin-bottom:clamp(16px,3vh,40px)!important}
+  #view-pdp section[data-screen-label="How it works"] h2{font-size:clamp(36px,min(5.4vw,8.5vh),84px)!important;line-height:.95!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-aside]>p{font-size:clamp(16px,min(1.5vw,2.6vh),26px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-summary]{gap:8px!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-summary]>div{gap:clamp(6px,.8vw,12px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-summary]>div>span:first-child{width:clamp(36px,min(3.6vw,5.5vh),56px)!important;height:clamp(36px,min(3.6vw,5.5vh),56px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-summary]>div>span:last-child{font-size:clamp(13px,min(1.2vw,1.8vh),19px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-img]{aspect-ratio:auto!important;height:clamp(120px,24vh,230px)}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-body]{gap:clamp(8px,1.4vh,14px)!important;padding:clamp(14px,2vh,26px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-icon]{width:clamp(34px,4.8vh,48px);height:clamp(34px,4.8vh,48px)}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-body]>div:first-child{grid-template-columns:clamp(34px,4.8vh,48px) minmax(0,1fr)!important;column-gap:clamp(12px,1.6vh,18px)!important}
+  #view-pdp section[data-screen-label="How it works"] h3{font-size:clamp(22px,min(2.2vw,3.4vh),36px)!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-body] p{font-size:clamp(14px,1.8vh,17px)!important;line-height:1.4!important}
+  #view-pdp section[data-screen-label="How it works"] [data-hiw-body] span{font-size:clamp(11.5px,1.5vh,13px)!important;padding:5px 10px!important}
+
+  /* Daily habit */
+  /* One viewport: steps row on top, consistency + 28-day grid below, vertically centred */
+  #view-pdp section[data-screen-label="Daily habit"]{display:flex;align-items:center}
+  #view-pdp section[data-screen-label="Daily habit"]>div{width:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,4vh,56px)}
+  #view-pdp section[data-screen-label="Daily habit"] [data-habit-h]{font-size:clamp(40px,min(5vw,7.5vh),96px)!important}
+  #view-pdp section[data-screen-label="Daily habit"] [data-habit-cols]{align-items:end!important}
+  #view-pdp section[data-screen-label="Daily habit"] [data-habit-cols]>div{gap:clamp(8px,1.4vh,14px)!important}
+  #view-pdp section[data-screen-label="Daily habit"] [data-habit-cols] div[style*="aspect-ratio"]{aspect-ratio:auto!important;height:clamp(140px,36vh,400px)}
+  #view-pdp section[data-screen-label="Daily habit"] [data-cols-2]{margin-top:0!important;padding-top:clamp(16px,3vh,36px)!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:clamp(24px,4vw,72px)!important}
+  #view-pdp section[data-screen-label="Daily habit"] h3{font-size:clamp(28px,min(3.4vw,5vh),52px)!important;margin-bottom:clamp(8px,1.4vh,14px)!important}
+  #view-pdp section[data-screen-label="Daily habit"] [data-cols-2] p{font-size:clamp(15px,1.9vh,18px);line-height:1.45}
+  #view-pdp section[data-screen-label="Daily habit"] [data-days]{grid-template-columns:repeat(14,minmax(0,1fr))!important;gap:clamp(4px,.7vh,8px)!important}
+  #view-pdp section[data-screen-label="Daily habit"] [data-days]>div{font-size:clamp(11px,1.6vh,17px)!important}
+
+  /* What's inside */
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-head]{margin-bottom:clamp(12px,2vh,24px)!important;gap:clamp(4px,.8vh,8px)!important}
+  #view-pdp section[data-screen-label="What's inside"] h2{font-size:clamp(32px,min(4.8vw,6.5vh),68px)!important;white-space:nowrap;max-width:none!important;letter-spacing:.01em;line-height:1}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-head] p{font-size:clamp(15px,1.9vh,20px)!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-stats]{padding:clamp(10px,1.6vh,20px) 0!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-stats]>div>div:first-child{font-size:clamp(28px,4vh,44px)!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-grid]{margin-top:clamp(14px,2.5vh,32px)!important;grid-template-columns:minmax(0,35fr) minmax(0,65fr)!important;align-items:stretch!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-img]>div{aspect-ratio:auto!important;height:100%!important;min-height:clamp(300px,36vh,520px)}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-ing]>div{padding:clamp(8px,1.4vh,18px) 0!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-ing] h3,#view-pdp section[data-screen-label="What's inside"] [data-inside-ing] h3+div{font-size:clamp(17px,2.3vh,24px)!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-ing] p{font-size:clamp(13px,1.6vh,15px)!important;line-height:1.4!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-badges] span{padding:clamp(6px,.9vh,9px) 14px!important;font-size:clamp(12px,1.5vh,14px)!important}
+  #view-pdp section[data-screen-label="What's inside"] [data-inside-ctas] button{padding:clamp(12px,1.8vh,18px) 18px!important;font-size:clamp(11px,.85vw,13px)!important}
+
+  /* Reviews */
+  #reviews h2{font-size:clamp(32px,min(5.2vw,6vh),64px)!important}
+  #reviews h2+div{margin-top:8px}
+  #reviews div[style*="overflow-x"]{margin-top:clamp(12px,2vh,24px)!important}
+  /* Reviews: one swipeable row of cards, three in view */
+  #reviews [style*="auto-fill"]{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:16px!important;padding-top:16px!important;padding-bottom:6px;gap:16px!important}
+  #reviews [style*="auto-fill"]>div{flex:0 0 calc((100% - 32px)/3);scroll-snap-align:start;gap:10px!important;padding:clamp(14px,1.8vh,20px)!important}
+  #reviews [style*="auto-fill"] p{font-size:15px!important}
+
+  /* Comparison */
+  #view-pdp section[data-screen-label="Comparison"] h2{font-size:clamp(32px,min(5.2vw,6vh),64px)!important;margin-bottom:clamp(14px,2.5vh,32px)!important}
+  #view-pdp section[data-screen-label="Comparison"] div[style*="min-width"]>div:not(:first-child)>div{padding-top:clamp(8px,1.3vh,14px)!important;padding-bottom:clamp(8px,1.3vh,14px)!important}
+  #view-pdp section[data-screen-label="Comparison"] div[style*="min-width"]>div:not(:first-child){font-size:14px!important}
+
+  /* Founder */
+  #view-pdp section[data-screen-label="Founder"]{display:flex;align-items:center}
+  #view-pdp section[data-screen-label="Founder"]>[data-cols-2]{width:100%}
+  #view-pdp section[data-screen-label="Founder"] [data-cols-2]>div:first-child{width:min(100%,calc((100vh - var(--nav-h) - 2*var(--fit-pad))*.8))!important}
+  #view-pdp section[data-screen-label="Founder"] h2{font-size:clamp(26px,min(3.6vw,4.2vh),44px)!important;margin-bottom:clamp(10px,1.8vh,18px)!important}
+  #view-pdp section[data-screen-label="Founder"] p{font-size:clamp(15px,1.8vh,17px)!important;margin-bottom:clamp(8px,1.3vh,14px)!important}
+  #view-pdp section[data-screen-label="Founder"] p:last-child{margin-bottom:0!important}
+  #view-pdp section[data-screen-label="Founder"] [data-cols-2]>div:last-child>div:first-child{margin-bottom:10px!important}
+  #view-pdp section[data-screen-label="Founder"] [data-perfect-for]{margin-top:clamp(16px,2.6vh,32px)!important;padding-top:clamp(12px,1.8vh,22px)!important}
+  #view-pdp section[data-screen-label="Founder"] [data-perfect-for]>div:first-child{margin-bottom:clamp(8px,1.2vh,14px)!important}
+  #view-pdp section[data-screen-label="Founder"] [data-perfect-grid]>div{padding:clamp(10px,1.4vh,18px)!important;gap:clamp(6px,.8vh,10px)!important}
+  #view-pdp section[data-screen-label="Founder"] [data-perfect-grid]>div>div:first-of-type{font-size:clamp(13px,1.6vh,15px)!important}
+  #view-pdp section[data-screen-label="Founder"] [data-perfect-grid]>div>div:last-child{font-size:clamp(12px,1.45vh,13.5px)!important}
+
+  /* Offer repeat */
+  #plans-2 [data-cols-2]{align-items:center!important}
+  #plans-2 h2{font-size:clamp(28px,min(4.5vw,4.6vh),48px)!important;margin-bottom:clamp(12px,2vh,20px)!important}
+  #plans-2 [data-sticky-col]>div{width:min(100%,560px,calc(100vh - 2*var(--fit-pad) - 14vh))!important}
+  #plans-2 [data-plan-selector]{gap:10px!important}
+  #plans-2 [data-plan-selector] button[data-plan]{padding:clamp(10px,1.5vh,16px) 14px!important}
+  #plans-2 button[data-track="add_to_cart"]{min-height:56px!important;padding:14px 20px!important;font-size:16px!important}
+
+  /* Guarantee */
+  #view-pdp section[data-screen-label="Guarantee"]{min-height:56vh;display:flex;align-items:center}
+  #view-pdp section[data-screen-label="Guarantee"]>[data-cols-2]{width:100%}
+  #view-pdp section[data-screen-label="Guarantee"] [data-cols-2]>div:first-child{font-size:clamp(96px,min(18vw,30vh),280px)!important}
+
+  /* FAQ */
+  #faq [data-cols-2]{align-items:start!important}
+  #faq [data-faq-h]{height:auto!important;width:auto!important;margin-bottom:0!important}
+  #faq [data-faq-h] span{font-size:clamp(32px,min(5.5vw,6vh),64px)!important}
+  /* FAQ: single-column accordion, scales with viewport height */
+  #faq [data-cols-2]{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)!important}
+  #faq [data-faq-item] button{padding:clamp(12px,2vh,22px) 0!important;min-height:56px!important;font-size:clamp(18px,2.6vh,26px)!important}
+  #faq [data-faq-item] [data-faq-icon]{width:clamp(28px,3.6vh,36px)!important;height:clamp(28px,3.6vh,36px)!important;font-size:clamp(18px,2.4vh,22px)!important}
+  #faq [data-faq-item] p{padding-bottom:clamp(12px,2vh,22px)!important;font-size:clamp(15px,1.9vh,19px)!important}
+
+  /* Final CTA */
+  #view-pdp section[data-screen-label="Final CTA"]>[data-cols-2]{width:100%}
+}
+
+/* How it works summary row: stack icon over label at narrow desktop widths */
+@media (min-width:901px) and (max-width:1180px){
+  [data-hiw-summary]>div{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+  [data-hiw-summary]>div>span:first-child{width:44px!important;height:44px!important}
+  [data-hiw-summary]>div>span:last-child{font-size:15px!important}
+}
 
 /* Hover states (were inline "style-hover" in the design file) */
 .scp0:hover{background:#FF5A1F!important;color:#0B3B23!important}
@@ -58,6 +264,11 @@ a[data-track="nav_shop_click"]:hover{background:#FF5A1F!important;color:#0B3B23!
 
 /* Headings: New Kansas Bold (Adobe Fonts kit sdf4idw), same as the Shopify theme */
 h1,h2,h3,h4,.display,[data-proof-h],[data-habit-h]{font-family:var(--font-heading)!important;font-weight:700!important;font-stretch:normal!important;text-transform:none!important}
+
+/* "What's inside" headline: emphasised word 50% larger, slightly tracked and widened */
+#inside [data-inside-head] h2{line-height:1;letter-spacing:.01em!important}
+#inside [data-inside-head] h2>span{font-size:1.5em;letter-spacing:.03em;display:inline-block;transform:scaleX(1.06);transform-origin:left center;line-height:.9;vertical-align:baseline;padding-right:.04em}
+@media (min-width:901px){#inside [data-inside-head] h2{max-width:none!important;white-space:nowrap}}
 
 /* Placeholder photo slots (no image supplied yet) */
 .slot-empty{display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:rgba(11,59,35,.06);border:1.5px dashed rgba(11,59,35,.3);color:#3E6B50;font-size:12px;line-height:1.3}
@@ -93,3 +304,15 @@ h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
 .cookie-actions button:hover{background:rgba(250,250,244,.12)}
 .cookie-actions .cb-accept:hover{background:#FAFAF4}
 @media (max-width:480px){.cookie-banner{left:12px;right:12px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom))}.cookie-actions button{flex:1}}
+
+/* Sticky top navigation (home pages). Stays in flow, pins to the top; gains a soft frosted shadow once the page has scrolled. */
+[data-sticky-nav]{position:sticky;top:0;z-index:60;will-change:transform;background:rgba(250,250,244,.86)!important;-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);transition:box-shadow .3s ease,padding .3s ease,border-color .3s ease}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){[data-sticky-nav]{background:#FAFAF4!important}}
+[data-sticky-nav].is-scrolled{box-shadow:0 1px 0 rgba(11,59,35,.08),0 10px 30px -12px rgba(11,59,35,.22);border-bottom-color:rgba(11,59,35,.06)!important}
+@media (min-width:901px){[data-sticky-nav].is-scrolled{padding-top:10px!important;padding-bottom:10px!important}}
+[data-sticky-nav] img{transition:height .3s ease}
+@media (min-width:901px){[data-sticky-nav].is-scrolled img{height:38px!important}}
+@media (max-width:900px){[data-sticky-nav]{padding-top:10px!important;padding-bottom:10px!important}[data-sticky-nav] img{height:36px!important}}
+/* Anchor targets land below the pinned bar */
+#view-pdp [id]{scroll-margin-top:84px}
+@media (max-width:900px){#view-pdp [id]{scroll-margin-top:64px}}

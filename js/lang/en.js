@@ -17,7 +17,7 @@ window.FORA_L = (function () {
         "perMonthLabel": "/ month",
         "billed": "£89.97 billed every 3 months",
         "perDay": "£1.07",
-        "saving": "Save 40% vs one-time",
+        "saving": "Save 27% vs one-time",
         "note": "Build the habit properly.",
         "total": "£89.97",
         "totalLabel": "billed today, every 3 months",
@@ -29,30 +29,30 @@ window.FORA_L = (function () {
         "event": "one_month_selected",
         "tag": "FLEXIBLE",
         "name": "1-month subscription",
-        "perMonth": "£39.99",
+        "perMonth": "£34.99",
         "perMonthLabel": "/ month",
         "billed": "Billed monthly",
-        "perDay": "£1.43",
-        "saving": "Save 20% vs one-time",
+        "perDay": "£1.25",
+        "saving": "Save 15% vs one-time",
         "note": "Pause, skip or cancel.",
-        "total": "£39.99",
+        "total": "£34.99",
         "totalLabel": "billed today, then monthly",
-        "totalNum": 39.99
+        "totalNum": 34.99
       },
       {
         "id": "one_time",
         "event": "one_time_selected",
         "tag": "",
         "name": "One-time purchase",
-        "perMonth": "£49.99",
+        "perMonth": "£40.99",
         "perMonthLabel": "",
         "billed": "One pouch · 28 daily packs",
-        "perDay": "£1.79",
+        "perDay": "£1.46",
         "saving": "",
         "note": "No subscription.",
-        "total": "£49.99",
+        "total": "£40.99",
         "totalLabel": "billed once",
-        "totalNum": 49.99
+        "totalNum": 40.99
       }
     ],
     "reviewFilters": [

@@ -63,6 +63,7 @@
   var revBtns = $$('button[data-track="review_filter"]');
   function filterLabel(b) { return C.reviewFilters[+b.dataset.filter]; }
   function renderReviews() {
+    if (!revGrid) return;
     revBtns.forEach(function (b) {
       var on = filterLabel(b) === state.reviewFilter;
       b.style.background = on ? GREEN : 'transparent'; b.style.color = on ? LIME : GREEN;
