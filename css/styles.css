@@ -322,10 +322,23 @@ h1,h2,h3,h4{line-height:1.08!important;letter-spacing:-.015em!important}
 
 /* German copy is longer: let headings, pills and the trust row wrap instead of overflowing */
 html[lang="de"] #top h1,html[lang="de"] #top h1 span{white-space:normal!important}
-html[lang="de"] [data-proof-h]{font-size:clamp(34px,4.4vw,72px)!important}
 html[lang="de"] [data-proof-h] span{white-space:normal!important}
 @media (min-width:901px){
   html[lang="de"] #top [data-pills]{flex-wrap:wrap!important;gap:6px!important}
   html[lang="de"] #top [data-pills]>span{white-space:normal;padding:4px 8px!important;font-size:11px!important;letter-spacing:.06em!important}
   html[lang="de"] [data-trust-row]{flex-wrap:wrap!important;justify-content:center!important;gap:6px 14px!important;font-size:12px!important}
 }
+
+/* German headings: longer words, so smaller type, hyphenation and no forced single lines */
+html[lang="de"] h1,html[lang="de"] h2,html[lang="de"] h3,html[lang="de"] h4,html[lang="de"] [data-proof-h],html[lang="de"] [data-habit-h]{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+html[lang="de"] h2,html[lang="de"] h3,html[lang="de"] [data-proof-h],html[lang="de"] [data-habit-h]{zoom:.85}
+html[lang="de"] h1 span,html[lang="de"] h2 span,html[lang="de"] h3 span,html[lang="de"] [data-proof-h] span,html[lang="de"] [data-habit-h] span{white-space:normal!important}
+
+/* Plan cards on small screens: price column may wrap so the text column keeps its width (matters most in German) */
+@media (max-width:900px){
+  [data-plan-selector] button[data-plan]{grid-template-columns:22px minmax(0,1fr) minmax(96px,38%)!important}
+  [data-plan-selector] button[data-plan]>span:nth-child(3){white-space:normal!important;text-align:right}
+  [data-plan-selector] button[data-plan]>span:nth-child(3)>span{white-space:normal!important}
+  html[lang="de"] [data-screen-label="Why Fora"] h2{zoom:.75}
+}
+html[lang="de"] [data-screen-label="Why Fora"] h2{zoom:.78}
