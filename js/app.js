@@ -169,15 +169,16 @@
     var near = els.map(function (e) { return { e: e, d: Math.abs(e.getBoundingClientRect().top - 90) }; }).sort(function (a, b) { return a.d - b.d; })[0].e;
     scrollToEl(near, 90);
   }
-  var CTA = { hero_cta_click: 'hero', add_to_cart: 'repeat_module', value_cta_click: 'value_stack', final_cta_click: 'final_cta', sticky_cta_click: 'sticky' };
+  var CTA = { hero_cta_click: 'hero', add_to_cart: 'repeat_module', value_cta_click: 'value_stack', final_cta_click: 'final_cta' };
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-track], button');
     if (!t) return;
     var key = t.dataset && t.dataset.track;
+    if (key === 'sticky_cta_click') { e.preventDefault(); goPlans(); track(key); return; }
     if (key === 'nav_shop_click') { e.preventDefault(); goPlans(); track('nav_shop_click'); return; }
     if (key === 'plan_selected') { selectPlan(t.dataset.plan); return; }
     if (key === 'nutrition_open') { openDrawer(t.dataset.panel === 'nutrition' ? 'nutrition' : 'ingredients'); return; }
-    if (key && CTA[key]) { track(key); openCheckout(CTA[key] + (key === 'sticky_cta_click' ? (t.closest('#sticky-mob') ? '_mobile' : '_desktop') : '')); return; }
+    if (key && CTA[key]) { track(key); openCheckout(CTA[key] + ''); return; }
     if (t.hasAttribute('data-see-plans')) { scrollToNearestPlans(); track('sticky_cta_click'); }
   });
 
