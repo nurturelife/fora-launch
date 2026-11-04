@@ -15,12 +15,12 @@ window.FORA_L = (function () {
         "name": "3-month subscription",
         "perMonth": "£29.99",
         "perMonthLabel": "/ month",
-        "billed": "£89.97 billed every 3 months",
+        "billed": "£89.97 billed every 12 weeks",
         "perDay": "£1.07",
         "saving": "Save 27% vs one-time",
         "note": "Build the habit properly.",
         "total": "£89.97",
-        "totalLabel": "billed today, every 3 months",
+        "totalLabel": "billed today, every 12 weeks",
         "defaultSelected": true,
         "totalNum": 89.97
       },
@@ -528,7 +528,7 @@ window.FORA_L = (function () {
     "typeSub": "Subscription · pause, skip or cancel",
     "typeOnce": "One-time · no subscription",
     "billed": {
-      "three_month": "{total} every 3 months",
+      "three_month": "{total} every 12 weeks",
       "one_month": "{total} monthly",
       "one_time": "{total} once"
     },

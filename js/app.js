@@ -169,6 +169,19 @@
     var near = els.map(function (e) { return { e: e, d: Math.abs(e.getBoundingClientRect().top - 90) }; }).sort(function (a, b) { return a.d - b.d; })[0].e;
     scrollToEl(near, 90);
   }
+  // In-page links scroll smoothly and leave the URL alone (no #fragment); the logo is plain home.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.hasAttribute('data-co-back') || a.dataset.track === 'nav_shop_click') return;
+    var href = a.getAttribute('href');
+    if (a.hasAttribute('data-home') && !pdpView.hidden) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (href.length < 2 || href.charAt(0) !== '#' || href === '#checkout') return;
+    var el = document.getElementById(href.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    if (href === '#top' || href === '#plans') { goPlans(); return; }
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   var CTA = { hero_cta_click: 'hero', add_to_cart: 'repeat_module', value_cta_click: 'value_stack', final_cta_click: 'final_cta' };
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-track], button');

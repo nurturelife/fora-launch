@@ -15,13 +15,13 @@ window.FORA_L = (function () {
         "name": "3-Monats-Abo",
         "perMonth": "29,99 €",
         "perMonthLabel": "/ Monat",
-        "billed": "89,97 € alle 3 Monate abgerechnet",
+        "billed": "89,97 € alle 12 Wochen abgerechnet",
         "perDay": "1,07 €",
         "saving": "27 % sparen gegenüber Einmalkauf",
         "note": "Baue die Gewohnheit richtig auf.",
         "total": "89,97 €",
         "totalNum": 89.97,
-        "totalLabel": "heute abgerechnet, dann alle 3 Monate",
+        "totalLabel": "heute abgerechnet, dann alle 12 Wochen",
         "defaultSelected": true
       },
       {
@@ -527,7 +527,7 @@ window.FORA_L = (function () {
     "typeSub": "Abo · pausieren, überspringen oder kündigen",
     "typeOnce": "Einmalkauf · kein Abo",
     "billed": {
-      "three_month": "{total} alle 3 Monate",
+      "three_month": "{total} alle 12 Wochen",
       "one_month": "{total} monatlich",
       "one_time": "{total} einmalig"
     },

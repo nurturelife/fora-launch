@@ -35,7 +35,7 @@
 
   
   <nav data-sticky-nav="1" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px clamp(16px, 4vw, 48px); border-bottom: 1px solid rgba(11, 59, 35, 0.14); background: rgb(250, 250, 244);">
-    <a href="#top" style="display:block;line-height:0"><img src="{{root}}assets/logo.png" alt="{{nav.01a}}" width="800" height="272" style="height:44px;width:auto;display:block"></a>
+    <a href="./" data-home style="display:block;line-height:0"><img src="{{root}}assets/logo.png" alt="{{nav.01a}}" width="800" height="272" style="height:44px;width:auto;display:block"></a>
     <div data-nav-links="1" style="display: flex; gap: 28px; font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">
       <a href="#benefits">{{nav.02}}</a><a href="#inside">{{nav.03}}</a><a href="#why">{{nav.04}}</a><a href="#faq">{{nav.06}}</a>
     </div>
@@ -139,7 +139,7 @@
                 <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>{{x2.24}}</span><span style="font-weight: 700; color: rgb(11, 59, 35);">{{hero.30}}</span></span>
               </span>
               <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£29.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">{{x2.25}}</span></span>
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">{{price.three}}<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">{{x2.25}}</span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">{{hero.32}}</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);">{{hero.33}}</span>
               </span>
@@ -152,7 +152,7 @@
                 <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>{{x2.26}}</span><span style="font-weight: 700; color: rgb(11, 59, 35);">{{hero.37}}</span></span>
               </span>
               <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£34.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">{{x2.25}}</span></span>
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">{{price.one}}<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;">{{x2.25}}</span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">{{hero.39}}</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);">{{hero.40}}</span>
               </span>
@@ -165,7 +165,7 @@
                 <span style="font-size: 13px; color: rgb(62, 107, 80); display: flex; flex-wrap: wrap; gap: 4px 10px;"><span>{{hero.42}}</span><span style="font-weight: 700; color: rgb(11, 59, 35);">{{hero.43}}</span></span>
               </span>
               <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 3px; white-space: nowrap;">
-                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">£40.99<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;"></span></span>
+                <span style="font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1;">{{price.once}}<span style="font-size: 13px; font-weight: 600; letter-spacing: 0px;"></span></span>
                 <span style="font-size: 13px; font-weight: 800; color: rgb(255, 90, 31);">{{hero.45}}</span>
                 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(62, 107, 80);"></span>
               </span>
@@ -746,7 +746,7 @@
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
             <button type="button" data-track="faq_open" data-faq="6" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>{{faq.q10}}</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
-            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">Yes. {{hero.26}} from your account, with no phone call required. You will get a reminder before every charge.</p>
+            <p hidden style="margin: 0px; padding: 0px 64px 30px 0px; color: rgb(62, 107, 80); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.5; max-width: 62ch; text-wrap: pretty; animation: 0.25s ease 0s 1 normal none running foraRise;">{{faq.sub}}</p>
           </div>
           <div style="border-bottom: 1px solid rgba(11, 59, 35, 0.14);" data-faq-item>
             <button type="button" data-track="faq_open" data-faq="7" aria-expanded="false" class="scp4" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; background: transparent; border: 0px; color: rgb(11, 59, 35); text-align: left; padding: 26px 0px; font-weight: 800; font-size: clamp(22px, 2vw, 30px); letter-spacing: -0.015em; line-height: 1.2; min-height: 72px;"><span>{{faq.q11}}</span><span data-faq-icon style="flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid; border-radius: 50%; display: grid; place-items: center; font-size: 26px; line-height: 1; transform: none; transition: transform 0.2s;">+</span></button>
@@ -777,15 +777,15 @@
       <div style="grid-column: span 1;"><img src="{{root}}assets/logo.png" alt="{{footer.01a}}" width="800" height="272" style="height:72px;width:auto;display:block"><p style="margin: 12px 0px 0px; font-size: 14px; color: rgb(62, 107, 80); max-width: 26ch;">{{footer.02}}</p></div>
       
         <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600;">
-          <a href="#top">{{footer.03}}</a><a href="#top">{{footer.04}}</a><a href="#top">{{footer.05}}</a><a href="#top">{{footer.06}}</a>
+          <a href="#plans">{{footer.03}}</a><a href="#why">{{footer.04}}</a><a href="#inside">{{footer.05}}</a><a href="#faq">{{footer.06}}</a>
         </div>
       
         <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600;">
-          <a href="#top">{{footer.07}}</a><a href="#top">{{footer.08}}</a><a href="#top">{{footer.09}}</a><a href="#top">{{footer.10}}</a>
+          <a href="mailto:hi@foragummy.com">{{footer.07}}</a><a href="#faq">{{footer.08}}</a><a href="#faq">{{footer.09}}</a><a href="mailto:hi@foragummy.com">{{footer.10}}</a>
         </div>
       
         <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600;">
-          <a href="legal/privacy.html">{{footer.11}}</a><a href="legal/terms.html">{{footer.12}}</a><a href="#top">{{footer.13}}</a><a href="#top">{{footer.14}}</a>
+          <a href="legal/privacy.html">{{footer.11}}</a><a href="legal/terms.html">{{footer.12}}</a><span>{{footer.13}}</span><span>{{footer.14}}</span>
         </div>
       
     </div>
@@ -806,7 +806,7 @@
   </div>
   <!-- COMPACT STICKY HEADER (after hero) -->
   <div id="sticky-desk" hidden data-desk="1" data-sticky-bar="1" style="position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px clamp(16px,4vw,48px);background:rgba(250,250,244,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(11,59,35,.14);animation:foraRise .3s ease">
-    <a href="#top" style="display:block;line-height:0"><img src="{{root}}assets/logo.png" alt="{{sticky-desk.01a}}" width="800" height="272" style="height:38px;width:auto;display:block"></a>
+    <a href="./" data-home style="display:block;line-height:0"><img src="{{root}}assets/logo.png" alt="{{sticky-desk.01a}}" width="800" height="272" style="height:38px;width:auto;display:block"></a>
     <div style="display:flex;align-items:center;gap:20px">
       <div style="font-size:14px;font-weight:600">{{sticky-desk.02}}</div>
       <button type="button" data-track="sticky_cta_click" class="scp1" style="background:#FF5A1F;color:#0B3B23;border:0;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;border-radius:4px">{{sticky-desk.03}}</button>
