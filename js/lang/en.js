@@ -532,7 +532,7 @@ window.FORA_L = (function () {
       "one_month": "{total} monthly",
       "one_time": "{total} once"
     },
-    "deliveryFree": "Free UK delivery",
+    "deliveryFree": "Free UK & EU delivery",
     "deliveryCalc": "Calculated at next step",
     "showSummary": "Show order summary",
     "hideSummary": "Hide order summary",

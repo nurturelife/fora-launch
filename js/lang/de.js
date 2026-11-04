@@ -531,7 +531,7 @@ window.FORA_L = (function () {
       "one_month": "{total} monatlich",
       "one_time": "{total} einmalig"
     },
-    "deliveryFree": "Kostenloser Versand in Großbritannien",
+    "deliveryFree": "Kostenloser Versand in Großbritannien und die EU",
     "deliveryCalc": "Wird im nächsten Schritt berechnet",
     "showSummary": "Bestellübersicht anzeigen",
     "hideSummary": "Bestellübersicht ausblenden",
