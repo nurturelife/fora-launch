@@ -366,3 +366,16 @@ html[lang="de"] #view-pdp section[data-screen-label="Proof"] [data-proof-h]{zoom
 /* German: "So funktioniert's" heading on three lines like the English one */
 html[lang="de"] #view-pdp section[data-screen-label="How it works"] h2{zoom:1;font-size:clamp(28px,min(3.4vw,6vh),60px)!important;max-width:none!important;hyphens:manual}
 @media (min-width:700px){html[lang="de"] #view-pdp section[data-screen-label="How it works"] h2 span{white-space:nowrap!important}}
+
+/* Phones: nothing may be cut off or need sideways scrolling (desktop and tablet unchanged) */
+@media (max-width:600px){
+  #view-pdp h1,#view-pdp h2,#view-pdp [data-proof-h],#view-pdp [data-habit-h]{overflow-wrap:break-word}
+  #view-pdp h1,#view-pdp h2,#view-pdp h3{white-space:normal!important}
+  #view-pdp h1 span,#view-pdp h2 span,#view-pdp [data-proof-h] span,#view-pdp [data-habit-h] span{white-space:normal!important}
+  #top h1{font-size:clamp(32px,10.5vw,44px)!important}
+  [data-compare]{overflow-x:visible!important}
+  [data-compare]>div{min-width:0!important}
+  [data-compare] [style*="grid-template-columns"]{grid-template-columns:1.15fr 1fr 1fr 1fr!important;gap:0 6px!important;font-size:12px!important;letter-spacing:.02em!important;line-height:1.25}
+  [data-compare] [style*="grid-template-columns"]>div{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+  [data-compare] [style*="padding: 16px 12px"],[data-compare] [style*="padding: 8px 12px"]{padding-left:6px!important;padding-right:6px!important}
+}
