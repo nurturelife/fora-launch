@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="../../assets/favicon.png">
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
-<link rel="stylesheet" href="../../css/styles.css?v=20261111165238">
+<link rel="stylesheet" href="../../css/styles.css?v=20261123130628">
 <style>
   .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
   .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
@@ -25,8 +25,9 @@
 <script>
 /* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
    Paste Fora's IDs below. An empty ID means that tool is never loaded.
-   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
-   PostHog session recording is switched off on purpose. */
+   GA4 and the Meta Pixel are not loaded, and set no cookies, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog runs in cookieless mode ('on_reject'): until the visitor accepts it only counts page views, with a server-side
+   hash and nothing stored on the device. Accepting switches on cookies, heatmaps and clicks. Session recording stays off. */
 window.FORA_TRACKING = { GA_ID: 'G-HRPSFHCQR4', META_PIXEL_ID: '1427029515698975', POSTHOG_KEY: 'phc_DgEsWGyq4pUSBpL29A4LrV3Y9fj6XBd48H7FPtjxS7Tw' };
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -44,7 +45,7 @@ window.foraLoadAnalytics = function () {
     gtag('js', new Date());
     gtag('config', T.GA_ID);
   }
-  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.POSTHOG_KEY) window.foraPosthogConsent(true);
   if (T.META_PIXEL_ID) window.foraLoadMeta();
 };
 window.foraLoadMeta = function () {
@@ -54,9 +55,25 @@ window.foraLoadMeta = function () {
   fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
   fbq('track', 'PageView');
 };
+/* PostHog consent. Accepted = cookies, heatmaps and autocapture. Anything else (declined, ignored, undecided) = cookieless page counts only. */
+window.foraPosthogConsent = function (granted) {
+  window.foraPosthogGranted = !!granted;
+  var ph = window.posthog;
+  if (!ph || !ph.__loaded) return;
+  if (granted) {
+    ph.opt_in_capturing();
+    ph.set_config({ autocapture: true, capture_heatmaps: true });
+  } else {
+    ph.set_config({ autocapture: false, capture_heatmaps: false });
+    ph.opt_out_capturing();
+  }
+};
 window.foraLoadPosthog = function () {
   if (window.foraPosthogLoaded) return;
   window.foraPosthogLoaded = true;
+  var granted = false;
+  try { granted = localStorage.getItem('fora.consent') === 'granted'; } catch (e) {}
+  window.foraPosthogGranted = granted;
   var s = document.createElement('script');
   s.async = true;
   s.crossOrigin = 'anonymous';
@@ -67,14 +84,19 @@ window.foraLoadPosthog = function () {
       api_host: 'https://eu.i.posthog.com',
       ui_host: 'https://eu.posthog.com',
       person_profiles: 'identified_only',
+      cookieless_mode: 'on_reject',
+      opt_out_capturing_by_default: !granted,
       capture_pageview: true,
-      capture_heatmaps: true,
-      autocapture: true,
-      disable_session_recording: true
+      capture_heatmaps: granted,
+      autocapture: granted,
+      disable_session_recording: true,
+      // opted out by default when not accepted: only act when accepted, so nothing is written to storage before a choice
+      loaded: function () { if (window.foraPosthogGranted) window.foraPosthogConsent(true); }
     });
   };
   document.head.appendChild(s);
 };
+if (window.FORA_TRACKING.POSTHOG_KEY) window.foraLoadPosthog();
 try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
 </script>
 </head>
@@ -111,7 +133,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <h2>Änderungen</h2>
     <p>Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Aktualisierungen werden auf dieser Seite mit einem geänderten Datum bei „Zuletzt aktualisiert“ veröffentlicht. Änderungen berühren weder gesetzliche Rechte noch bestehende vertragliche Rechte.</p>
 </main>
-<script src="../../js/lang/de.js?v=20261111165238"></script>
-<script src="../../js/common.js?v=20261111165238"></script>
+<script src="../../js/lang/de.js?v=20261123130628"></script>
+<script src="../../js/common.js?v=20261123130628"></script>
 </body>
 </html>

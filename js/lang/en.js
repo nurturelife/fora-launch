@@ -561,7 +561,7 @@ window.FORA_L = (function () {
   },
   "consent": {
     "title": "Cookies",
-    "text": "We would like to use analytics and advertising cookies (Google Analytics, PostHog and the Meta Pixel) to understand how the site is used, including heatmaps of clicks and scrolling, and to measure our advertising. They stay off unless you accept.",
+    "text": "We would like to use analytics and advertising cookies (Google Analytics, PostHog and the Meta Pixel) to understand how the site is used, including heatmaps of clicks and scrolling, and to measure our advertising. They stay off unless you accept. If you decline or don’t choose, we still count visits and page views anonymously, with no cookie or other data saved on your device.",
     "privacy": "Privacy policy",
     "accept": "Accept",
     "decline": "Decline"

@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://use.typekit.net/sdf4idw.css">
-<link rel="stylesheet" href="../css/styles.css?v=20261111165238">
+<link rel="stylesheet" href="../css/styles.css?v=20261123130628">
 <style>
   .legal-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(16px,4vw,48px);border-bottom:1px solid rgba(11,59,35,.14);background:#FAFAF4}
   .legal-nav .nav-right{display:flex;align-items:center;gap:16px;font-size:13px}
@@ -25,8 +25,9 @@
 <script>
 /* Google Analytics 4, PostHog (heatmaps, EU cloud) and the Meta Pixel.
    Paste Fora's IDs below. An empty ID means that tool is never loaded.
-   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
-   PostHog session recording is switched off on purpose. */
+   GA4 and the Meta Pixel are not loaded, and set no cookies, until the visitor accepts in the cookie banner (js/common.js).
+   PostHog runs in cookieless mode ('on_reject'): until the visitor accepts it only counts page views, with a server-side
+   hash and nothing stored on the device. Accepting switches on cookies, heatmaps and clicks. Session recording stays off. */
 window.FORA_TRACKING = { GA_ID: 'G-HRPSFHCQR4', META_PIXEL_ID: '1427029515698975', POSTHOG_KEY: 'phc_DgEsWGyq4pUSBpL29A4LrV3Y9fj6XBd48H7FPtjxS7Tw' };
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -44,7 +45,7 @@ window.foraLoadAnalytics = function () {
     gtag('js', new Date());
     gtag('config', T.GA_ID);
   }
-  if (T.POSTHOG_KEY) window.foraLoadPosthog();
+  if (T.POSTHOG_KEY) window.foraPosthogConsent(true);
   if (T.META_PIXEL_ID) window.foraLoadMeta();
 };
 window.foraLoadMeta = function () {
@@ -54,9 +55,25 @@ window.foraLoadMeta = function () {
   fbq('init', window.FORA_TRACKING.META_PIXEL_ID);
   fbq('track', 'PageView');
 };
+/* PostHog consent. Accepted = cookies, heatmaps and autocapture. Anything else (declined, ignored, undecided) = cookieless page counts only. */
+window.foraPosthogConsent = function (granted) {
+  window.foraPosthogGranted = !!granted;
+  var ph = window.posthog;
+  if (!ph || !ph.__loaded) return;
+  if (granted) {
+    ph.opt_in_capturing();
+    ph.set_config({ autocapture: true, capture_heatmaps: true });
+  } else {
+    ph.set_config({ autocapture: false, capture_heatmaps: false });
+    ph.opt_out_capturing();
+  }
+};
 window.foraLoadPosthog = function () {
   if (window.foraPosthogLoaded) return;
   window.foraPosthogLoaded = true;
+  var granted = false;
+  try { granted = localStorage.getItem('fora.consent') === 'granted'; } catch (e) {}
+  window.foraPosthogGranted = granted;
   var s = document.createElement('script');
   s.async = true;
   s.crossOrigin = 'anonymous';
@@ -67,14 +84,19 @@ window.foraLoadPosthog = function () {
       api_host: 'https://eu.i.posthog.com',
       ui_host: 'https://eu.posthog.com',
       person_profiles: 'identified_only',
+      cookieless_mode: 'on_reject',
+      opt_out_capturing_by_default: !granted,
       capture_pageview: true,
-      capture_heatmaps: true,
-      autocapture: true,
-      disable_session_recording: true
+      capture_heatmaps: granted,
+      autocapture: granted,
+      disable_session_recording: true,
+      // opted out by default when not accepted: only act when accepted, so nothing is written to storage before a choice
+      loaded: function () { if (window.foraPosthogGranted) window.foraPosthogConsent(true); }
     });
   };
   document.head.appendChild(s);
 };
+if (window.FORA_TRACKING.POSTHOG_KEY) window.foraLoadPosthog();
 try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAnalytics(); } catch (e) {}
 </script>
 </head>
@@ -94,6 +116,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
       <li><b>At the checkout page:</b> your email address, first name, the plan you selected (its name, quantity and price) and the language of the page you used.</li>
       <li><b>When you sign up:</b> a record of the sign-up, such as the time and technical details our email provider logs (for example your IP address).</li>
       <li><b>If you accept the cookie banner:</b> information about how you use the site, such as the pages you visit, where you click and how far you scroll, your approximate location, device and browser (see "Cookies and analytics" below).</li>
+      <li><b>If you decline the cookie banner or do not choose:</b> an anonymous count of your visit and the pages you view, without any cookie or other data being saved on your device (see "Cookies and analytics" below).</li>
     </ul>
     <p>We do not ask for card details, delivery addresses or any payment information, and we do not collect them.</p>
 
@@ -102,6 +125,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <p>If you register your interest in Fora, we use your details only to notify you when the product becomes available so that you can complete your purchase. We do not send marketing or promotional emails. Registration does not constitute an order, and no payment is taken. Our legal basis is your consent (Article 6(1)(a) GDPR), which you can withdraw at any time by contacting <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
     <h3>Analytics</h3>
     <p>With your consent, we use Google Analytics and PostHog to understand how visitors use our website and improve their experience, including through heatmaps of clicks and scrolling. With your consent, we also use the Meta Pixel to measure the effectiveness of our advertising and to reach people who have shown interest in Fora with relevant ads on Facebook and Instagram. Our legal basis is your consent (Article 6(1)(a) GDPR). You can change your preferences at any time through Cookie settings.</p>
+    <p>If you decline the cookie banner or do not choose, we still use PostHog to count visits and page views anonymously, only to see how many people use the website and which pages they view. PostHog does not use this data for its own purposes. Our legal basis is our legitimate interests (Article 6(1)(f) GDPR) in measuring the use of our website, and, in the UK, the exception in the privacy and electronic communications rules for statistical analytics. You have the right to object to this counting at any time by contacting <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.
     <h3>Website operation and security</h3>
     <p>We process limited technical information, such as IP addresses and browser information, to operate our website, maintain security and prevent misuse. Our legal basis is our legitimate interests (Article 6(1)(f) GDPR) in providing a secure and functional website.</p>
 
@@ -110,7 +134,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <ul>
       <li><b>Klaviyo, Inc.:</b> Stores launch registrations and manages our availability notifications by email. Data is processed in the United States, with transfers protected by Klaviyo's participation in the EU–US Data Privacy Framework and its UK Extension.</li>
       <li><b>Google Ireland Limited / Google LLC:</b> Provides Google Analytics when you consent to analytics cookies. Applicable transfers to Google LLC in the United States are protected by its participation in the EU–US Data Privacy Framework and its UK Extension.</li>
-      <li><b>PostHog:</b> Provides click and scroll heatmaps and usage statistics when you consent to analytics cookies. We use its EU cloud, so the data is stored in the EU. We do not use session recordings, and we ask it to ignore the forms on this site.</li>
+      <li><b>PostHog:</b> Provides click and scroll heatmaps and usage statistics when you consent to analytics cookies, and an anonymous count of visits and page views when you do not. We use its EU cloud, so the data is stored in the EU. We do not use session recordings, and we ask it to ignore the forms on this site.</li>
       <li><b>Meta Platforms Ireland Limited / Meta Platforms, Inc.:</b> Provides the Meta Pixel when you consent to analytics and advertising cookies. It receives information such as the pages you visit, your browser and device details, and when you register your interest. Meta may transfer data to the United States, where its transfers rely on Meta's participation in the EU–US Data Privacy Framework and its UK Extension.</li>
       <li><b>Adobe Inc. (Adobe Fonts):</b> Delivers the headline font used on this website. When a page loads, your browser connects to Adobe's servers, which receive technical information such as your IP address. Our legal basis is our legitimate interests (Article 6(1)(f) GDPR) in displaying the website consistently.</li>
       <li><b>GitHub, Inc.:</b> Hosts our website and may process technical information, including IP addresses, necessary to deliver the website.</li>
@@ -118,7 +142,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <p>We do not sell your personal data. For more information about applicable international data transfer safeguards, contact <a href="mailto:hi@foragummy.com">hi@foragummy.com</a>.</p>
 
     <h2>Cookies and analytics</h2>
-    <p>We use optional analytics cookies to understand how visitors interact with our website. Google Analytics, PostHog and the Meta Pixel are activated only when you accept the cookie banner. Until then they are not loaded and no analytics or advertising cookies are set. If you accept, Google Analytics sets cookies (named <code>_ga</code> and <code>_ga_…</code>), PostHog stores a cookie and local-storage entries (names starting with <code>ph_</code>) and the Meta Pixel sets cookies (named <code>_fbp</code> and, if you arrive from a Meta ad, <code>_fbc</code>). You can withdraw your consent at any time through Cookie settings in the page footer, which will stop further analytics tracking and remove the analytics cookies from your browser.</p>
+    <p>We use optional analytics cookies to understand how visitors interact with our website. Google Analytics, PostHog and the Meta Pixel are activated only when you accept the cookie banner. Until then Google Analytics and the Meta Pixel are not loaded and no analytics or advertising cookies are set. PostHog is the exception: if you decline or do not choose, it counts your visit and the pages you view anonymously, without saving any cookie or other data on your device. To do this, PostHog's servers combine your IP address and browser details with a random value that changes every day and is then deleted, which produces a code that cannot be traced back to you. The IP address is not stored, no location is added, and we cannot follow your visit across days or link it to you. If you accept, Google Analytics sets cookies (named <code>_ga</code> and <code>_ga_…</code>), PostHog stores a cookie and local-storage entries (names starting with <code>ph_</code>) and the Meta Pixel sets cookies (named <code>_fbp</code> and, if you arrive from a Meta ad, <code>_fbc</code>). You can withdraw your consent at any time through Cookie settings in the page footer, which will stop further analytics tracking and remove the analytics cookies from your browser.</p>
     <p>Your browser may also store your language preference and cookie preferences to ensure the website functions correctly.</p>
 
     <h2>Is providing your information required?</h2>
@@ -131,7 +155,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <p>We retain your contact details for as long as necessary to provide the communications you have requested.</p>
     <p>We retain your details for the purpose of notifying you about product availability and delete them when they are no longer needed, unless another lawful basis applies. You can ask us to delete them at any time.</p>
     <p>We may retain a minimal record of your opt-out to ensure you are not contacted again.</p>
-    <p>Google Analytics data is retained for 2 months. PostHog data is retained for no longer than 12 months. The Meta Pixel cookies expire after 90 days, and data received by Meta is kept in line with Meta's own privacy policy.</p>
+    <p>Google Analytics data is retained for 2 months. PostHog data, including anonymous counts, is retained for no longer than 12 months. The Meta Pixel cookies expire after 90 days, and data received by Meta is kept in line with Meta's own privacy policy.</p>
     <p>Technical and security logs are retained only for as long as necessary for website operation, security and troubleshooting, in accordance with our hosting provider's applicable retention arrangements.</p>
 
     <h2>Your rights</h2>
@@ -140,7 +164,7 @@ try { if (localStorage.getItem('fora.consent') === 'granted') window.foraLoadAna
     <h2>Changes</h2>
     <p>We may update this notice and will change the date above when we do.</p>
 </main>
-<script src="../js/lang/en.js?v=20261111165238"></script>
-<script src="../js/common.js?v=20261111165238"></script>
+<script src="../js/lang/en.js?v=20261123130628"></script>
+<script src="../js/common.js?v=20261123130628"></script>
 </body>
 </html>
