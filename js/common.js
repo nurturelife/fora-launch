@@ -1,5 +1,5 @@
 // Runs on every page: remembers a manual language choice, and shows the cookie banner
-// that decides whether Google Analytics may load (see the analytics snippet in <head>).
+// that decides whether GA4, the Meta Pixel and full PostHog tracking may run (see the analytics snippet in <head>).
 (function () {
   var L = window.FORA_L || { consent: {} }, C = L.consent || {};
   var BASE = (document.currentScript && document.currentScript.src || '').replace(/js\/common\.js.*$/, '');
@@ -30,7 +30,7 @@
   function hide() { if (banner) { banner.parentNode.removeChild(banner); banner = null; } }
   function accept() { store(CONSENT_KEY, 'granted'); if (window.foraLoadAnalytics) window.foraLoadAnalytics(); hide(); }
   function clearPosthog() {
-    try { if (window.posthog && window.posthog.opt_out_capturing) window.posthog.opt_out_capturing(); } catch (e) {}
+    try { if (window.foraPosthogConsent) window.foraPosthogConsent(false); } catch (e) {}
     document.cookie.split(';').forEach(function (c) {
       var n = c.split('=')[0].trim();
       if (/^ph_/.test(n)) {
@@ -39,7 +39,8 @@
         });
       }
     });
-    try { Object.keys(localStorage).forEach(function (k) { if (/^ph_|posthog/i.test(k)) localStorage.removeItem(k); }); } catch (e) {}
+    // keep only PostHog's own opt-out flag (the visitor's choice); drop everything else it stored while they had accepted
+    try { Object.keys(localStorage).forEach(function (k) { if (/^ph_|posthog/i.test(k) && !/opt_in_out/.test(k)) localStorage.removeItem(k); }); } catch (e) {}
   }
   function clearMeta() {
     try { if (window.fbq) window.fbq('consent', 'revoke'); } catch (e) {}
